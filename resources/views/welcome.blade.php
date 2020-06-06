@@ -80,11 +80,13 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Starbugged
-                </div>
 
-                
+                <h1 class="text-center">  Starbugged </h1>
+                <div class="d-flex">
+                <img src="{{ asset('images/bug1.png') }}" width="500" height="400" alt="image unavailable">
+                <img src="{{ asset('images/bug2.png') }}" width="500" height="400" alt="image unavailable">
+                <img src="{{ asset('images/bug3.png') }}" width="500" height="400" alt="image unavailable">
+                </div>
             </div>
         </div>
     </body>
