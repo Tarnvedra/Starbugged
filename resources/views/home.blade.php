@@ -2,12 +2,7 @@
 
 @section('content')
 
-
-
-
-
-
-       @include('include/sidebar')
+@include('include/sidebar')
 
      <div class="main">
         <div class="row pl-3">
@@ -26,7 +21,7 @@
                 <tr>
                     <td><a href="">#00001</a></td>
                     <td>Starbugged</td>
-                    <td>W</td>
+                    <td>Linux</td>
                     <td>Medium</td>
                     <td>Bug</td>
                     <td>A.N.Other</td>
@@ -37,7 +32,7 @@
                 <tr>
                     <td><a href="">#00002</a></td>
                     <td>Starbugged</td>
-                    <td>W</td>
+                    <td>Windows</td>
                     <td>Low</td>
                     <td>Bug</td>
                     <td>J.N.Other</td>
@@ -48,7 +43,7 @@
                 <tr>
                     <td><a href="">#00003</a></td>
                     <td>Warehouse</td>
-                    <td>W</td>
+                    <td>Mac</td>
                     <td>Low</td>
                     <td>Bug</td>
                     <td>K.N.Other</td>
@@ -59,7 +54,7 @@
                 <tr>
                     <td><a href="">#00004</a></td>
                     <td>Motoring</td>
-                    <td>W</td>
+                    <td>Windows</td>
                     <td>Low</td>
                     <td>Bug</td>
                     <td>S.N.Other</td>
@@ -70,7 +65,7 @@
                 <tr>
                     <td><a href="">#00005</a></td>
                     <td>Starbugged</td>
-                    <td>W</td>
+                    <td>Linux</td>
                     <td>Low</td>
                     <td>Issue</td>
                     <td>J.N.Other</td>
@@ -81,7 +76,106 @@
                 <tr>
                     <td><a href="">#00006</a></td>
                     <td>Starbugged</td>
-                    <td>W</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#00007</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#00008</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#00009</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#000010</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#000011</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#000012</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#000013</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#000014</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
+                    <td>Low</td>
+                    <td>Bug</td>
+                    <td>J.N.Other</td>
+                    <td>11/6/2020</td>
+                    <td>8.59</td>
+                    <td>Resolved</td>
+                </tr>
+                <tr>
+                    <td><a href="">#000015</a></td>
+                    <td>Starbugged</td>
+                    <td>Windows</td>
                     <td>Low</td>
                     <td>Bug</td>
                     <td>J.N.Other</td>
