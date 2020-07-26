@@ -21,7 +21,7 @@ class CreateIssuesTable extends Migration
             $table->string('risk');
             $table->string('issue');
             $table->string('description');
-            $table->string('assignment');
+            $table->text('assignment');
             $table->string('status');
             $table->timestamps();
         });

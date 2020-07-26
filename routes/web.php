@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/projects', 'ProjectsController@index');
+Route::get('/p/create' , 'ProjectsController@create');
+Route::post('/p','ProjectsController@store');
+Route::get('/issues', 'PagesController@issues');
+Route::get('/account', 'PagesController@account');

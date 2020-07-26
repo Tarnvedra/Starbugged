@@ -11,11 +11,11 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 @auth
-                <a class="wl pl-3 pr-3" href="#dashboard"> Dashboard</a>
-                <a class="wl pr-3" href="#projects"> Projects</a>
-                <a class="wl pr-3" href="#issues"> Issues</a>
+                <a class="wl pl-3 pr-3" href="/home"> Dashboard</a>
+                <a class="wl pr-3" href="/projects"> Projects</a>
+                <a class="wl pr-3" href="/issues"> Issues</a>
                 <a class="wl pr-3" href="#notifications"> Notifications</a>
-                <a class="wl pr-3" href="#account"> Account</a>
+                <a class="wl pr-3" href="/account"> Admin</a>
                 @endauth
             </ul>
 

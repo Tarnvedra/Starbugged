@@ -95,7 +95,62 @@ html, body {
 
   .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: lightblue;
+   background-color: lightcyan;
  }
 
 
+ #projects {
+    margin-left: 600px;
+    margin-top: 100px;
+    background-color: green;
+    height: 300px;
+    width: 300px;
+    color: white;
+    border-style: solid 1px;
+}
+
+#projects h2 {
+    color: white;
+}
+
+#issues {
+    margin-left: 100px;
+    margin-top: 100px;
+    background-color: blue;
+    height: 300px;
+    width: 300px;
+    color: white;
+    border-style: solid 1px;
+}
+
+#issues h2 {
+    color: white;
+}
+
+#priority {
+    margin-left: 600px;
+    margin-top: 100px;
+    background-color: red;
+    height: 300px;
+    width: 300px;
+    color: white;
+    border-style: solid 1px;
+}
+
+#priority h2 {
+    color: white;
+}
+
+#status {
+    margin-left: 100px;
+    margin-top: 100px;
+    background-color: yellow;
+    height: 300px;
+    width: 300px;
+    color: white;
+    border-style: solid 1px;
+}
+
+#status h2 {
+    color: black;
+}
