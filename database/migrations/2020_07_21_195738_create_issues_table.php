@@ -14,7 +14,7 @@ class CreateIssuesTable extends Migration
     public function up()
     {
         Schema::create('issues', function (Blueprint $table) {
-            $table->bigIncrements('bug_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
             $table->string('os');

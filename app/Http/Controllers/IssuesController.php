@@ -4,27 +4,25 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Project;
-
+use App\Issue;
 use Illuminate\Http\Request;
 
-class ProjectsController extends Controller
+class IssuesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function __construct() {
 
         $this->middleware('auth');
     }
 
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $projects = Project::orderBy('id','asc')->paginate(6);
-        return view('projects', compact('projects'));
-
+        $issues = Issue::orderBy('id','asc')->paginate(10);
+        return view('issues', compact('issues'));
     }
 
     /**
@@ -32,9 +30,11 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($project_id)
     {
-        return view('projects/create');
+        $project = Project::find($project_id);
+        //dd($project);
+        return view('issues/create', compact('project'));
     }
 
     /**
@@ -43,16 +43,27 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $data = request()->validate([
-            'project' => 'required',
+        $this->validate($request,[
+            'os' => 'required',
+            'risk' => 'required',
+            'issue' => 'required',
             'description' => 'required',
         ]);
 
-        auth()->user()->projects()->create($data);
-        return redirect('/account');
-}
+        $issue = new Issue;
+        $issue->project_id = $id;
+        $issue->os = $request->input('os');
+        $issue->risk = $request->input('risk');
+        $issue->issue = $request->input('issue');
+        $issue->description = $request->input('description');
+        $issue->assignment = 'none';
+        $issue->status = 'issue created';
+        $issue->save();
+
+        return redirect('/projects');
+    }
 
     /**
      * Display the specified resource.
@@ -62,8 +73,8 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        $project = Project::find($id);
-        return view('projects/show')->with('project' , $project);
+        $issue = Issue::find($id);
+        return view('issues/show')->with('issue' , $issue);
     }
 
     /**
@@ -74,9 +85,7 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::find($id);
-        //dd($project->description);
-        return view('projects/edit')->with('project' , $project);
+        //
     }
 
     /**
@@ -88,15 +97,7 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $data = request()->validate([
-        'project' => 'required',
-        'description' => 'required',
-    ]);
-    $project = Project::find($id);
-    $project->project = $request->input('project');
-    $project->description = $request->input('description');
-    $project->save();
-    return redirect('/projects');
+        //
     }
 
     /**

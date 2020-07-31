@@ -12,17 +12,19 @@
             <th>#</th>
             <th>Project</th>
             <th>Description</th>
-            <th>Project Maintenance</th>
+            <th>Edit Projects</th>
+            <th>Create Issues</th>
         <tr>
 @foreach($projects as $project)
         <tr>
-            <td><a href="#">{{ $project->id }}</a></td>
+            <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
             <td>{{ $project->project }}</td>
             <td>{{ $project->description }}</td>
             <td>
-                <button type="submit" class="btn btn-danger">
-                    {{ __('Edit Project') }}
-                </button>
+                  <a href="/project/{{ $project->id }}/edit" class="btn btn-info">  {{ __('Edit Project') }}</a>
+            </td>
+             <td>
+                  <a href="/issue/create/{{  $project->id }}" class="btn btn-primary">  {{ __('Create Issue') }}</a>
             </td>
         </tr>
 
