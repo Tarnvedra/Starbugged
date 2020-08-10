@@ -27,6 +27,7 @@ class CreateIssuesTable extends Migration
         });
     }
 
+
     /**
      * Reverse the migrations.
      *

@@ -2,30 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Project;
-
 use Illuminate\Http\Request;
+use App\User;
+use App\Role;
 
-class ProjectsController extends Controller
+class AccountsController extends Controller
 {
+    public function __construct() {
+
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct() {
-
-        $this->middleware('auth');
-    }
-
-
     public function index()
     {
-        $projects = Project::orderBy('id','asc')->paginate(6);
-        return view('projects', compact('projects'));
+           // $user = Auth::findOrFail(user());
 
+            return view('admin/account');
     }
+
+    public function admin()
+    {
+            //$user = Auth::findOrFail(user());
+           // dd($user);
+            $users = User::get();
+            $user_roles = Role::get();
+            return view('admin/manageusers')->with('users', $users)->with('user_roles' , $user_roles);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -34,7 +42,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('projects/create');
+        //
     }
 
     /**
@@ -45,14 +53,8 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $data = request()->validate([
-            'project' => 'required',
-            'description' => 'required',
-        ]);
-
-        auth()->user()->projects()->create($data);
-        return redirect('/account');
-}
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -62,8 +64,7 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        $project = Project::find($id);
-        return view('projects/show')->with('project' , $project);
+        //
     }
 
     /**
@@ -74,11 +75,12 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        $project = Project::find($id);
-        $user = User::all();
-
-        //dd($project->description);
-        return view('projects/edit')->with('project' , $project)->with('user' , $user);
+    $user = User::find($id);
+    $roles = Role::all();
+    return view('admin/edit')->with([
+        'user' => $user,
+        'roles' => $roles
+    ]);
     }
 
     /**
@@ -90,17 +92,12 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-    $data = request()->validate([
-        'project' => 'required',
-        'description' => 'required',
+        $this->validate($request,[
+            'username' => 'required',
+            'roles' => 'required',
 
-    ]);
-    $project = Project::find($id);
-    $project->project = $request->input('project');
-    $project->description = $request->input('description');
-    $project->users_assigned = $request->input('assignment');
-    $project->save();
-    return redirect('/projects');
+        ]);
+    dd($request);
     }
 
     /**

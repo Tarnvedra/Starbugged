@@ -41,6 +41,7 @@
 
 
             </table>
+            <a href="/issue/{{ $issue->id }}/edit" class="btn btn-success">  {{ __('Edit Issue') }}</a>
             <a href="/issues" class="btn btn-info">  {{ __('Back') }}</a>
         </div>
 </div>

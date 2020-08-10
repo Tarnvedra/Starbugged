@@ -5,9 +5,10 @@
 
 @include('include/sidebar')
 <div class="container">
-<h2 class="text-center pb-3">Create issue for : {{ $project->project }}</h2>
-<form action="/issue/{{ $project->id }}" enctype="multipart/form-data" method="post">
+<h2 class="text-center pb-3">Update issue #{{ $issue->id }} for : <i>{{ $project->project }}</i></h2>
+<form action="/issue/{{ $issue->id }}" enctype="multipart/form-data" method="post">
 @csrf
+@method('PATCH')
 
 <div class="form-group row">
     <label for="os" class="col-md-4 col-form-label text-md-right">{{ __('OS') }}</label>
@@ -69,10 +70,47 @@
 </div>
 
 <div class="form-group row">
+    <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
+
+        <div class="col-md-6">
+            <select id="issuestatus" name="status" class="form-control @error('status') is-invalid @enderror" required autocomplete="" autofocus >
+                <option value="In progress">In progress</option>
+                <option value="Issue updated">Issue updated</option>
+                <option value="Resolved">Resolved</option>
+                <option value="Other">Other</option>
+              </select>
+
+        @error('status')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
+<div class="form-group row">
+    <label for="assignment" class="col-md-4 col-form-label text-md-right">{{ __('Assignment') }}</label>
+
+        <div class="col-md-6">
+            <select id="assignment" name="assignment" class="form-control @error('assignment') is-invalid @enderror" autocomplete="" autofocus >
+               <option>Assign User to Issue</option>
+                @foreach($user as $user)
+                <option>{{ $user->username }}</option>
+                @endforeach
+              </select>
+
+        @error('assignment')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
     <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
     <div class="col-md-6">
-        <textarea  type="text" rows="8" cols="50" class="form-control @error('dexcription') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="Project Description" autofocus></textarea>
+        <textarea  type="text" rows="8" cols="50" class="form-control @error('dexcription') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="Project Description" autofocus>{{ $issue->description }}</textarea>
 
         @error('description')
             <span class="invalid-feedback" role="alert">
@@ -81,6 +119,9 @@
         @enderror
     </div>
 </div>
+
+
+
 <div class="form-group row mb-0">
     <div class="col-md-6 offset-md-4">
         <button type="submit" class="btn btn-primary">

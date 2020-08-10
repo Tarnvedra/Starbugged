@@ -11,7 +11,7 @@
                 <tr style="background-color: whitesmoke;">
                     <th>Project</th>
                     <th>Description</th>
-                    <th>User Assigned</th>
+                    <th>User(s) Assigned</th>
                     <th>Project Created at</th>
                     <th>Project Last Updated at</th>
                 <tr>

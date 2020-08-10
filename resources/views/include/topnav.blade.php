@@ -15,7 +15,7 @@
                 <a class="wl pr-3" href="/projects"> Projects</a>
                 <a class="wl pr-3" href="/issues"> Issues</a>
                 <a class="wl pr-3" href="#notifications"> Notifications</a>
-                <a class="wl pr-3" href="/account"> Admin</a>
+                <a class="wl pr-3" href="/admin"> Admin</a>
                 @endauth
             </ul>
 

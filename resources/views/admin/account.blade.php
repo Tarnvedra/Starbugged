@@ -11,7 +11,7 @@
     <div id="issues"><h2>Assign Issues</h2></div>
     </div>
     <div class="row d-flex">
-    <div id="priority"><h2>Manage Users</h2></div>
+    <div id="priority"><a href="/admin/users"><h2>User Management</h2></a></div>
     <div id="status"><h2>Assign Users</h2></div>
     </div>
 

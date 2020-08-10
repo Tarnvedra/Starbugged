@@ -21,7 +21,9 @@ class IssuesController extends Controller
      */
     public function index()
     {
-        $issues = Issue::orderBy('id','asc')->paginate(10);
+
+
+        $issues = Issue::orderBy('id','asc')->paginate(15);
         return view('issues', compact('issues'));
     }
 
@@ -62,7 +64,7 @@ class IssuesController extends Controller
         $issue->status = 'issue created';
         $issue->save();
 
-        return redirect('/projects');
+        return redirect('/issues');
     }
 
     /**
@@ -85,7 +87,17 @@ class IssuesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $issue = Issue::find($id);
+        $project_id = $issue->project_id;
+        $project = Project::find($project_id);
+        //dd($project->users_assigned);
+
+        $user = User::all('username');
+        $users =  Project::find($project_id)->where('users_assigned' ,'=',  $project->users_assigned)->get();
+
+        //User::all('username')->where('users_assigned' ,'=',  $project->users_assigned)->get();
+        //dd($users);
+        return view('issues/edit')->with('issue' , $issue)->with('project' , $project)->with('user' , $user);
     }
 
     /**
@@ -97,7 +109,23 @@ class IssuesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'os' => 'required',
+            'risk' => 'required',
+            'issue' => 'required',
+            'description' => 'required',
+        ]);
+
+        $issue = Issue::find($id);
+        $issue->os = $request->input('os');
+        $issue->risk = $request->input('risk');
+        $issue->issue = $request->input('issue');
+        $issue->description = $request->input('description');
+        $issue->assignment = $request->input('assignment');
+        $issue->status = $request->input('status');
+        $issue->save();
+
+        return redirect('/projects');
     }
 
     /**

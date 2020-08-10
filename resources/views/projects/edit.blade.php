@@ -36,6 +36,42 @@
         @enderror
     </div>
 </div>
+
+<div class="form-group row">
+    <label for="assignment" class="col-md-4 col-form-label text-md-right">{{ __('Assignment') }}</label>
+
+        <div class="col-md-6">
+
+                <table class="table table-bordered">
+                <tr>
+                    <th>User</th>
+                    <th class="pl-4">Assign</th>
+                    <th> Acc Level </th>
+
+                </tr>
+                @foreach($user as $user)
+
+                <tr>
+                    @if ($user->useraccountlevel >= 50 && $user->useraccountlevel <=60)
+                    <td><label class="pl-3" for="assignment">{{ $user->username }}</label></td>
+              <td><input type="checkbox" id="assignment" name="assignment[]" class="form-control @error('assignment') is-invalid @enderror" value="{{ $user->username }}" autocomplete="" checked="checked" autofocus></td>
+              <td>{{ $user->useraccountlevel }}</td>
+              @else
+
+
+                </tr>
+                @endif
+              @endforeach
+                </table>
+
+        @error('assignment')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+</div>
+
 <div class="form-group row mb-0">
     <div class="col-md-6 offset-md-4">
         <button type="submit" class="btn btn-primary">

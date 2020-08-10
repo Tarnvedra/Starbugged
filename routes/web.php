@@ -28,4 +28,12 @@ Route::get('/issues', 'IssuesController@index');
 Route::get('/issue/create/{project_id}', 'IssuesController@create');
 Route::get('/issue/{id}' , 'IssuesController@show');
 Route::post('/issue/{project_id}','IssuesController@store');
-Route::get('/account', 'PagesController@account');
+Route::get('/issue/{id}/edit' ,'IssuesController@edit');
+Route::patch('/issue/{id}' , 'IssuesController@update');
+Route::get('/admin', 'AccountsController@index');
+Route::get('/admin/users', 'AccountsController@admin');
+//Route::post('/admin/users/{id}','AccountsController@store');
+Route::get('/admin/users/{id}/edit' ,'AccountsController@edit');
+Route::patch('/admin/users/{id}' , 'AccountsController@update');
+Route::delete('/admin/users/{id}' , 'AccountsController@destroy');
+

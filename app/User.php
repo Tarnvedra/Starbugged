@@ -46,4 +46,19 @@ class User extends Authenticatable
 
         return $this->hasOne(Profile::class);
     }
+
+    public function roles() {
+
+        return $this->belongsToMany(Role::class);
+    }
+
+   // public function accountLevel($useraccountlevel) {
+
+//        if($this->user()->whereIn(column: 'useraccountlevel', $useraccountlevel) = 90){
+  //          $role = "admin"
+    //    }
+      //      elseif ($this->user()->whereIn(column: 'useraccountlevel', $useraccountlevel) = 60){
+      //      $role = "manager"
+       // }
+   // }
 }

@@ -14,7 +14,7 @@
                 <th>Issue </th>
                 <th>Assignment</th>
                 <th>Status</th>
-                <th>Created</th>
+                <th>Issue Created</th>
                 <th>Last Updated</th>
             </tr>
             @foreach($issues as $issue)
@@ -32,6 +32,7 @@
             </tr>
             @endforeach
                     </table>
+                    {{ $issues->links() }}
 
 </div>
 <div>
