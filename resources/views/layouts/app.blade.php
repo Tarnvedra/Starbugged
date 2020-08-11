@@ -26,9 +26,10 @@
     <div id="app">
         @include('include/topnav')
 
-        <main class="py-4">
+        <div class="container">
+            @include('include/messages')
             @yield('content')
-        </main>
+        </div>
     </div>
 
     <!-- Scripts -->

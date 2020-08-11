@@ -3,8 +3,8 @@
 @section('content')
 
 @include('include/sidebar')
-<div class="main">
-    <div class="row pl-3">
+
+    <div class="row pl-3 pt-3">
         <table class="table table-bordered table-striped">
             <tr>
                 <th>Issue ID</th>
@@ -35,6 +35,6 @@
                     {{ $issues->links() }}
 
 </div>
-<div>
+
 
 @endsection

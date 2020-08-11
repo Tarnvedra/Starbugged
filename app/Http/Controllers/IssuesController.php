@@ -23,7 +23,7 @@ class IssuesController extends Controller
     {
 
 
-        $issues = Issue::orderBy('id','asc')->paginate(15);
+        $issues = Issue::orderBy('id','asc')->paginate(9);
         return view('issues', compact('issues'));
     }
 

@@ -51,7 +51,7 @@ class ProjectsController extends Controller
         ]);
 
         auth()->user()->projects()->create($data);
-        return redirect('/account');
+        return redirect('/projects')->with('success' , 'Project succesfully created');
 }
 
     /**
@@ -100,7 +100,7 @@ class ProjectsController extends Controller
     $project->description = $request->input('description');
     $project->users_assigned = $request->input('assignment');
     $project->save();
-    return redirect('/projects');
+    return redirect('/projects')->with('success' , 'Project succesfully updated');
     }
 
     /**

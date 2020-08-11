@@ -95,7 +95,7 @@ html, body {
 
   .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: lightcyan;
+   background-color: whitesmoke;
  }
 
 

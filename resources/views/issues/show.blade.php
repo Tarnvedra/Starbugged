@@ -3,7 +3,7 @@
 @section('content')
 
 @include('include/sidebar')
-<div class="container">
+
     <div class="row pt-5">
 
         <div class="row pl-3">
@@ -44,5 +44,5 @@
             <a href="/issue/{{ $issue->id }}/edit" class="btn btn-success">  {{ __('Edit Issue') }}</a>
             <a href="/issues" class="btn btn-info">  {{ __('Back') }}</a>
         </div>
-</div>
+
 @endsection
