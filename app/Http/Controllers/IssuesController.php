@@ -27,6 +27,21 @@ class IssuesController extends Controller
         return view('issues', compact('issues'));
     }
 
+    public function priority()
+    {
+
+
+        $issues = Issue::where('risk', '=','High')->orderBy('id','asc')->paginate(9);
+        return view('issues/priority', compact('issues'));
+    }
+
+    public function status()
+    {
+
+
+        $issues = Issue::where('status', '=','issue created')->orderBy('created_at','asc')->paginate(9);
+        return view('issues/status', compact('issues'));
+    }
     /**
      * Show the form for creating a new resource.
      *

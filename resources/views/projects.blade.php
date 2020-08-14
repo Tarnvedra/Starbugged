@@ -32,6 +32,9 @@
     </table>
     {{ $projects->links() }}
 </div>
+<div class="pl-3">
+    <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+    </div>
 </div>
 
 @endsection

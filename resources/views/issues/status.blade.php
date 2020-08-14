@@ -2,8 +2,9 @@
 
 @section('content')
 
-@include('include/sidebar')
 
+@include('include/sidebar')
+<status-component></status-component>
 <div class="row pl-3 pt-3">
     <table class="table table-bordered table-striped">
         <tr>
@@ -34,9 +35,9 @@
                 </table>
                 {{ $issues->links() }}
                 <div class="pl-3">
-                <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+                    <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+                    </div>
                 </div>
 </div>
-
 
 @endsection

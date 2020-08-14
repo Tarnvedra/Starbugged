@@ -2,8 +2,10 @@
 
 @section('content')
 
+
 @include('include/sidebar')
 
+<priority-component></priority-component>
 <div class="row pl-3 pt-3">
     <table class="table table-bordered table-striped">
         <tr>
@@ -33,10 +35,12 @@
         @endforeach
                 </table>
                 {{ $issues->links() }}
-                <div class="pl-3">
-                <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
-                </div>
-</div>
 
+                <div class="pl-3">
+                    <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+                    </div>
+                </div>
+
+</div>
 
 @endsection
