@@ -38,7 +38,7 @@ class IssuesController extends Controller
     {
 
         $user = auth()->user();
-        $issues = Issue::where('status', '=','in progress')->orderBy('created_at','asc')->paginate(9);
+        $issues = Issue::where('status', '=','issue created')->orderBy('created_at','asc')->paginate(9);
         return view('issues/status')->with('issues' ,$issues)->with('user',$user);
     }
     /**
