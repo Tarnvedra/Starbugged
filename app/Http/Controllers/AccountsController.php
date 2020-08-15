@@ -29,7 +29,7 @@ class AccountsController extends Controller
             //$user = Auth::findOrFail(user());
            // dd($user);
             $user = auth()->user();
-            $users = User::orderBy('username','asc')->paginate(9);
+            $users = User::orderBy('username','asc')->paginate(11);
             $user_roles = Role::get();
             return view('admin/manageusers')->with('users', $users)->with('user', $user)->with('user_roles' , $user_roles);
     }
