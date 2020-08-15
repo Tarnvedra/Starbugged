@@ -25,8 +25,9 @@
           </td>
         </tr>
         @endforeach
-        {{ $users->links() }}
+
     </table>
+    {{ $users->links() }}
     <div class="col-sm-4">
         <a href="/admin" class="btn btn-info">  {{ __('Back') }}</a>
         </div>
