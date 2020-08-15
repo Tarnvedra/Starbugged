@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        @include('include/topnav')
+
 
         <div class="container">
             @include('include/messages')

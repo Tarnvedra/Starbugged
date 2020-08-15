@@ -1,4 +1,5 @@
 @extends('layouts/app')
+@include('include/topnav')
 
 @section('content')
 
@@ -6,11 +7,11 @@
 <h2 class="text-center pt-2">Dashboard</h2>
 <div class="row">
     <div id="projects">
-        <h2><a href="/projects">Projects</a></h2>
+        <h2><a href="/projects">All Projects</a></h2>
         <p class="pt-3">placeholder graphic</p>
     </div>
     <div id="issues">
-        <h2><a href="/issues">Issues</a></h2>
+        <h2><a href="/issues">All Issues</a></h2>
     <p class="pt-3">placeholder graphic</p>
     </div>
 </div>

@@ -22,25 +22,24 @@ class IssuesController extends Controller
     public function index()
     {
 
-
+        $user = auth()->user();
         $issues = Issue::orderBy('id','asc')->paginate(9);
-        return view('issues', compact('issues'));
+        return view('issues')->with('issues' , $issues)->with('user', $user);
     }
 
     public function priority()
     {
-
-
-        $issues = Issue::where('risk', '=','High')->orderBy('id','asc')->paginate(9);
-        return view('issues/priority', compact('issues'));
+        $user = auth()->user();
+         $issues = Issue::where('risk', '=','High')->orderBy('id','asc')->paginate(9);
+        return view('issues/priority')->with('issues' ,$issues)->with('user',$user);
     }
 
     public function status()
     {
 
-
+        $user = auth()->user();
         $issues = Issue::where('status', '=','issue created')->orderBy('created_at','asc')->paginate(9);
-        return view('issues/status', compact('issues'));
+        return view('issues/status')->with('issues' ,$issues)->with('user',$user);
     }
     /**
      * Show the form for creating a new resource.
@@ -91,7 +90,8 @@ class IssuesController extends Controller
     public function show($id)
     {
         $issue = Issue::find($id);
-        return view('issues/show')->with('issue' , $issue);
+        $user = auth()->user();
+        return view('issues/show')->with('issue' , $issue)->with('user' , $user);
     }
 
     /**
@@ -107,12 +107,14 @@ class IssuesController extends Controller
         $project = Project::find($project_id);
         //dd($project->users_assigned);
 
-        $user = User::all('username');
-        $users =  Project::find($project_id)->where('users_assigned' ,'=',  $project->users_assigned)->get();
+        $user = auth()->user();
+        $users_assigned = User::where('useraccountlevel','=','50')->get();
+        //dd($users_assigned);
+        //$users_assigned =  Project::find($project_id)->where('users_assigned' ,'=',  $project->users_assigned)->get();
 
         //User::all('username')->where('users_assigned' ,'=',  $project->users_assigned)->get();
         //dd($users);
-        return view('issues/edit')->with('issue' , $issue)->with('project' , $project)->with('user' , $user);
+        return view('issues/edit')->with('issue' , $issue)->with('project' , $project)->with('user' , $user)->with('users_assigned', $users_assigned);
     }
 
     /**
@@ -140,7 +142,7 @@ class IssuesController extends Controller
         $issue->status = $request->input('status');
         $issue->save();
 
-        return redirect('/projects');
+        return redirect('/issues');
     }
 
     /**

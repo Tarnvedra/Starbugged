@@ -1,5 +1,5 @@
 @extends('layouts/app')
-
+@include('include/topnav')
 @section('content')
 
 
@@ -93,9 +93,9 @@
 
         <div class="col-md-6">
             <select id="assignment" name="assignment" class="form-control @error('assignment') is-invalid @enderror" autocomplete="" autofocus >
-               <option>Assign User to Issue</option>
-                @foreach($user as $user)
-                <option>{{ $user->username }}</option>
+               <option>Issue Resolved</option>
+                @foreach($users_assigned as $users_assign)
+                <option>{{ $users_assign->username }}</option>
                 @endforeach
               </select>
 

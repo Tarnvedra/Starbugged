@@ -1,11 +1,11 @@
 <template>
 <div class="form-group row d-flex pt-3">
     <div class="col-sm-2">
-        <button type="submit" class="btn btn-info">Low Risk</button>
+        <button type="submit" class="btn btn-success">Low Risk</button>
     </div>
 
     <div class="col-sm-2">
-        <button type="submit" class="btn btn-success">Medium Risk</button>
+        <button type="submit" class="btn btn-info">Medium Risk</button>
     </div>
 
     <div class="col-sm-2">

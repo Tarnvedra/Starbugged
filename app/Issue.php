@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
-    //
+    public function projects() {
+
+        return $this->hasMany(Project::class);
+     }
 }

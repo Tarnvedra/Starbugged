@@ -20,17 +20,18 @@ class AccountsController extends Controller
     public function index()
     {
            // $user = Auth::findOrFail(user());
-
-            return view('admin/account');
+           $user = auth()->user();
+            return view('admin/account')->with('user' , $user);
     }
 
     public function admin()
     {
             //$user = Auth::findOrFail(user());
            // dd($user);
-            $users = User::get();
+            $user = auth()->user();
+            $users = User::all();
             $user_roles = Role::get();
-            return view('admin/manageusers')->with('users', $users)->with('user_roles' , $user_roles);
+            return view('admin/manageusers')->with('users', $users)->with('user', $user)->with('user_roles' , $user_roles);
     }
 
 
@@ -94,10 +95,18 @@ class AccountsController extends Controller
     {
         $this->validate($request,[
             'username' => 'required',
-            'roles' => 'required',
+
+            'useraccountlevel' => 'required',
 
         ]);
-    dd($request);
+    $user_update = User::find($id);
+    //$roles = Role::find($user->id);
+    $user_update->username = $request->input('username');
+    //$roles->roles = $request->input('roles');
+    $user_update->useraccountlevel = $request->input('useraccountlevel');
+    $user_update->save();
+    $user = auth()->user();
+    return view('admin/account')->with('success' , 'User succesfully updated')->with('user' , $user);
     }
 
     /**
@@ -109,5 +118,11 @@ class AccountsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dashboard()
+    {
+        $user = auth()->user();
+        return view('home')->with('user' , $user);
     }
 }

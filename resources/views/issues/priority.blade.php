@@ -1,5 +1,5 @@
 @extends('layouts/app')
-
+@include('include/topnav')
 @section('content')
 
 

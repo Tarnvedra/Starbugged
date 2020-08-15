@@ -1,5 +1,5 @@
 @extends('layouts/app')
-
+@include('include/topnav')
 @section('content')
 
 @include('include/sidebar')
@@ -12,20 +12,28 @@
             <th>#</th>
             <th>Project</th>
             <th>Description</th>
+            @if ($user->useraccountlevel >= 60)
             <th>Edit Projects</th>
+            @endif
+            @if ($user->useraccountlevel >= 20)
             <th>Create Issues</th>
+            @endif
         <tr>
 @foreach($projects as $project)
         <tr>
             <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
             <td>{{ $project->project }}</td>
             <td>{{ $project->description }}</td>
+            @if ($user->useraccountlevel >= 60)
             <td>
                   <a href="/project/{{ $project->id }}/edit" class="btn btn-info">  {{ __('Edit Project') }}</a>
             </td>
+            @endif
+            @if ($user->useraccountlevel >= 20)
              <td>
                   <a href="/issue/create/{{  $project->id }}" class="btn btn-primary">  {{ __('Create Issue') }}</a>
             </td>
+            @endif
         </tr>
 
 @endforeach

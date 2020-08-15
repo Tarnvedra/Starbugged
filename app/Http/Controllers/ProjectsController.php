@@ -22,8 +22,9 @@ class ProjectsController extends Controller
 
     public function index()
     {
+        $user = auth()->user();
         $projects = Project::orderBy('id','asc')->paginate(6);
-        return view('projects', compact('projects'));
+        return view('projects')->with('projects' , $projects)->with('user' , $user);
 
     }
 
@@ -34,7 +35,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('projects/create');
+        $user = auth()->user();
+        return view('projects/create')->with('user' , $user);
     }
 
     /**
@@ -62,8 +64,9 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
         $project = Project::find($id);
-        return view('projects/show')->with('project' , $project);
+        return view('projects/show')->with('project' , $project)->with('user' , $user);
     }
 
     /**
@@ -75,10 +78,11 @@ class ProjectsController extends Controller
     public function edit($id)
     {
         $project = Project::find($id);
-        $user = User::all();
+        $users = User::all();
+        $user = auth()->user();
 
         //dd($project->description);
-        return view('projects/edit')->with('project' , $project)->with('user' , $user);
+        return view('projects/edit')->with('project' , $project)->with('user' , $user)->with('users' , $users);
     }
 
     /**

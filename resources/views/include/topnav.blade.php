@@ -15,7 +15,9 @@
                 <a class="wl pr-3" href="/projects"> Projects</a>
                 <a class="wl pr-3" href="/issues"> Issues</a>
                 <a class="wl pr-3" href="#notifications"> Notifications</a>
+                @if ($user->useraccountlevel >= 60)
                 <a class="wl pr-3" href="/admin"> Admin</a>
+                @endif
                 @endauth
             </ul>
 

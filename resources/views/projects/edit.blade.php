@@ -1,5 +1,5 @@
 @extends('layouts/app')
-
+@include('include/topnav')
 @section('content')
 
 @include('include/sidebar')
@@ -49,13 +49,13 @@
                     <th> Acc Level </th>
 
                 </tr>
-                @foreach($user as $user)
+                @foreach($users as $users)
 
                 <tr>
-                    @if ($user->useraccountlevel >= 50 && $user->useraccountlevel <=60)
-                    <td><label class="pl-3" for="assignment">{{ $user->username }}</label></td>
-              <td><input type="checkbox" id="assignment" name="assignment[]" class="form-control @error('assignment') is-invalid @enderror" value="{{ $user->username }}" autocomplete="" checked="checked" autofocus></td>
-              <td>{{ $user->useraccountlevel }}</td>
+                    @if ($users->useraccountlevel >= 50 && $users->useraccountlevel <=60)
+                    <td><label class="pl-3" for="assignment">{{ $users->username }}</label></td>
+              <td><input type="checkbox" id="assignment" name="assignment[]" class="form-control @error('assignment') is-invalid @enderror" value="{{ $users->username }}" autocomplete="" checked="checked" autofocus></td>
+              <td>{{ $users->useraccountlevel }}</td>
               @else
 
 
