@@ -48,9 +48,10 @@ class IssuesController extends Controller
      */
     public function create($project_id)
     {
+        $user = auth()->user();
         $project = Project::find($project_id);
         //dd($project);
-        return view('issues/create', compact('project'));
+        return view('issues/create')->with('project' , $project)->with('user' ,$user);
     }
 
     /**
