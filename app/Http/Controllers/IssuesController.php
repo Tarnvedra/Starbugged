@@ -27,6 +27,8 @@ class IssuesController extends Controller
         return view('issues')->with('issues' , $issues)->with('user', $user);
     }
 
+
+
     public function priority()
     {
         $user = auth()->user();

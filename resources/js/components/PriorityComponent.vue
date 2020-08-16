@@ -18,6 +18,18 @@
     export default {
         mounted() {
             console.log('Component mounted.')
+        },
+        data() {
+
+        },
+        created(){
+            this.fetchPriorityData();
+        },
+
+        methods: {
+            fetchPriorityData() {
+
+            }
         }
     }
 </script>
