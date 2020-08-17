@@ -8,8 +8,6 @@
 <div class="row">
     <div id="projects">
         <a href="/projects" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-project-100.png') }}"><span class="d-flex">View Projects</span></a>
-
-
     </div>
     <div id="issues">
         <a href="/issues" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-task-100.png') }}"><span class="d-flex">View Issues</span></a>
