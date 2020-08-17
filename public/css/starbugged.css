@@ -102,7 +102,6 @@ html, body {
  #projects {
     margin-left: 200px;
     margin-top: 100px;
-    background-color: green;
     height: 300px;
     width: 300px;
     color: white;
@@ -116,7 +115,6 @@ html, body {
 #issues {
     margin-left: 100px;
     margin-top: 100px;
-    background-color: blue;
     height: 300px;
     width: 300px;
     color: white;
@@ -130,7 +128,6 @@ html, body {
 #priority {
     margin-left: 200px;
     margin-top: 100px;
-    background-color: red;
     height: 300px;
     width: 300px;
     color: white;
@@ -144,7 +141,6 @@ html, body {
 #status {
     margin-left: 100px;
     margin-top: 100px;
-    background-color: yellow;
     height: 300px;
     width: 300px;
     color: white;

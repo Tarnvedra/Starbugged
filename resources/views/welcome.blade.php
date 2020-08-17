@@ -32,6 +32,7 @@
             <div>
 
                 <h1 class="text-center">  Starbugged </h1>
+                <p>Please note: This application is a work in progress but it is being worked upon daily with regular pushes to Github.</p>
                 <p>For Demo user please login as, <b><i>User: </i>test@test.com <i>Password: </i>1234567890</b></p>
                 <div class="d-flex">
                 <img src="{{ asset('images/bug1.png') }}" width="500" height="400" alt="image unavailable">

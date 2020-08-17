@@ -4,26 +4,26 @@
 @section('content')
 
 @include('include/sidebar')
-<h2 class="text-center pt-2">Dashboard</h2>
+<h2 class="text-center pt-4"><i>Dashboard</i></h2>
 <div class="row">
     <div id="projects">
-        <h2><a href="/projects">All Projects</a></h2>
-        <p class="pt-3">placeholder graphic</p>
+        <a href="/projects" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-project-100.png') }}"><span class="d-flex">View Projects</span></a>
+
+
     </div>
     <div id="issues">
-        <h2><a href="/issues">All Issues</a></h2>
-    <p class="pt-3">placeholder graphic</p>
+        <a href="/issues" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-task-100.png') }}"><span class="d-flex">View Issues</span></a>
     </div>
 </div>
 <div class="row">
     <div id="priority">
-        <h2><a href="/priority">Issues by Priority</a></h2>
-        <p class="pt-3">placeholder graphic</p>
+        <a href="/priority" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-brochure-100.png') }}"><span class="d-flex">Issues by Priority</span></a>
 
     </div>
     <div id="status">
-        <h2><a href="/status">Issues by Status</a></h2>
-         <p class="pt-3">placeholder graphic</p>
+        <a href="/status" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-task-planning-100.png') }}"><span class="d-flex">Issues by Status</span></a>
+
     </div>
 </div>
+<a href="https://icons8.com/icon/D47p6uA2kE9C/project">all icons by Icons8 @ icons8.com</a>
 @endsection
