@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'AccountsController@dashboard');
 // projects
 Route::get('/projects', 'ProjectsController@index');
+
 Route::get('/project/create' , 'ProjectsController@create');
 Route::get('/project/{id}' , 'ProjectsController@show');
 Route::post('/project','ProjectsController@store');
@@ -29,6 +30,7 @@ Route::patch('/project/{id}' ,'ProjectsController@update');
 Route::get('/issues', 'IssuesController@index');
 Route::get('/priority' , 'IssuesController@priority');
 Route::get('/status' , 'IssuesController@status');
+Route::get('/tickets/{id}' , 'IssuesController@issues');
 Route::get('/issue/create/{project_id}', 'IssuesController@create');
 Route::get('/issue/{id}' , 'IssuesController@show');
 Route::post('/issue/{project_id}','IssuesController@store');

@@ -17,6 +17,7 @@
             @endif
             @if ($user->useraccountlevel >= 20)
             <th>Create Issues</th>
+            <th>Project Issues</th>
             @endif
         <tr>
 @foreach($projects as $project)
@@ -33,6 +34,10 @@
              <td>
                   <a href="/issue/create/{{  $project->id }}" class="btn btn-primary">  {{ __('Create Issue') }}</a>
             </td>
+            <td>
+                <a href="/tickets/{{  $project->id  }}" class="btn btn-danger">  {{ __('View Issues') }}</a>
+          </td>
+
             @endif
         </tr>
 

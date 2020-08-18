@@ -43,6 +43,14 @@ class IssuesController extends Controller
         $issues = Issue::where('status', '=','issue created')->orderBy('created_at','asc')->paginate(9);
         return view('issues/status')->with('issues' ,$issues)->with('user',$user);
     }
+
+    public function issues($id)
+    {
+        $user = auth()->user();
+        $project = Project::find($id);
+        $issues = Issue::where('project_id','=', $id)->orderBy('created_at','asc')->paginate(9);
+        return view('issues/project')->with('project' , $project)->with('issues' , $issues)->with('user' , $user);
+    }
     /**
      * Show the form for creating a new resource.
      *
