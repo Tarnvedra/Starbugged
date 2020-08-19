@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/priorities' , 'PrioritiesController@get');
+Route::get('priorities' , 'PrioritiesController@index'); //get all issues
+Route::get('priorities/{id}' , 'PrioritiesController@show'); //get one issue

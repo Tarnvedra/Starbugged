@@ -1854,9 +1854,72 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log('Priority mounted.');
+  },
+  data: function data() {
+    return {
+      issues: [],
+      issue: {
+        id: '',
+        project_id: '',
+        os: '',
+        risk: '',
+        issue: '',
+        description: '',
+        assignment: '',
+        status: '',
+        created_at: '',
+        updated_at: ''
+      },
+      pagination: {}
+    };
+  },
+  created: function created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function fetchData() {
+      var _this = this;
+
+      fetch('api/priorities').then(function (result) {
+        return result.json().then(function (result) {
+          _this.issues = result.data;
+        });
+      });
+    }
   }
 });
 
@@ -1887,7 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log('Status Component mounted.');
   }
 });
 
@@ -37199,18 +37262,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c(
+      "table",
+      { staticClass: "table table-bordered table-striped pt-1" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.issues, function(issue) {
+          return _c("tr", { key: issue.id }, [
+            _c("td", [_vm._v(_vm._s(issue.id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.project_id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.os))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.risk))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.issue))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.description))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.assignment))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.status))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.created_at))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.updated_at))])
+          ])
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row d-flex pt-3" }, [
+    return _c("tr", [
+      _c("td", [_vm._v("Issue ID")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Project ID")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("OS")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Risk")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Issue")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Description")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Assignment")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Created")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Last Updated")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row d-flex pt-3 pb-2" }, [
       _c("div", { staticClass: "col-sm-2" }, [
         _c(
           "button",
-          { staticClass: "btn btn-info", attrs: { type: "submit" } },
+          { staticClass: "btn btn-success", attrs: { type: "submit" } },
           [_vm._v("Low Risk")]
         )
       ]),
@@ -37218,7 +37342,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-sm-2" }, [
         _c(
           "button",
-          { staticClass: "btn btn-success", attrs: { type: "submit" } },
+          { staticClass: "btn btn-info", attrs: { type: "submit" } },
           [_vm._v("Medium Risk")]
         )
       ]),

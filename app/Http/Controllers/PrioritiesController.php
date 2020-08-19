@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Project;
+//use App\User;
+//use App\Project;
 use App\Issue;
+use App\Http\Requests;
+use App\Http\Resources\Issue as IssueResource;
 use Illuminate\Http\Request;
 
 class PrioritiesController extends Controller
@@ -14,17 +16,12 @@ class PrioritiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
 
-    public function get(Request $request){
+    public function index(Request $request){
 
-        $issues = Issue::where('risk', '=','High')->orderBy('id','asc')->get();
-        //$issuesJSON = json($issues);
-        //dd($issuesJSON);
-        return response()->json($issues);
+        $issues = Issue::paginate(10);
+        return IssueResource::collection($issues);
+        //return response()->json($issues);
     }
     /**
      * Show the form for creating a new resource.
@@ -55,7 +52,9 @@ class PrioritiesController extends Controller
      */
     public function show($id)
     {
-        //
+    $issue = Issue::find($id);
+    return new IssueResource($issue);
+
     }
 
     /**
