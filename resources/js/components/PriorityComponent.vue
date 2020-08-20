@@ -1,5 +1,13 @@
 <template>
 <div>
+    <nav class="pt-2">
+    <ul class="pagination">
+     <li v-bind:class="[{disabled: !pagination.previous_page_url}]" class="page-item"><a class="btn btn-success" href="#" @click="fetchData(pagination.previous_page_url)">Previous</a></li>
+      <li class="page-item diabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page}} of {{ pagination.last_page}}</a></li>
+       <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="btn btn-info" href="#" @click="fetchData(pagination.next_page_url)">Next</a></li>
+
+    </ul>
+    </nav>
     <table class="table table-bordered table-striped pt-1">
         <tr>
             <td>Issue ID</td>
@@ -75,13 +83,25 @@
         },
 
         methods: {
-            fetchData() {
-                fetch('api/priorities')
-                .then(result => result.json()
-                .then(result => {
-                    this.issues = result.data;
-                }))
+                    fetchData(page_url) {
+                    let vm = this;
+                    page_url = page_url || 'api/priorities';
+                    fetch(page_url).then(result => result.json())
+                    .then(result => {
+                                     this.issues = result.data;
+                                     vm.makePagination(result.meta, result.links);
+                                    })
+                .catch(error => console.log(error));
+            },
+        makePagination(meta , links) {
+            let pagination = {
+                current_page: meta.current_page,
+                last_page: meta.last_page,
+                next_page_url: links.next,
+                previous_page_url: links.prev
             }
+            this.pagination = pagination;
         }
+    }
     }
 </script>

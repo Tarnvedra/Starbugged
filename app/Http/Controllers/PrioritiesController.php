@@ -28,6 +28,14 @@ class PrioritiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getHighPriority(Request $request){
+
+        $issues = Issue::where('risk','=', 'high')->orderBy('created_at','asc')->paginate(10);
+        return IssueResource::collection($issues);
+
+    }
+
     public function create()
     {
         //

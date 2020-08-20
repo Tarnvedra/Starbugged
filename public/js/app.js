@@ -1885,6 +1885,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Priority mounted.');
@@ -1911,14 +1919,28 @@ __webpack_require__.r(__webpack_exports__);
     this.fetchData();
   },
   methods: {
-    fetchData: function fetchData() {
+    fetchData: function fetchData(page_url) {
       var _this = this;
 
-      fetch('api/priorities').then(function (result) {
-        return result.json().then(function (result) {
-          _this.issues = result.data;
-        });
+      var vm = this;
+      page_url = page_url || 'api/priorities';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
       });
+    },
+    makePagination: function makePagination(meta, links) {
+      var pagination = {
+        current_page: meta.current_page,
+        last_page: meta.last_page,
+        next_page_url: links.next,
+        previous_page_url: links.prev
+      };
+      this.pagination = pagination;
     }
   }
 });
@@ -37263,6 +37285,71 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("nav", { staticClass: "pt-2" }, [
+      _c("ul", { staticClass: "pagination" }, [
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: [{ disabled: !_vm.pagination.previous_page_url }]
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-success",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.fetchData(_vm.pagination.previous_page_url)
+                  }
+                }
+              },
+              [_vm._v("Previous")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "page-item diabled" }, [
+          _c(
+            "a",
+            { staticClass: "page-link text-dark", attrs: { href: "#" } },
+            [
+              _vm._v(
+                "Page " +
+                  _vm._s(_vm.pagination.current_page) +
+                  " of " +
+                  _vm._s(_vm.pagination.last_page)
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: [{ disabled: !_vm.pagination.next_page_url }]
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-info",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.fetchData(_vm.pagination.next_page_url)
+                  }
+                }
+              },
+              [_vm._v("Next")]
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
     _c(
       "table",
       { staticClass: "table table-bordered table-striped pt-1" },
