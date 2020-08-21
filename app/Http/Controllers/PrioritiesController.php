@@ -29,9 +29,23 @@ class PrioritiesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function getLowPriority(Request $request){
+
+        $issues = Issue::where('risk','=', 'Low')->orderBy('created_at','asc')->paginate(10);
+        return IssueResource::collection($issues);
+
+    }
+
+    public function getMedPriority(Request $request){
+
+        $issues = Issue::where('risk','=', 'Medium')->orderBy('created_at','asc')->paginate(10);
+        return IssueResource::collection($issues);
+
+    }
+
     public function getHighPriority(Request $request){
 
-        $issues = Issue::where('risk','=', 'high')->orderBy('created_at','asc')->paginate(10);
+        $issues = Issue::where('risk','=', 'High')->orderBy('created_at','asc')->paginate(10);
         return IssueResource::collection($issues);
 
     }

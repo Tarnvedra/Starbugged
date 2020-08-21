@@ -1,13 +1,18 @@
 <template>
 <div>
-    <nav class="pt-2">
+    <nav class="pt-2 pb-2">
     <ul class="pagination">
      <li v-bind:class="[{disabled: !pagination.previous_page_url}]" class="page-item"><a class="btn btn-success" href="#" @click="fetchData(pagination.previous_page_url)">Previous</a></li>
       <li class="page-item diabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page}} of {{ pagination.last_page}}</a></li>
        <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="btn btn-info" href="#" @click="fetchData(pagination.next_page_url)">Next</a></li>
 
     </ul>
+     <button @click="getLow()" class="btn btn-success">Low Risk</button>
+     <button @click="getMed()" class="btn btn-info">Medium Risk</button>
+     <button @click="getHigh()" class="btn btn-danger">High Risk</button>
+      <a href="/home" class="btn btn-info">Back</a>
     </nav>
+
     <table class="table table-bordered table-striped pt-1">
         <tr>
             <td>Issue ID</td>
@@ -23,7 +28,7 @@
         </tr>
 
         <tr v-for="issue in issues" v-bind:key="issue.id">
-            <td>{{ issue.id }}</td>
+            <td><a :href="'/issue/' + issue.id">{{ issue.id}}</a></td>
             <td>{{ issue.project_id }}</td>
             <td>{{ issue.os  }}</td>
             <td>{{ issue.risk }}</td>
@@ -37,19 +42,7 @@
 
 
 </table>
-<div class="form-group row d-flex pt-3 pb-2">
-    <div class="col-sm-2">
-        <button type="submit" class="btn btn-success">Low Risk</button>
-    </div>
 
-    <div class="col-sm-2">
-        <button type="submit" class="btn btn-info">Medium Risk</button>
-    </div>
-
-    <div class="col-sm-2">
-        <button type="submit" class="btn btn-danger">High Risk</button>
-    </div>
-</div>
 </div>
 </template>
 
@@ -101,7 +94,40 @@
                 previous_page_url: links.prev
             }
             this.pagination = pagination;
-        }
+        },
+        getLow(page_url)
+        {
+                    let vm = this;
+                    page_url = 'api/priorities/low';
+                    fetch(page_url).then(result => result.json())
+                    .then(result => {
+                                     this.issues = result.data;
+                                     vm.makePagination(result.meta, result.links);
+                                    })
+                .catch(error => console.log(error));
+                     },
+         getMed(page_url)
+        {
+                    let vm = this;
+                    page_url = 'api/priorities/medium';
+                    fetch(page_url).then(result => result.json())
+                    .then(result => {
+                                     this.issues = result.data;
+                                     vm.makePagination(result.meta, result.links);
+                                    })
+                .catch(error => console.log(error));
+                     },
+         getHigh(page_url)
+        {
+                    let vm = this;
+                    page_url = 'api/priorities/high';
+                    fetch(page_url).then(result => result.json())
+                    .then(result => {
+                                     this.issues = result.data;
+                                     vm.makePagination(result.meta, result.links);
+                                    })
+                .catch(error => console.log(error));
+                     }
     }
     }
 </script>

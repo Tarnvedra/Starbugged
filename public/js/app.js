@@ -1886,13 +1886,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log('Priority mounted.');
@@ -1941,6 +1934,48 @@ __webpack_require__.r(__webpack_exports__);
         previous_page_url: links.prev
       };
       this.pagination = pagination;
+    },
+    getLow: function getLow(page_url) {
+      var _this2 = this;
+
+      var vm = this;
+      page_url = 'api/priorities/low';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this2.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getMed: function getMed(page_url) {
+      var _this3 = this;
+
+      var vm = this;
+      page_url = 'api/priorities/medium';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this3.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getHigh: function getHigh(page_url) {
+      var _this4 = this;
+
+      var vm = this;
+      page_url = 'api/priorities/high';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this4.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   }
 });
@@ -37285,7 +37320,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("nav", { staticClass: "pt-2" }, [
+    _c("nav", { staticClass: "pt-2 pb-2" }, [
       _c("ul", { staticClass: "pagination" }, [
         _c(
           "li",
@@ -37347,6 +37382,49 @@ var render = function() {
             )
           ]
         )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success",
+          on: {
+            click: function($event) {
+              return _vm.getLow()
+            }
+          }
+        },
+        [_vm._v("Low Risk")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info",
+          on: {
+            click: function($event) {
+              return _vm.getMed()
+            }
+          }
+        },
+        [_vm._v("Medium Risk")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          on: {
+            click: function($event) {
+              return _vm.getHigh()
+            }
+          }
+        },
+        [_vm._v("High Risk")]
+      ),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-info", attrs: { href: "/home" } }, [
+        _vm._v("Back")
       ])
     ]),
     _vm._v(" "),
@@ -37358,7 +37436,11 @@ var render = function() {
         _vm._v(" "),
         _vm._l(_vm.issues, function(issue) {
           return _c("tr", { key: issue.id }, [
-            _c("td", [_vm._v(_vm._s(issue.id))]),
+            _c("td", [
+              _c("a", { attrs: { href: "/issue/" + issue.id } }, [
+                _vm._v(_vm._s(issue.id))
+              ])
+            ]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(issue.project_id))]),
             _vm._v(" "),
@@ -37381,9 +37463,7 @@ var render = function() {
         })
       ],
       2
-    ),
-    _vm._v(" "),
-    _vm._m(1)
+    )
   ])
 }
 var staticRenderFns = [
@@ -37411,36 +37491,6 @@ var staticRenderFns = [
       _c("td", [_vm._v("Created")]),
       _vm._v(" "),
       _c("td", [_vm._v("Last Updated")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row d-flex pt-3 pb-2" }, [
-      _c("div", { staticClass: "col-sm-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-success", attrs: { type: "submit" } },
-          [_vm._v("Low Risk")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-info", attrs: { type: "submit" } },
-          [_vm._v("Medium Risk")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-danger", attrs: { type: "submit" } },
-          [_vm._v("High Risk")]
-        )
-      ])
     ])
   }
 ]
@@ -49729,14 +49779,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!*******************************************************!*\
   !*** ./resources/js/components/PriorityComponent.vue ***!
   \*******************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PriorityComponent_vue_vue_type_template_id_bc98b744___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PriorityComponent.vue?vue&type=template&id=bc98b744& */ "./resources/js/components/PriorityComponent.vue?vue&type=template&id=bc98b744&");
 /* harmony import */ var _PriorityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PriorityComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PriorityComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _PriorityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _PriorityComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -49766,7 +49817,7 @@ component.options.__file = "resources/js/components/PriorityComponent.vue"
 /*!********************************************************************************!*\
   !*** ./resources/js/components/PriorityComponent.vue?vue&type=script&lang=js& ***!
   \********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

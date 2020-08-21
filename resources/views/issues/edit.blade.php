@@ -127,7 +127,9 @@
         <button type="submit" class="btn btn-primary">
             {{ __('Update Issue') }}
         </button>
+        <a href="/issues" class="btn btn-info">  {{ __('Back') }}</a>
     </div>
+
 </div>
 </form>
 </div>
