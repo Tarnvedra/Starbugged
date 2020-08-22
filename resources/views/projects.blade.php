@@ -13,10 +13,10 @@
             <th>Project</th>
             <th>Description</th>
             @if ($user->useraccountlevel >= 60)
-            <th>Edit Projects</th>
+            <th>Edit Project</th>
             @endif
             @if ($user->useraccountlevel >= 20)
-            <th>Create Issues</th>
+            <th>Create Issue</th>
             <th>Project Issues</th>
             @endif
         <tr>

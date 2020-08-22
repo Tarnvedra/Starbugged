@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(Issue::class);
     }
 
+    public function watching() {
+
+        return $this->belongsToMany(Issue::class);
+    }
+
 
     public function profile() {
 

@@ -16,7 +16,7 @@
             <th>Status</th>
             <th>Issue Created</th>
             <th>Last Updated</th>
-            <th>Follow Issues</th>
+
         </tr>
         @foreach($issues as $issue)
         <tr>
@@ -29,9 +29,7 @@
             <td> {{ $issue->status }}</td>
             <td> {{ $issue->created_at}}</td>
             <td> {{ $issue->updated_at }}</td>
-            <td>
-                <a href="#" class="btn btn-primary">  {{ __('Watch') }}</a>
-          </td>
+
 
         </tr>
         @endforeach

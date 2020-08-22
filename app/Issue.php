@@ -10,4 +10,9 @@ class Issue extends Model
 
         return $this->hasMany(Issue::class);
      }
+
+     public function watchers() {
+
+        return $this->belongsToMany(User::class);
+     }
 }

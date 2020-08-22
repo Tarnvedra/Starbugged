@@ -36,6 +36,8 @@ Route::get('/issue/{id}' , 'IssuesController@show');
 Route::post('/issue/{project_id}','IssuesController@store');
 Route::get('/issue/{id}/edit' ,'IssuesController@edit');
 Route::patch('/issue/{id}' , 'IssuesController@update');
+// Watch issues
+//Route::post('follow/{id}' , 'WatchingController@store');
 // administration
 Route::get('/admin', 'AccountsController@index');
 Route::get('/admin/users', 'AccountsController@admin');

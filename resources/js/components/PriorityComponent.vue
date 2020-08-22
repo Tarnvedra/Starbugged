@@ -25,6 +25,7 @@
             <td>Status</td>
             <td>Created</td>
             <td>Last Updated</td>
+            <td>Watch Issue</td>
         </tr>
 
         <tr v-for="issue in issues" v-bind:key="issue.id">
@@ -38,6 +39,9 @@
             <td>{{ issue.status }}</td>
             <td>{{ issue.created_at}}</td>
             <td>{{ issue.updated_at }}</td>
+            <td>
+                  <button class="btn btn-primary" @click="watchIssue(issue.id)">Watch</button>
+                    </td>
         </tr>
 
 
@@ -127,7 +131,15 @@
                                      vm.makePagination(result.meta, result.links);
                                     })
                 .catch(error => console.log(error));
-                     }
+                     },
+
+       watchIssue(id) {
+
+            axios.post('api/watch/' + id).then(response => {
+                console.log(response.data);
+            })
+
+        }
     }
     }
 </script>
