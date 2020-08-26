@@ -18,15 +18,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'AccountsController@dashboard');
-// projects
-Route::get('/projects', 'ProjectsController@index');
 
+// Projects routs
+Route::get('/projects', 'ProjectsController@index');
 Route::get('/project/create' , 'ProjectsController@create');
 Route::get('/project/{id}' , 'ProjectsController@show');
 Route::post('/project','ProjectsController@store');
 Route::get('/project/{id}/edit' ,'ProjectsController@edit');
 Route::patch('/project/{id}' ,'ProjectsController@update');
-// Issues
+
+// Issues routes
 Route::get('/issues', 'IssuesController@index');
 Route::get('/priority' , 'IssuesController@priority');
 Route::get('/status' , 'IssuesController@status');
@@ -36,9 +37,12 @@ Route::get('/issue/{id}' , 'IssuesController@show');
 Route::post('/issue/{project_id}','IssuesController@store');
 Route::get('/issue/{id}/edit' ,'IssuesController@edit');
 Route::patch('/issue/{id}' , 'IssuesController@update');
-// Watch issues
+
+// Watch issues routes
+Route::get('/watching' , 'WatchingController@index');
 //Route::post('follow/{id}' , 'WatchingController@store');
-// administration
+
+// administration routes
 Route::get('/admin', 'AccountsController@index');
 Route::get('/admin/users', 'AccountsController@admin');
 //Route::post('/admin/users/{id}','AccountsController@store');

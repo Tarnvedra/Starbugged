@@ -8,6 +8,7 @@ use App\Role;
 
 class AccountsController extends Controller
 {
+
     public function __construct() {
 
         $this->middleware('auth');
@@ -21,7 +22,7 @@ class AccountsController extends Controller
     {
            // $user = Auth::findOrFail(user());
            $user = auth()->user();
-            return view('admin/account')->with('user' , $user);
+           return view('admin/account')->with('user' , $user);
     }
 
     public function admin()
@@ -125,4 +126,6 @@ class AccountsController extends Controller
         $user = auth()->user();
         return view('home')->with('user' , $user);
     }
+
+
 }

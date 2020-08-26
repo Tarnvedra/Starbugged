@@ -14,12 +14,11 @@ class WatchingController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-
     public function index()
     {
-        //
+    $user = auth()->user();
+    $issues = Issue::where('risk','=', 'Low')->orderBy('created_at','asc')->paginate(10);
+    return view('issues/watching')->with('user' , $user)->with('issues', $issues);
     }
 
     /**
@@ -42,8 +41,6 @@ class WatchingController extends Controller
     {
     $user = auth()->user();
     $id = Issue::find($issue);
-    //
-    $issue->id->attach($user->id)->save();
     }
 
     /**

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Issue;
+use App\Http\Requests;
+use App\Http\Resources\Issue as IssueResource;
+
 use Illuminate\Http\Request;
 
 class StatusController extends Controller
@@ -11,9 +15,10 @@ class StatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $issues = Issue::paginate(10);
+        return IssueResource::collection($issues);
     }
 
     /**
@@ -21,6 +26,27 @@ class StatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function created(Request $request){
+
+        $issues = Issue::where('status','=', 'issue created')->orderBy('created_at','asc')->paginate(10);
+        return IssueResource::collection($issues);
+
+    }
+
+    public function progress(Request $request){
+
+        $issues = Issue::where('status','=', 'in progress')->orderBy('created_at','asc')->paginate(10);
+        return IssueResource::collection($issues);
+
+    }
+
+    public function resolved(Request $request){
+
+        $issues = Issue::where('status','=', 'resolved')->orderBy('created_at','asc')->paginate(10);
+        return IssueResource::collection($issues);
+
+    }
+
     public function create()
     {
         //
@@ -45,7 +71,8 @@ class StatusController extends Controller
      */
     public function show($id)
     {
-        //
+    $issue = Issue::find($id);
+    return new IssueResource($issue);
     }
 
     /**

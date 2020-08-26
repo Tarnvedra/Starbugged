@@ -16,11 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('priorities' , 'PrioritiesController@index'); //get all issues
-Route::get('priorities/low' , 'PrioritiesController@getLowPriority'); //get all issues with low priority status
-Route::get('priorities/medium' , 'PrioritiesController@getMedPriority'); //get all issues with medium priority status
-Route::get('priorities/high' , 'PrioritiesController@getHighPriority'); //get all issues with high priority status
-Route::get('priorities/{id}' , 'PrioritiesController@show'); //get one issue
-
-Route::post('watch/{id}' , 'WatchingController@store');
+// prirorties api
+Route::get('/priorities' , 'PrioritiesController@index'); //get all issues by priority
+Route::get('/priorities/low' , 'PrioritiesController@getLowPriority'); //get all issues with low priority status
+Route::get('/priorities/medium' , 'PrioritiesController@getMedPriority'); //get all issues with medium priority status
+Route::get('/priorities/high' , 'PrioritiesController@getHighPriority'); //get all issues with high priority status
+Route::get('/priorities/{id}' , 'PrioritiesController@show'); //get one issue
+// status api
+Route::get('/status' , 'StatusController@index'); //get all issues by status
+Route::get('/status/created' , 'StatusController@created'); // get all issues by issue created status
+Route::get('/status/progress' , 'StatusController@progress'); // get all issues by in progress status
+Route::get('/status/resolved' , 'StatusController@resolved'); // get all issues by in resolved status
+Route::get('/status/{id}' , 'StatusController@show'); //get one issue
+// watch api
+Route::post('/watch/{id}' , 'WatchingController@store');

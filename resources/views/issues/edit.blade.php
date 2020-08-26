@@ -74,10 +74,10 @@
 
         <div class="col-md-6">
             <select id="issuestatus" name="status" class="form-control @error('status') is-invalid @enderror" required autocomplete="" autofocus >
-                <option value="In progress">In progress</option>
-                <option value="Issue updated">Issue updated</option>
-                <option value="Resolved">Resolved</option>
-                <option value="Other">Other</option>
+                <option value="in progress">in progress</option>
+                <option value="issue updated">issue updated</option>
+                <option value="resolved">resolved</option>
+                <option value="other">other</option>
               </select>
 
         @error('status')
