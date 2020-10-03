@@ -2014,9 +2014,141 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Status Component mounted.');
+    console.log('Status mounted.');
+  },
+  data: function data() {
+    return {
+      issues: [],
+      issue: {
+        id: '',
+        project_id: '',
+        os: '',
+        risk: '',
+        issue: '',
+        description: '',
+        assignment: '',
+        status: '',
+        created_at: '',
+        updated_at: ''
+      },
+      pagination: {}
+    };
+  },
+  created: function created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData: function fetchData(page_url) {
+      var _this = this;
+
+      var vm = this;
+      page_url = page_url || 'api/status';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    makePagination: function makePagination(meta, links) {
+      var pagination = {
+        current_page: meta.current_page,
+        last_page: meta.last_page,
+        next_page_url: links.next,
+        previous_page_url: links.prev
+      };
+      this.pagination = pagination;
+    },
+    getCreated: function getCreated(page_url) {
+      var _this2 = this;
+
+      var vm = this;
+      page_url = 'api/status/created';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this2.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getProgress: function getProgress(page_url) {
+      var _this3 = this;
+
+      var vm = this;
+      page_url = 'api/status/progress';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this3.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getResolved: function getResolved(page_url) {
+      var _this4 = this;
+
+      var vm = this;
+      page_url = 'api/status/resolved';
+      fetch(page_url).then(function (result) {
+        return result.json();
+      }).then(function (result) {
+        _this4.issues = result.data;
+        vm.makePagination(result.meta, result.links);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    watchIssue: function watchIssue(id) {
+      axios.post('api/watch/' + id).then(function (response) {
+        console.log(response.data);
+      });
+    }
   }
 });
 
@@ -37541,37 +37673,195 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("nav", { staticClass: "pt-2 pb-2" }, [
+      _c("ul", { staticClass: "pagination" }, [
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: [{ disabled: !_vm.pagination.previous_page_url }]
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-success",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.fetchData(_vm.pagination.previous_page_url)
+                  }
+                }
+              },
+              [_vm._v("Previous")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c("li", { staticClass: "page-item diabled" }, [
+          _c(
+            "a",
+            { staticClass: "page-link text-dark", attrs: { href: "#" } },
+            [
+              _vm._v(
+                "Page " +
+                  _vm._s(_vm.pagination.current_page) +
+                  " of " +
+                  _vm._s(_vm.pagination.last_page)
+              )
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "page-item",
+            class: [{ disabled: !_vm.pagination.next_page_url }]
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-info",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.fetchData(_vm.pagination.next_page_url)
+                  }
+                }
+              },
+              [_vm._v("Next")]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success",
+          on: {
+            click: function($event) {
+              return _vm.getCreated()
+            }
+          }
+        },
+        [_vm._v("Issues Created")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info",
+          on: {
+            click: function($event) {
+              return _vm.getProgress()
+            }
+          }
+        },
+        [_vm._v("In Progress")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger",
+          on: {
+            click: function($event) {
+              return _vm.getResolved()
+            }
+          }
+        },
+        [_vm._v("Resolved")]
+      ),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-info", attrs: { href: "/home" } }, [
+        _vm._v("Back")
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "table table-bordered table-striped pt-1" },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.issues, function(issue) {
+          return _c("tr", { key: issue.id }, [
+            _c("td", [
+              _c("a", { attrs: { href: "/issue/" + issue.id } }, [
+                _vm._v(_vm._s(issue.id))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.project_id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.os))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.risk))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.issue))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.description))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.assignment))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.status))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.created_at))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(issue.updated_at))]),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.watchIssue(issue.id)
+                    }
+                  }
+                },
+                [_vm._v("Watch")]
+              )
+            ])
+          ])
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row d-flex pt-3" }, [
-      _c("div", { staticClass: "col-sm-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-danger", attrs: { type: "submit" } },
-          [_vm._v("Issues Created")]
-        )
-      ]),
+    return _c("tr", [
+      _c("td", [_vm._v("Issue ID")]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-info", attrs: { type: "submit" } },
-          [_vm._v("In Progress")]
-        )
-      ]),
+      _c("td", [_vm._v("Project ID")]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-sm-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-success", attrs: { type: "submit" } },
-          [_vm._v("Resolved")]
-        )
-      ])
+      _c("td", [_vm._v("OS")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Risk")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Issue")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Description")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Assignment")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Status")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Created")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Last Updated")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("Watch Issue")])
     ])
   }
 ]
