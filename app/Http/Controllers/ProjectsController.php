@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Project;
+use App\Issue;
 
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class ProjectsController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $projects = Project::orderBy('id','asc')->paginate(6);
+        $projects = Project::orderBy('id','asc')->paginate(10);
         return view('projects')->with('projects' , $projects)->with('user' , $user);
 
     }
@@ -36,7 +37,13 @@ class ProjectsController extends Controller
     public function create()
     {
         $user = auth()->user();
-        return view('projects/create')->with('user' , $user);
+        $projects = Project::orderBy('id','asc')->paginate(2);
+        $issues = Issue::count();
+        $projs = Project::count();
+        $status = Issue::where('status', '!=', 'resolved')->count();
+        $amount = $issues - $status /100;
+        return view('projects/create')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
+            'projs' ,$projs)->with('status', $status)->with('amount' , $amount);
     }
 
     /**

@@ -1,8 +1,8 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
 @section('content')
 
-@include('include/sidebar')
 <h2 class="p-3 text-center">Issues for:<b><i> {{ $project->project }}</i></b> project</h2>
 <div class="row pl-3 pt-3">
     @if(count($issues) > 0 )

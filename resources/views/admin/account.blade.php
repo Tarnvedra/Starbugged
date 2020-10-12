@@ -1,8 +1,7 @@
 @extends('layouts/app')
-@include('include/topnav')
-@section('content')
-
+@include('include/topbar')
 @include('include/sidebar')
+@section('content')
 
 <h2 class="text-center pt-4"><i>Administration</i></h2>
 

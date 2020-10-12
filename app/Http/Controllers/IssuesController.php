@@ -23,7 +23,7 @@ class IssuesController extends Controller
     {
 
         $user = auth()->user();
-        $issues = Issue::orderBy('id','asc')->paginate(9);
+        $issues = Issue::orderBy('id','asc')->paginate(10);
         return view('issues')->with('issues' , $issues)->with('user', $user);
     }
 

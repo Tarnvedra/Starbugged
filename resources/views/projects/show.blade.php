@@ -1,9 +1,9 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
 @section('content')
 
-@include('include/sidebar')
-<div class="container">
+
     <div class="row pt-5">
 
         <div class="row pl-3">
@@ -29,5 +29,5 @@
             <a href="/projects" class="btn btn-info">  {{ __('All Projects') }}</a>
             <a href="/issues" class="btn btn-danger">  {{ __('All Issues') }}</a>
         </div>
-</div>
+
 @endsection

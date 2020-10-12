@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Project;
+use App\Issue;
 
 class AccountsController extends Controller
 {
@@ -124,7 +126,13 @@ class AccountsController extends Controller
     public function dashboard()
     {
         $user = auth()->user();
-        return view('home')->with('user' , $user);
+        $projects = Project::orderBy('id','asc')->paginate(10);
+        $issues = Issue::count();
+        $projs = Project::count();
+        $status = Issue::where('status', '!=', 'resolved')->count();
+        $amount = $issues - $status /100;
+        return view('home')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
+            'projs' ,$projs)->with('status', $status)->with('amount' , $amount);
     }
 
 

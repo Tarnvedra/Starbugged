@@ -1,9 +1,8 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
 @section('content')
 
-
-@include('include/sidebar')
 
 <priority-component></priority-component>
 

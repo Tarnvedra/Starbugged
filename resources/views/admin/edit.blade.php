@@ -1,9 +1,9 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
 @section('content')
 
 
-@include('include/sidebar')
 <div class="container">
 <h2 class="text-center pb-3">Edit User : {{ $user->username }}</h2>
 <form action="/admin/users/{{$user->id}}" method="post">

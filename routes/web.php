@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'AccountsController@dashboard');
 
-// Projects routs
+// Projects routes
 Route::get('/projects', 'ProjectsController@index');
 Route::get('/project/create' , 'ProjectsController@create');
 Route::get('/project/{id}' , 'ProjectsController@show');

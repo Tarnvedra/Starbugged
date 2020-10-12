@@ -1,9 +1,8 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
 @section('content')
 
-
-@include('include/sidebar')
 
 <div class="row pl-3 pt-3">
     <table class="table table-bordered table-striped">

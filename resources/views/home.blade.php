@@ -1,27 +1,189 @@
 @extends('layouts/app')
-@include('include/topnav')
-
 @section('content')
+  <!-- Page Wrapper -->
+  <div id="wrapper">
 
-@include('include/sidebar')
-<h2 class="text-center pt-4"><i>Dashboard</i></h2>
-<div class="row">
-    <div id="projects">
-        <a href="/projects" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-project-100.png') }}"><span class="d-flex">View Projects</span></a>
-    </div>
-    <div id="issues">
-        <a href="/issues" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-task-100.png') }}"><span class="d-flex">View Issues</span></a>
-    </div>
-</div>
-<div class="row">
-    <div id="priority">
-        <a href="/priority" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-brochure-100.png') }}"><span class="d-flex">Issues by Priority</span></a>
+   @include('include/sidebar')
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+
+        @include('include/topbar')
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Projects-->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Projects</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $projs }}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-project-diagram fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Issues</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $issues }}</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-bug fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">By Status</div>
+                      <div class="row no-gutters align-items-center">
+                        <div class="col-auto">
+                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $status }}</div>
+                        </div>
+                        <div class="col">
+                          <div class="progress progress-sm mr-2">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ $amount }}%" aria-valuenow="{{ $amount }}" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">By Priority</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Row -->
+ <piechart-component></piechart-component>
+          <div class="row">
+
+            <!-- Area Chart -->
+            <div class="col-xl-12 col-lg-9">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Projects Overview</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="row pl-3">
+                        <table class="table table-bordered table-hover">
+                            <tr style="background-color: whitesmoke;">
+                                <th>#</th>
+                                <th>Project</th>
+                                <th>Description</th>
+                                <th>Staff Assigned</th>
+                                <th>Project Start</th>
+                                <th>Last Updated</th>
+
+                            <tr>
+                    @foreach($projects as $project)
+                            <tr>
+                                <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
+                                <td>{{ $project->project }}</td>
+                                <td>{{ $project->description }}</td>
+                                <td>{{ $project->users_assigned}}</td>
+                                <td>{{ $project->created_at }}</td>
+                                <td>{{ $project->updated_at }}</td>
+                            </tr>
+
+                    @endforeach
+                        </table>
+                        {{ $projects->links() }}
+                    </div>
+                <!--    <canvas id="myAreaChart"></canvas>  -->
+
+                </div>
+              </div>
+            </div>
+
+
+
+          <!-- Content Row -->
+
+
+        </div>
+
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      @include('include/footer')
 
     </div>
-    <div id="status">
-        <a href="/status" class="text-decoration-none"><img src="{{ URL::asset('images/icons8-task-planning-100.png') }}"><span class="d-flex">Issues by Status</span></a>
+    <!-- End of Content Wrapper -->
 
-    </div>
-</div>
-<a href="https://icons8.com/icon/D47p6uA2kE9C/project">all icons by Icons8 @ icons8.com</a>
-@endsection
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  @include('include/logout')
+
+ @endsection

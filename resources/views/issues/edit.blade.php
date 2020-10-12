@@ -1,9 +1,10 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
 @section('content')
 
 
-@include('include/sidebar')
+
 <div class="container">
 <h2 class="text-center pb-3">Update issue #{{ $issue->id }} for : <i>{{ $project->project }}</i></h2>
 <form action="/issue/{{ $issue->id }}" enctype="multipart/form-data" method="post">

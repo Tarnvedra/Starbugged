@@ -1,8 +1,9 @@
 @extends('layouts/app')
-@include('include/topnav')
+@include('include/topbar')
+@include('include/sidebar')
+
 @section('content')
 
-@include('include/sidebar')
 <div class="container">
 <h2 class="text-center pb-3">Edit Project</h2>
 <form action="/project/{{ $project->id }}" enctype="multipart/form-data" method="post">

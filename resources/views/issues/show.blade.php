@@ -1,8 +1,7 @@
 @extends('layouts/app')
-@include('include/topnav')
-@section('content')
-
+@include('include/topbar')
 @include('include/sidebar')
+@section('content')
 
     <div class="row pt-5">
 
