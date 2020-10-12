@@ -25,7 +25,7 @@
           <!-- Content Row -->
           <div class="row">
 
-            <!-- Projects-->
+            <!-- Projects Card-->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -42,7 +42,7 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
+            <!-- Issues Card -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
@@ -59,7 +59,7 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
+            <!-- Status Card -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
@@ -85,7 +85,7 @@
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
+            <!-- Priority Card -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
@@ -107,8 +107,8 @@
  <piechart-component></piechart-component>
           <div class="row">
 
-            <!-- Area Chart -->
-            <div class="col-xl-12 col-lg-9">
+
+            <div class="col-xl-12 col-lg-9 col-md-6">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -128,7 +128,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <div class="row pl-3">
+                    <div class="row">
                         <table class="table table-bordered table-hover">
                             <tr style="background-color: whitesmoke;">
                                 <th>#</th>
@@ -153,7 +153,7 @@
                         </table>
                         {{ $projects->links() }}
                     </div>
-                <!--    <canvas id="myAreaChart"></canvas>  -->
+
 
                 </div>
               </div>
