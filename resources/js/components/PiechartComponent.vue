@@ -8,15 +8,15 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-danger">Issues by Priority</h6>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" role="button" id="prioritylink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="prioritylink">
+                      <div class="dropdown-header">Ticket Actions</div>
+                      <a class="dropdown-item" href="/issues">View All</a>
+                      <a class="dropdown-item" href="/priority">View By Priority</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="/status">View By Status</a>
                     </div>
                   </div>
                 </div>
@@ -46,15 +46,15 @@
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-info">Issues by Status</h6>
                   <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="dropdown-toggle" href="#" role="button" id="statuslink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink1">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="statuslink">
+                      <div class="dropdown-header">Ticket Actions</div>
+                      <a class="dropdown-item" href="/issues">View All</a>
+                      <a class="dropdown-item" href="/status">View By Status</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="/priority">View By Priority</a>
                     </div>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                       <i class="fas fa-circle text-warning"></i> In Progress
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Created
+                      <i class="fas fa-circle text-primary"></i> Created Unassigned
                     </span>
                   </div>
                 </div>
@@ -170,17 +170,3 @@ var priorityPieChart = new Chart(ctx, {
          }}
 
 </script>
-<style>
-.chart-pie {
-  position: relative;
-  height: 15rem;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .chart-pie {
-    height: calc(20rem - 43px) !important;
-  }
-}
-
-</style>

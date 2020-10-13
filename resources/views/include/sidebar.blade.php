@@ -115,6 +115,17 @@
     <span>Profile</span></a>
    </li>
 
+   <li class="nav-item">
+    <a class="nav-link" href="{{ route('logout') }}"
+    onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+    <i class="fas fa-fw fa-times-circle"></i>
+    <span>Logout</span></a>
+   </li>
+   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    @csrf
+   </form>
+
  <!-- Divider -->
  <hr class="sidebar-divider d-none d-md-block">
 
