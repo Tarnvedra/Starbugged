@@ -118,11 +118,11 @@
    <li class="nav-item">
     <a class="nav-link" href="{{ route('logout') }}"
     onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
+                  document.getElementById('side-logout-form').submit();">
     <i class="fas fa-fw fa-times-circle"></i>
-    <span>Logout</span></a>
+    <span>Fast Logout</span></a>
    </li>
-   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+   <form id="side-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
    </form>
 
