@@ -38462,20 +38462,20 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-success",
+          staticClass: "btn btn-primary",
           on: {
             click: function($event) {
               return _vm.getCreated()
             }
           }
         },
-        [_vm._v("Issues Created")]
+        [_vm._v("Created")]
       ),
       _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "btn btn-info",
+          staticClass: "btn btn-warning",
           on: {
             click: function($event) {
               return _vm.getProgress()
@@ -38488,7 +38488,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-danger",
+          staticClass: "btn btn-success",
           on: {
             click: function($event) {
               return _vm.getResolved()

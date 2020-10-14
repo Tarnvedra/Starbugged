@@ -108,7 +108,7 @@
           <div class="row">
 
 
-            <div class="col-xl-12 col-lg-9 col-md-6">
+            <div class="col-xl-12 col-lg-9 col-md-3">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -119,7 +119,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                       <div class="dropdown-header">Project Actions</div>
-                      <a class="dropdown-item" href="#">View All Projects</a>
+                      <a class="dropdown-item" href="/projects">View All Projects</a>
                       <a class="dropdown-item" href="#">Create A Project</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#"></a>

@@ -8,9 +8,9 @@
 
     </ul>
 
-     <button @click="getCreated()" class="btn btn-success">Issues Created</button>
-     <button @click="getProgress()" class="btn btn-info">In Progress</button>
-     <button @click="getResolved()" class="btn btn-danger">Resolved</button>
+     <button @click="getCreated()" class="btn btn-primary">Created</button>
+     <button @click="getProgress()" class="btn btn-warning">In Progress</button>
+     <button @click="getResolved()" class="btn btn-success">Resolved</button>
       <a href="/home" class="btn btn-info">Back</a>
     </nav>
 

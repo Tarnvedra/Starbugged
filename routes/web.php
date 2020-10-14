@@ -43,7 +43,7 @@ Route::get('/watching' , 'WatchingController@index');
 //Route::post('follow/{id}' , 'WatchingController@store');
 
 // administration routes
-Route::get('/admin', 'AccountsController@index');
+//Route::get('/admin', 'AccountsController@index');
 Route::get('/admin/users', 'AccountsController@admin');
 //Route::post('/admin/users/{id}','AccountsController@store');
 Route::get('/admin/users/{id}/edit' ,'AccountsController@edit');

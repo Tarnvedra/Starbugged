@@ -102,7 +102,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Update Project') }}
                                     </button>
-                                    <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+                                    <a href="/projects" class="btn btn-info">  {{ __('Back') }}</a>
                                 </div>
 
                                 </div>

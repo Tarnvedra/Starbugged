@@ -1,20 +1,43 @@
 @extends('layouts/app')
-@include('include/topbar')
-@include('include/sidebar')
 @section('content')
+<div id="wrapper">
+    @include('include/sidebar')
 
 
-<div class="container">
-<h2 class="text-center pb-3">Edit User : {{ $user->username }}</h2>
-<form action="/admin/users/{{$user->id}}" method="post">
-@csrf
-@method('PATCH')
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        @include('include/topbar')
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Edit User</h1>
+          <p class="mb-4">Edit currently selected user in Starbugged</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Update User Permissions</h6>
+            </div>
+            <div class="card-body">
+                <div class="sbp-preview">
+                    <div class="sbp-preview-content">
+                        <form action="/admin/users/{{$editeduser->id}}" method="post">
+                            @csrf
+                            @method('PATCH')
+
+
 
 <div class="form-group row">
     <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('User Name') }}</label>
 
     <div class="col-md-6">
-        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $user->username }}" required autocomplete="" autofocus>
+        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $editeduser->username }}" required autocomplete="" autofocus>
 
         @error('username')
             <span class="invalid-feedback" role="alert">
@@ -47,7 +70,7 @@
     <label for="useraccountlevel" class="col-md-4 col-form-label text-md-right">{{ __('User Access Level') }}</label>
 
     <div class="col-md-6">
-        <input id="useraccountlevel" type="text" class="form-control @error('useraccountlevel') is-invalid @enderror" name="useraccountlevel" value="{{ $user->useraccountlevel }}" required autocomplete="" autofocus>
+        <input id="useraccountlevel" type="text" class="form-control @error('useraccountlevel') is-invalid @enderror" name="useraccountlevel" value="{{ $editeduser->useraccountlevel }}" required autocomplete="" autofocus>
 
         @error('useraccountlevel')
             <span class="invalid-feedback" role="alert">
@@ -64,8 +87,40 @@
         <button type="submit" class="btn btn-primary">
             {{ __('Update User') }}
         </button>
+        <a href="/admin/users" class="btn btn-danger">  {{ __('Cancel') }}</a>
     </div>
 </div>
 </form>
-</div>
+
+
+
+
+
+
+
+                    </div>  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+
+
 @endsection

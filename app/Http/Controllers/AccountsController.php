@@ -79,12 +79,13 @@ class AccountsController extends Controller
      */
     public function edit($id)
     {
-    $user = User::find($id);
+        $user = auth()->user();
+    $editeduser = User::find($id);
     $roles = Role::all();
     return view('admin/edit')->with([
-        'user' => $user,
+        'editeduser' => $editeduser,
         'roles' => $roles
-    ]);
+    ])->with('user' , $user);
     }
 
     /**
@@ -108,8 +109,8 @@ class AccountsController extends Controller
     //$roles->roles = $request->input('roles');
     $user_update->useraccountlevel = $request->input('useraccountlevel');
     $user_update->save();
-    $user = auth()->user();
-    return view('admin/account')->with('success' , 'User succesfully updated')->with('user' , $user);
+    return redirect()->action('AccountsController@admin');
+
     }
 
     /**

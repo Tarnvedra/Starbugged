@@ -16,19 +16,18 @@
 </head>
 <body>
      <!-- Scripts -->
-  <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
-  <script src="{{ asset('vendor/jquery-easing/jquery.easing.js') }}"></script>
-  <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-  <script src="{{ asset('vendor/chart.js/Chart.js') }}"></script>
-<a id="top"></a>
-  <!-- Vue Dominion begins here -->
-  <div id="app">
-
-        @yield('content')
-        @include('include/messages')
-        @include('include/logout')
-   </div>
-
-  <script src="{{ asset('js/app.js') }}"></script>
+     <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
+     <script src="{{ asset('vendor/jquery-easing/jquery.easing.js') }}"></script>
+     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+     <script src="{{ asset('vendor/chart.js/Chart.js') }}"></script>
+     <a id="top"></a>
+     <!-- Vue Dominion begins here -->
+     <div id="app">
+            @yield('content')
+            @include('include/messages')
+            @include('include/logout')
+     </div>
+     <!-- Vue Dominion ends here -->
+     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

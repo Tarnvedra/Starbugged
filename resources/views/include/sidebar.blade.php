@@ -68,8 +68,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Ticket Tasks</h6>
           <a class="collapse-item" href="/issues">View All</a>
-          <a class="collapse-item" href="#">By Priority</a>
-          <a class="collapse-item" href="#">By Status</a>
+          <a class="collapse-item" href="/priority">By Priority</a>
+          <a class="collapse-item" href="/status">By Status</a>
         </div>
       </div>
     </li>
@@ -121,10 +121,11 @@
                   document.getElementById('side-logout-form').submit();">
     <i class="fas fa-fw fa-times-circle"></i>
     <span>Fast Logout</span></a>
+    <form id="side-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+       </form>
    </li>
-   <form id="side-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    @csrf
-   </form>
+
 
  <!-- Divider -->
  <hr class="sidebar-divider d-none d-md-block">
