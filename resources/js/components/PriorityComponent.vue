@@ -134,8 +134,8 @@
                      },
 
        watchIssue(id) {
-           alert('watch button clicked');
-          axios.post('api/watch/' + id).then(response => {
+           //alert('watch button clicked');
+          axios.post('/watch/' + id).then(response => {
                 console.log(response.data);
             })
 

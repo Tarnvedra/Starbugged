@@ -13,6 +13,10 @@ class WatchingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -39,8 +43,8 @@ class WatchingController extends Controller
      */
     public function store(Issue $issue)
     {
-    $user = auth()->user();
-    $id = Issue::find($issue);
+
+    return auth()->user()->watching()->toggle($issue->watchers);
 
     }
 

@@ -40,7 +40,7 @@ Route::patch('/issue/{id}' , 'IssuesController@update');
 
 // Watch issues routes
 Route::get('/watching' , 'WatchingController@index');
-//Route::post('follow/{id}' , 'WatchingController@store');
+Route::post('/watch/{id}' , 'WatchingController@store');
 
 // administration routes
 //Route::get('/admin', 'AccountsController@index');

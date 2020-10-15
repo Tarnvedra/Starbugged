@@ -116,7 +116,8 @@
 
                                     <div class="col-md-6">
                                         <select id="assignment" name="assignment" class="form-control @error('assignment') is-invalid @enderror" autocomplete="" autofocus >
-                                           <option>Issue Resolved</option>
+                                           <option>issue resolved</option>
+                                           <option>issue unassigned</option>
                                             @foreach($users_assigned as $users_assign)
                                             <option>{{ $users_assign->username }}</option>
                                             @endforeach

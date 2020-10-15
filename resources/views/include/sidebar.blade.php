@@ -101,7 +101,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="/watching">
       <i class="fas fa-fw fa-eye"></i>
       <span>Watching</span></a>
     </li>

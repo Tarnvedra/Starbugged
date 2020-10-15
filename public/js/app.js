@@ -2160,8 +2160,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     watchIssue: function watchIssue(id) {
-      alert('watch button clicked');
-      axios.post('api/watch/' + id).then(function (response) {
+      //alert('watch button clicked');
+      axios.post('/watch/' + id).then(function (response) {
         console.log(response.data);
       });
     }
@@ -2324,8 +2324,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     watchIssue: function watchIssue(id) {
-      alert('watch button clicked');
-      axios.post('api/watch/' + id).then(function (response) {
+      //alert('watch button clicked');
+      axios.post('/watch/' + id).then(function (response) {
         console.log(response.data);
       });
     }

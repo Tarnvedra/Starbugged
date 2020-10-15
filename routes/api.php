@@ -29,4 +29,4 @@ Route::get('/status/progress' , 'StatusController@progress'); // get all issues 
 Route::get('/status/resolved' , 'StatusController@resolved'); // get all issues by in resolved status
 Route::get('/status/{id}' , 'StatusController@show'); //get one issue
 // watch api
-Route::post('/watch/{id}' , 'WatchingController@store');
+//Route::post('/watch/{id}' , 'WatchingController@store');
