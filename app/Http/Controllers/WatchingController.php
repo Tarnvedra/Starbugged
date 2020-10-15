@@ -41,6 +41,7 @@ class WatchingController extends Controller
     {
     $user = auth()->user();
     $id = Issue::find($issue);
+
     }
 
     /**
