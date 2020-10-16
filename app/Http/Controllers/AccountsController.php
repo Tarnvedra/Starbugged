@@ -132,7 +132,9 @@ class AccountsController extends Controller
         $projs = Project::count();
         $status = Issue::where('status', '!=', 'resolved')->count();
         $priority = Issue::where('risk' ,'=','High')->count();
-        $amount = $issues - $status /100;
+        $amount = ($status /$issues) * 100;
+        $amount = round($amount, 0);
+        //dd($issues, $status, $amount);
         return view('home')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
             'projs' ,$projs)->with('priority', $priority)->with('status', $status)->with('amount' , $amount);
     }
