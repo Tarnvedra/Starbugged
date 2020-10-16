@@ -129,14 +129,18 @@ class AccountsController extends Controller
         $user = auth()->user();
         $projects = Project::orderBy('id','asc')->paginate(10);
         $issues = Issue::count();
-        $projs = Project::count();
+        $projectsCount = Project::count();
         $status = Issue::where('status', '!=', 'resolved')->count();
         $priority = Issue::where('risk' ,'=','High')->count();
-        $amount = ($status /$issues) * 100;
-        $amount = round($amount, 0);
+        // get percentage values
+        $statusPercentage = ($status /$issues) * 100;
+        $statusPercentage = round($statusPercentage, 0);
+        $priorityPercentage = ($priority / $issues) * 100;
+        $priorityPercentage = round($priorityPercentage, 0);
         //dd($issues, $status, $amount);
         return view('home')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
-            'projs' ,$projs)->with('priority', $priority)->with('status', $status)->with('amount' , $amount);
+            'projectscount' ,$projectsCount)->with('priority', $priority)->with('status', $status)->with('statuspercentage' , $statusPercentage)->with(
+              'prioritypercentage' , $priorityPercentage);
     }
 
 
