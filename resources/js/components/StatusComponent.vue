@@ -16,7 +16,7 @@
 
     <table class="table table-bordered table-striped pt-1">
         <tr>
-            <td>Issue ID</td>
+            <td>Ticket ID</td>
             <td>Project ID</td>
             <td>OS</td>
             <td>Risk</td>

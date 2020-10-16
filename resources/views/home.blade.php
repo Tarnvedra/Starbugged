@@ -82,7 +82,7 @@
                     <div class="col-auto">
 
                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $statuspercentage }}%</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $statuspercentage }}%</div>
                     </div>
                   </div>
                 </div>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                      <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $prioritypercentage }}%</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $prioritypercentage }}%</div>
                     </div>
                   </div>
                 </div>

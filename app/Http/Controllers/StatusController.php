@@ -17,7 +17,7 @@ class StatusController extends Controller
      */
     public function index(Request $request)
     {
-        $issues = Issue::paginate(10);
+        $issues = Issue::orderBy('id','asc')->paginate(10);
         return IssueResource::collection($issues);
     }
 
@@ -28,21 +28,21 @@ class StatusController extends Controller
      */
     public function created(Request $request){
 
-        $issues = Issue::where('status','=', 'issue created')->orderBy('created_at','asc')->paginate(10);
+        $issues = Issue::where('status','=', 'issue created')->orderBy('id','asc')->paginate(10);
         return IssueResource::collection($issues);
 
     }
 
     public function progress(Request $request){
 
-        $issues = Issue::where('status','=', 'in progress')->orderBy('created_at','asc')->paginate(10);
+        $issues = Issue::where('status','=', 'in progress')->orderBy('id','asc')->paginate(10);
         return IssueResource::collection($issues);
 
     }
 
     public function resolved(Request $request){
 
-        $issues = Issue::where('status','=', 'resolved')->orderBy('created_at','asc')->paginate(10);
+        $issues = Issue::where('status','=', 'resolved')->orderBy('id','asc')->paginate(10);
         return IssueResource::collection($issues);
 
     }

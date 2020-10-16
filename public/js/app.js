@@ -38351,7 +38351,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("td", [_vm._v("Issue ID")]),
+      _c("td", [_vm._v("Ticket ID")]),
       _vm._v(" "),
       _c("td", [_vm._v("Project ID")]),
       _vm._v(" "),
@@ -38564,7 +38564,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("tr", [
-      _c("td", [_vm._v("Issue ID")]),
+      _c("td", [_vm._v("Ticket ID")]),
       _vm._v(" "),
       _c("td", [_vm._v("Project ID")]),
       _vm._v(" "),
