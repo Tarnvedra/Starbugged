@@ -133,11 +133,16 @@ class AccountsController extends Controller
         $status = Issue::where('status', '!=', 'resolved')->count();
         $priority = Issue::where('risk' ,'=','High')->count();
         // get percentage values
+        if ($status >0 && $issues > 0 && $priority >0) {
         $statusPercentage = ($status /$issues) * 100;
         $statusPercentage = round($statusPercentage, 0);
         $priorityPercentage = ($priority / $issues) * 100;
-        $priorityPercentage = round($priorityPercentage, 0);
+        $priorityPercentage = round($priorityPercentage, 0); }
         //dd($issues, $status, $amount);
+        else {
+            $statusPercentage = 0;
+            $priorityPercentage = 0;
+        }
         return view('home')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
             'projectscount' ,$projectsCount)->with('priority', $priority)->with('status', $status)->with('statuspercentage' , $statusPercentage)->with(
               'prioritypercentage' , $priorityPercentage);

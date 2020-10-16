@@ -81,6 +81,7 @@ class IssuesController extends Controller
 
         $issue = new Issue;
         $issue->project_id = $id;
+        $issue->user_id = auth()->user()->id;
         $issue->os = $request->input('os');
         $issue->risk = $request->input('risk');
         $issue->issue = $request->input('issue');
@@ -165,5 +166,19 @@ class IssuesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function assigned() {
+
+        //$user = auth()->user();
+        //dd($user->name);
+        //$issue = Issue::where('assignment','=', $user->name);
+        //$issues = Issue::all();
+        //dd($issue , $issues);
+
+
+        $user = auth()->user();
+        $issues = Issue::where('assignment','=', $user->name ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
+        return view('issues/currentuser')->with('issues' , $issues)->with('user' , $user);
     }
 }

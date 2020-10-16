@@ -47,9 +47,21 @@
 
 
                         </table>
-                        <a href="/projects" class="btn btn-info">  {{ __('All Projects') }}</a>
-                        <a href="/issues" class="btn btn-danger">  {{ __('All Issues') }}</a>
+                        <div class="row">
+                        @if ($user->useraccountlevel >= 60)
+                        <a class="btn btn-danger" href="/project/{{ $project->id }}/destroy"   onclick="event.preventDefault();
+                        document.getElementById('delete-form').submit();">
+                            {{ __('Delete Project') }}</a>
 
+
+                        <form id="delete-form" action="/project/{{ $project->id }}/destroy" method="POST">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        @endif
+                        <a href="/projects" class="btn btn-info">  {{ __('All Projects') }}</a>
+                        <a href="/issues" class="btn btn-warning">  {{ __('All Issues') }}</a>
+                    </div>
                     </div>  </div>
 
                 </div>
