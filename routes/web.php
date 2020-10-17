@@ -21,6 +21,9 @@ Route::get('/home', 'AccountsController@dashboard');
 
 // Projects routes
 Route::get('/projects', 'ProjectsController@index');
+Route::get('/projects/assignment', 'ProjectsController@assign');
+Route::get('/projects/assignment/{id}', 'ProjectsController@assignment');
+Route::patch('/projects/assignment/{id}/update', 'ProjectsController@updateusers');
 Route::get('/project/create' , 'ProjectsController@create');
 Route::get('/project/{id}' , 'ProjectsController@show');
 Route::delete('/project/{id}/destroy' , 'ProjectsController@destroy');

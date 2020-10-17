@@ -39,7 +39,7 @@
           <a class="collapse-item" href="/project/create">Create Project</a>
           <a class="collapse-item" href="#">Assign Issues</a>
           <a class="collapse-item" href="/admin/users">User Management</a>
-          <a class="collapse-item" href="#">Assign Users</a>
+          <a class="collapse-item" href="/projects/assignment">Assign Users</a>
         </div>
       </div>
     </li>

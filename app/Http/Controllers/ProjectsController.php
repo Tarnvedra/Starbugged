@@ -127,5 +127,36 @@ class ProjectsController extends Controller
     return redirect('/projects')->with('success' , 'Project Deleted');
     }
 
+    public function assignment($id)
+    {
 
+        $users = User::all();
+        $user = auth()->user();
+        $project = Project::find($id);
+        //orderBy('id','asc')->paginate(10);
+        return view('projects/assignusers')->with('project' , $project)->with('user' , $user)->with('users' , $users);
+
+    }
+
+    public function assign()
+    {
+
+        $users = User::all();
+        $user = auth()->user();
+        $projects = Project::orderBy('id','asc')->paginate(10);
+        return view('projects/assign')->with('projects' , $projects)->with('user' , $user)->with('users' , $users);
+
+    }
+
+    public function updateusers(Request $request, $id)
+    {
+    $data = request()->validate([
+
+
+    ]);
+    $project = Project::find($id);
+    $project->users_assigned = $request->input('assignment');
+    $project->save();
+    return redirect('/projects')->with('success' , 'Project succesfully updated');
+    }
 }
