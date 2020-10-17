@@ -92,7 +92,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tickets</h6>
           <a class="collapse-item" href="/issues/assigned">Assigned to Me</a>
-          <a class="collapse-item" href="#">Reported by Me</a>
+          <a class="collapse-item" href="/issues/reported">Reported by Me</a>
           <a class="collapse-item" href="#">Recently Viewed</a>
         </div>
       </div>

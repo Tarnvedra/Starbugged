@@ -132,6 +132,7 @@ class AccountsController extends Controller
         $projectsCount = Project::count();
         $status = Issue::where('status', '!=', 'resolved')->count();
         $priority = Issue::where('risk' ,'=','High')->count();
+
         // get percentage values / check to avoid for divison by 0
         if ($status >0 && $issues >0) {
         $statusPercentage = ($status /$issues) * 100;

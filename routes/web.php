@@ -34,6 +34,7 @@ Route::get('/issues', 'IssuesController@index');
 Route::get('/priority' , 'IssuesController@priority');
 Route::get('/status' , 'IssuesController@status');
 Route::get('/issues/assigned' ,'IssuesController@assigned');
+Route::get('/issues/reported' ,'IssuesController@reported');
 Route::get('/tickets/{id}' , 'IssuesController@issues');
 Route::get('/issue/create/{project_id}', 'IssuesController@create');
 Route::get('/issue/{id}' , 'IssuesController@show');

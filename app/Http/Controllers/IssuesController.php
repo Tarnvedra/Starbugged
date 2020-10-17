@@ -181,4 +181,18 @@ class IssuesController extends Controller
         $issues = Issue::where('assignment','=', $user->name ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
         return view('issues/currentuser')->with('issues' , $issues)->with('user' , $user);
     }
+
+    public function reported() {
+
+        //$user = auth()->user();
+        //dd($user->name);
+        //$issue = Issue::where('assignment','=', $user->name);
+        //$issues = Issue::all();
+        //dd($issue , $issues);
+
+
+        $user = auth()->user();
+        $issues = Issue::where('user_id','=', $user->id ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
+        return view('issues/userreported')->with('issues' , $issues)->with('user' , $user);
+    }
 }
