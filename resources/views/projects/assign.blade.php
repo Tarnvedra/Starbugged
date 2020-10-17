@@ -29,15 +29,14 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <th>ID</th>
-                    <th>Project</th>
-                    <th>Description</th>
-                    @if ($user->useraccountlevel >= 60)
-                    <th>Assign Users<th>
-
-                    @endif
-
-                <tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Project</th>
+                        <th>Description</th>
+                        @if ($user->useraccountlevel >= 60)
+                            <th>Assign Users</th>
+                        @endif
+                    </tr>
         @foreach($projects as $project)
                 <tr>
                     <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
