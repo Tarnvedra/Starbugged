@@ -56,4 +56,8 @@ Route::get('/admin/users', 'AccountsController@admin');
 Route::get('/admin/users/{id}/edit' ,'AccountsController@edit');
 Route::patch('/admin/users/{id}' , 'AccountsController@update');
 Route::delete('/admin/users/{id}' , 'AccountsController@destroy');
+Route::get('/admin/user/profile' , 'AccountsController@profile');
+Route::patch('/admin/user/store' , 'AccountsController@storeProfile');
+Route::get('/admin/user/update' , 'AccountsController@updateProfile');
+
 

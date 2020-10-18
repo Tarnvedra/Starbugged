@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password', 'useraccountlevel'
+        'name', 'username', 'email', 'password', 'useraccountlevel','job_title','profile_image','about_me'
     ];
 
     /**
@@ -53,14 +53,9 @@ class User extends Authenticatable
     }
 
 
-    public function profile() {
-
-        return $this->hasOne(Profile::class);
-    }
-
     public function roles() {
 
-        return $this->belongsToMany(Role::class);
+        return $this->hasMany(Role::class);
     }
 
    // public function accountLevel($useraccountlevel) {

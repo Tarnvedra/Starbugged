@@ -154,5 +154,46 @@ class AccountsController extends Controller
               'prioritypercentage' , $priorityPercentage);
     }
 
+    public function profile()
+    {
+
+           $user = auth()->user();
+
+
+           return view('admin/profile')->with('user' , $user);//->with('userprofile' , $userProfile);
+
+    }
+   public function storeProfile(Request $request)
+    {
+        $this->validate($request,[
+            'jobtitle' => 'required',
+            ]);
+
+    $user = auth()->user();
+    /*$userProfile = Profile::where('user_id','=',$user_id);
+    $userProfile->job_title = $request->input('jobtitle');
+    $userProfile->profile_image = $request->input('profileimage');
+    $userProfile->about_me = $request->input('aboutme');
+    $userProfile->update();
+  */
+    return redirect()->action('AccountsController@profile');
+
+    }
+
+    public function updateProfile()
+    {
+
+
+    $user = auth()->user();
+    /*
+    $user_id = $user->id;
+    $userProfile = Profile::where('user_id','=',$user_id);
+    //$userProfile = Profile::where('id','=', $user_id);
+    dd($userProfile, $user_id);
+*/
+     return view('admin/editprofile')->with('user' , $user);
+
+    }
+
 
 }

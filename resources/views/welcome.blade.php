@@ -63,7 +63,7 @@
                   <form id="demo" name="demo" method="POST" action="{{ route('login') }}">
                     @csrf
                   <div class="text-center">
-                    <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror" name="email" required value="test@test.com">
+                    <input id="email" type="hidden" class="form-control @error('email') is-invalid @enderror" name="email" required value="test@starbugged.com">
                     <input id="password" type="hidden" class="form-control @error('password') is-invalid @enderror" name="password" required value="1234567890">
                     <button type="submit" class="btn btn-success btn-block">
                         {{ __('Demo Account') }}
