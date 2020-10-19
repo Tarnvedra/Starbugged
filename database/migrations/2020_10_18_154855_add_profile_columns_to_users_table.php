@@ -14,9 +14,9 @@ class AddProfileColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('job_title')->after('username')->nullable();;
-            $table->string('profile_image')->after('job_title')->nullable();;
-            $table->text('about_me')->after('profile_image')->nullable();;
+            $table->string('job_title')->after('username')->nullable();
+            $table->string('profile_image')->after('job_title')->nullable();
+            $table->text('about_me')->after('profile_image')->nullable();
         });
     }
 
