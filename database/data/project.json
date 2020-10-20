@@ -1,4 +1,65 @@
 [
-    {}
-
+    {
+        "id": 1,
+        "user_id": 1,
+        "project": "Warehouse Layout",
+        "description": "Web Application development written in PHP/Laravel 6.2 (Origin branch PHP/HTML5) for efficient product selection, using web app for efficient placement of stock using layout planning with volumetrics (calculations using Mass , Volume and Density)",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    },
+    {
+        "id": 2,
+        "user_id": 1,
+        "project": "Starbugged",
+        "description": "Bug/Issue/project Tracker application that enables users to keep track of bugs and issues in their projects written using PHP and Laravel framework v6.2",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    },
+    {
+        "id": 3,
+        "user_id": 1,
+        "project": "Motoring Conversion",
+        "description": "Conversion Application Web Application development written in PHP/Laravel 6.2 /Vue for Converting motoring units such as Velocity, Torque, Fuel consumption etc.",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    },
+    {
+        "id": 4,
+        "user_id": 1,
+        "project": "Digital Dictionary",
+        "description": "Digital Dictionary Website - IT Encyclopedia website - with tables and videos Information technology website written using PHP and Laravel framework v6.2",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    },
+    {
+        "id": 5,
+        "user_id": 1,
+        "project": "AmigoCara",
+        "description": "Social Media website created in Laravel/PHP - Laravel Framework 7.9.2",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    },
+    {
+        "id": 6,
+        "user_id": 1,
+        "project": "Viewbnb",
+        "description": "Rent a room/lodgings website created in Laravel 7.0 /PHP",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    },
+    {
+        "id": 7,
+        "user_id": 1,
+        "project": "",
+        "description": "",
+        "users_assigned": "",
+        "created_at": "2020-10-18 16:45:00",
+        "updated_at": "2020-10-18 16:45:00"
+    }
 ]
