@@ -79,7 +79,8 @@ class AccountsController extends Controller
      */
     public function edit($id)
     {
-        $user = auth()->user();
+
+    $user = auth()->user();
     $editeduser = User::find($id);
     $roles = Role::all();
     return view('admin/edit')->with([
@@ -149,9 +150,14 @@ class AccountsController extends Controller
             $priorityPercentage = 0;
         }
 
-        return view('home')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
-            'projectscount' ,$projectsCount)->with('priority', $priority)->with('status', $status)->with('statuspercentage' , $statusPercentage)->with(
-              'prioritypercentage' , $priorityPercentage);
+        return view('home' , [ 'user' => $user,
+         'projects' => $projects,
+         'issues' => $issues,
+         'projectscount' => $projectsCount,
+         'priority' => $priority,
+         'status' => $status,
+         'statuspercentage' => $statusPercentage,
+         'prioritypercentage' => $priorityPercentage ]);
     }
 
     public function profile()
@@ -162,7 +168,8 @@ class AccountsController extends Controller
            return view('admin/profile')->with('user' , $user);
 
     }
-   public function storeProfile(Request $request)
+
+    public function storeProfile(Request $request)
     {
         $this->validate($request,[
             'jobtitle' => 'required',
