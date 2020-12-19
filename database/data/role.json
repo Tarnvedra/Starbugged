@@ -1,0 +1,34 @@
+[
+    {
+        "name": "super_admin",
+        "guard_name": "web"
+    },
+    {
+        "name": "admin",
+        "guard_name": "web"
+    },
+    {
+        "name": "manager",
+        "guard_name": "web"
+    },
+    {
+        "name": "coder",
+        "guard_name": "web"
+    },
+    {
+        "name": "tester",
+        "guard_name": "web"
+    },
+    {
+        "name": "reporter",
+        "guard_name": "web"
+    },
+    {
+        "name": "guest",
+        "guard_name": "web"
+    },
+    {
+        "name": "ban",
+        "guard_name": "web"
+    }
+]
