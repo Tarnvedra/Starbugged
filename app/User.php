@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+//use Spatie
 
 class User extends Authenticatable
 {
@@ -53,18 +54,27 @@ class User extends Authenticatable
     }
 
 
-    public function roles() {
-
-        return $this->hasMany(Role::class);
+   public function roles()
+    {
+        return $this->belongsToMany(Role::class,'user_roles');
     }
 
-   // public function accountLevel($useraccountlevel) {
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class,'user_permissions');
+    }
 
-//        if($this->user()->whereIn(column: 'useraccountlevel', $useraccountlevel) = 90){
-  //          $role = "admin"
-    //    }
-      //      elseif ($this->user()->whereIn(column: 'useraccountlevel', $useraccountlevel) = 60){
-      //      $role = "manager"
-       // }
-   // }
+    public function hasRole(...$roles)
+    {
+
+      foreach($roles as $role)
+        {
+            if($this->roles->contains('name',$role))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
