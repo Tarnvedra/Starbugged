@@ -11,16 +11,20 @@
 |
 */
 
+
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\ProjectsController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'AccountsController@dashboard');
+Route::get('/home', [AccountsController::class, 'dashboard'])->name('dashboard');
 
 // Projects routes
-Route::get('/projects', 'ProjectsController@index');
+Route::get('/projects',[ProjectsController::class ,'index'])->name('projects-home');
 Route::get('/projects/assignment', 'ProjectsController@assign');
 Route::get('/projects/assignment/{id}', 'ProjectsController@assignment');
 Route::patch('/projects/assignment/{id}/update', 'ProjectsController@updateusers');
@@ -51,7 +55,7 @@ Route::post('/watch/{id}' , 'WatchingController@store');
 
 // administration routes
 //Route::get('/admin', 'AccountsController@index');
-Route::get('/admin/users', 'AccountsController@admin');
+Route::get('/admin/users', [AccountsController::class , 'admin'])->name('admin-main');
 //Route::post('/admin/users/{id}','AccountsController@store');
 Route::get('/admin/users/{id}/edit' ,'AccountsController@edit');
 Route::patch('/admin/users/{id}' , 'AccountsController@update');
