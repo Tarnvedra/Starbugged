@@ -11,6 +11,8 @@ use App\User;
 use App\Role;
 use App\Project;
 use App\Issue;
+use App\Requests\UpdateProfileRequest;
+use App\Requests\UpdateUserRequest;
 
 class AccountsController extends Controller
 {
@@ -52,21 +54,15 @@ class AccountsController extends Controller
         ]);
     }
 
-    public function update( Request $request,ResponseFactory $repspone, $id)
+    public function update(UpdateUserRequest $request,ResponseFactory $repspone, $id)
     {
-        $this->validate($request, [
-            'username' => 'required',
-
-            'useraccountlevel' => 'required',
-
-        ]);
-        $user_update = User::find($id);
+       $user_update = User::find($id);
         //$roles = Role::find($user->id);
         $user_update->username = $request->input('username');
         //$roles->roles = $request->input('roles');
         $user_update->useraccountlevel = $request->input('useraccountlevel');
         $user_update->save();
-        return $repspone->redirectTo('AccountsController@admin');
+        return $repspone->redirectTo('admin-main');
     }
 
     public function dashboard(ViewFactory $view)
@@ -111,19 +107,15 @@ class AccountsController extends Controller
         return $view->make('admin/profile' , ['user' => $user]);
     }
 
-    public function storeProfile(Request $request, ResponseFactory $response)
+    public function storeProfile(UpdateProfileRequest $request, ResponseFactory $response)
     {
-        $this->validate($request, [
-            'jobtitle' => 'required',
-        ]);
-        $user = auth()->user();
-        $user->job_title = $request->input('jobtitle');
-        // will need image file for this
-        $user->profile_image = $request->input('profileimage');
-        $user->about_me = $request->input('aboutme');
-        $user->update();
-        return $response->redirectTo('AccountsController@profile');
-
+       $user = auth()->user();
+       $user->job_title = $request->input('jobtitle');
+       // will need image file for this
+       $user->profile_image = $request->input('profileimage');
+       $user->about_me = $request->input('aboutme');
+       $user->update();
+       return $response->redirectTo('AccountsController@profile');
     }
 
     public function updateProfile(ViewFactory $view)
