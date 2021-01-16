@@ -5,7 +5,6 @@
  */
 
 require('./bootstrap');
-
 window.Vue = require('vue');
 
 /**
@@ -23,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('priority-component', require('./components/PriorityComponent.vue').default);
 Vue.component('status-component', require('./components/StatusComponent.vue').default);
 Vue.component('piechart-component', require('./components/PiechartComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

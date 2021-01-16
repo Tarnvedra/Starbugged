@@ -54,6 +54,7 @@
                         <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
                         </div>
                     </div>
+            
 </div>
 
 
