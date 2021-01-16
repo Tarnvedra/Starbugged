@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Routing\ResponseFactory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use App\User;
 use App\Role;
 use App\Project;
 use App\Issue;
-use App\Requests\UpdateProfileRequest;
-use App\Requests\UpdateUserRequest;
 
 class AccountsController extends Controller
 {
@@ -23,13 +23,13 @@ class AccountsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(ViewFactory $view)
+    public function index(ViewFactory $view): View
     {
         $user = auth()->user();
         return $view->make('admin/account', ['user' => $user]);
     }
 
-    public function admin(ViewFactory $view)
+    public function admin(ViewFactory $view): View
     {
         $user = auth()->user();
         $users = User::orderBy('username', 'asc')->paginate(11);
@@ -41,20 +41,20 @@ class AccountsController extends Controller
             ]);
     }
 
-    public function edit(ViewFactory $view,$id)
+    public function edit(ViewFactory $view,$id): View
     {
         $user = auth()->user();
-        $editeduser = User::find($id);
+        $editedUser = User::find($id);
         $roles = Role::all();
         return $view->make('admin/edit' ,
         [
-            'editeduser' => $editeduser,
+            'editedUser' => $editedUser,
             'roles' => $roles,
             'user' => $user
         ]);
     }
 
-    public function update(UpdateUserRequest $request,ResponseFactory $repspone, $id)
+    public function update(UpdateUserRequest $request,ResponseFactory $response, $id): RedirectResponse
     {
        $user_update = User::find($id);
         //$roles = Role::find($user->id);
@@ -62,10 +62,10 @@ class AccountsController extends Controller
         //$roles->roles = $request->input('roles');
         $user_update->useraccountlevel = $request->input('useraccountlevel');
         $user_update->save();
-        return $repspone->redirectTo('admin-main');
+        return $response->redirectTo('admin-main');
     }
 
-    public function dashboard(ViewFactory $view)
+    public function dashboard(ViewFactory $view): View
     {
         $user = auth()->user();
         $projects = Project::orderBy('id', 'asc')->paginate(10);
@@ -94,20 +94,20 @@ class AccountsController extends Controller
             [ 'user' => $user,
               'projects' => $projects,
               'issues' => $issues,
-              'projectscount' => $projectsCount,
+              'projectsCount' => $projectsCount,
               'priority' => $priority,
               'status' => $status,
-              'statuspercentage' => $statusPercentage,
-              'prioritypercentage' => $priorityPercentage]);
+              'statusPercentage' => $statusPercentage,
+              'priorityPercentage' => $priorityPercentage]);
     }
 
-    public function profile(ViewFactory $view)
+    public function profile(ViewFactory $view): View
     {
         $user = auth()->user();
         return $view->make('admin/profile' , ['user' => $user]);
     }
 
-    public function storeProfile(UpdateProfileRequest $request, ResponseFactory $response)
+    public function storeProfile(UpdateProfileRequest $request, ResponseFactory $response): RedirectResponse
     {
        $user = auth()->user();
        $user->job_title = $request->input('jobtitle');
@@ -118,7 +118,7 @@ class AccountsController extends Controller
        return $response->redirectTo('AccountsController@profile');
     }
 
-    public function updateProfile(ViewFactory $view)
+    public function updateProfile(ViewFactory $view): View
     {
         $user = auth()->user();
         return $view->make('admin/editprofile' , ['user' => $user]);
