@@ -16,6 +16,7 @@ Vue.component('status-component', require('./components/StatusComponent.vue').de
 Vue.component('piechart-component', require('./components/PiechartComponent.vue').default);
 Vue.component('usertable-component', require('./components/UserTableComponent.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
