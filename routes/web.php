@@ -57,7 +57,7 @@ Route::post('/watch/{id}' , 'WatchingController@store');
 //Route::get('/admin', 'AccountsController@index');
 Route::get('/admin/users', [AccountsController::class , 'admin'])->name('admin-main');
 //Route::post('/admin/users/{id}','AccountsController@store');
-Route::get('/admin/users/{id}/edit' ,'AccountsController@edit');
+Route::get('/admin/users/{id}/edit' ,[AccountsController::class ,'edit'])->name('admin-user-edit');
 Route::patch('/admin/users/{id}' , 'AccountsController@update');
 Route::delete('/admin/users/{id}' , 'AccountsController@destroy');
 Route::get('/admin/user/profile' , 'AccountsController@profile');
@@ -65,3 +65,5 @@ Route::patch('/admin/user/store' , 'AccountsController@storeProfile');
 Route::get('/admin/user/update' , 'AccountsController@updateProfile');
 
 
+// ajax
+Route::get('/usersList' , [AccountsController::class, 'usersList' ])->name('user-table');

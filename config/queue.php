@@ -36,7 +36,7 @@ return [
 
         'database' => [
             'driver' => 'database',
-            'table' => 'jobs',
+            '_table_rows' => 'jobs',
             'queue' => 'default',
             'retry_after' => 90,
         ],
@@ -74,15 +74,15 @@ return [
     |--------------------------------------------------------------------------
     |
     | These options configure the behavior of failed queue job logging so you
-    | can control which database and table are used to store the jobs that
-    | have failed. You may change them to any database / table you wish.
+    | can control which database and _table_rows are used to store the jobs that
+    | have failed. You may change them to any database / _table_rows you wish.
     |
     */
 
     'failed' => [
         'driver' => env('QUEUE_FAILED_DRIVER', 'database'),
         'database' => env('DB_CONNECTION', 'mysql'),
-        'table' => 'failed_jobs',
+        '_table_rows' => 'failed_jobs',
     ],
 
 ];

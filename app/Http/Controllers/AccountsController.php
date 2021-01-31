@@ -32,7 +32,7 @@ class AccountsController extends Controller
     public function admin(ViewFactory $view): View
     {
         $user = auth()->user();
-        $users = User::orderBy('username', 'asc')->paginate(11);
+        $users = User::orderBy('id', 'asc')->paginate(11);
         $user_roles = Role::get();
         return $view->make('admin/manageusers',
             [   'users' => $users,
@@ -123,4 +123,22 @@ class AccountsController extends Controller
         $user = auth()->user();
         return $view->make('admin/editprofile' , ['user' => $user]);
     }
+
+   // public function usersList(DataTables $tables): JsonResponse
+   // {
+   //    $users = User::query()->get('id','name','email');
+   //    return $tables->eloquent($users)
+   //        ->rawColumns(['id','name','email'])->toJson();
+   // }
+
+    public function usersList(ResponseFactory $response): JsonResponse
+   {
+        $users = User::all();
+        return $response->json($users);
+   }
+   // public function usersList()
+   // {
+   //     return Datatables::of(User::query())->make(true);
+   // }
+
 }
