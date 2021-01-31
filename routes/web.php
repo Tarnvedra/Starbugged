@@ -11,9 +11,10 @@
 |
 */
 
-
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\IssuesController;
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\WatchingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,47 +24,47 @@ Auth::routes();
 
 Route::get('/home', [AccountsController::class, 'dashboard'])->name('dashboard');
 
+// administration routes
+Route::get('/admin/users', [AccountsController::class , 'admin'])->name('admin-main');
+Route::get('/admin/users/{id}/edit', [AccountsController::class, 'edit'])->name('admin-user-edit');
+Route::patch('/admin/users/{id}', [AccountsController::class, 'update'])->name('admin-user-update');
+Route::delete('/admin/users/{id}', [AccountsController::class, 'destroy'])->name('admin-user-delete');
+Route::get('/admin/user/profile', [AccountsController::class, 'profile'])->name('admin-user-profile');
+Route::patch('/admin/user/store', [AccountsController::class, 'storeProfile'])->name('admin-user-profile-store');
+Route::get('/admin/user/update', [AccountsController::class, 'updateProfile'])->name('admin-user-profile-update');
+//Route::get('/admin', [AccountsController::class, 'index'])->name('admin);
+//Route::post('/admin/users/{id}', [AccountsController::class, 'store']);
+
+
 // Projects routes
-Route::get('/projects',[ProjectsController::class ,'index'])->name('projects-home');
-Route::get('/projects/assignment', 'ProjectsController@assign');
-Route::get('/projects/assignment/{id}', 'ProjectsController@assignment');
-Route::patch('/projects/assignment/{id}/update', 'ProjectsController@updateusers');
-Route::get('/project/create' , 'ProjectsController@create');
-Route::get('/project/{id}' , 'ProjectsController@show');
-Route::delete('/project/{id}/destroy' , 'ProjectsController@destroy');
-Route::post('/project','ProjectsController@store');
-Route::get('/project/{id}/edit' ,'ProjectsController@edit');
-Route::patch('/project/{id}' ,'ProjectsController@update');
+Route::get('/projects', [ProjectsController::class ,'index'])->name('projects-home');
+Route::get('/projects/assignment', [ProjectsController::class, 'assign']);
+Route::get('/projects/assignment/{id}', [ProjectsController::class, 'assignment']);
+Route::patch('/projects/assignment/{id}/update', [ProjectsController::class, 'updateusers']);
+Route::get('/project/create', [ProjectsController::class, 'create']);
+Route::get('/project/{id}', [ProjectsController::class, 'show']);
+Route::delete('/project/{id}/destroy', [ProjectsController::class, 'destroy']);
+Route::post('/project', [ProjectsController::class, 'store']);
+Route::get('/project/{id}/edit', [ProjectsController::class, 'edit']);
+Route::patch('/project/{id}', [ProjectsController::class, 'update']);
 
 
 // Issues routes
-Route::get('/issues', 'IssuesController@index');
-Route::get('/priority' , 'IssuesController@priority');
-Route::get('/status' , 'IssuesController@status');
-Route::get('/issues/assigned' ,'IssuesController@assigned');
-Route::get('/issues/reported' ,'IssuesController@reported');
-Route::get('/tickets/{id}' , 'IssuesController@issues');
-Route::get('/issue/create/{project_id}', 'IssuesController@create');
-Route::get('/issue/{id}' , 'IssuesController@show');
-Route::post('/issue/{project_id}','IssuesController@store');
-Route::get('/issue/{id}/edit' ,'IssuesController@edit');
-Route::patch('/issue/{id}' , 'IssuesController@update');
+Route::get('/issues', [IssuesController::class, 'index']);
+Route::get('/priority', [IssuesController::class, 'priority']);
+Route::get('/status', [IssuesController::class, 'status']);
+Route::get('/issues/assigned', [IssuesController::class, 'assigned']);
+Route::get('/issues/reported', [IssuesController::class, 'reported']);
+Route::get('/tickets/{id}', [IssuesController::class, 'issues']);
+Route::get('/issue/create/{project_id}', [IssuesController::class, 'create']);
+Route::get('/issue/{id}', [IssuesController::class, 'show']);
+Route::post('/issue/{project_id}', [IssuesController::class, 'store']);
+Route::get('/issue/{id}/edit', [IssuesController::class, 'edit']);
+Route::patch('/issue/{id}', [IssuesController::class, 'update']);
 
 // Watch issues routes
-Route::get('/watching' , 'WatchingController@index');
-Route::post('/watch/{id}' , 'WatchingController@store');
+Route::get('/watching', [WatchingController::class, 'index']);
+Route::post('/watch/{id}', [WatchingController::class, 'store']);
 
-// administration routes
-//Route::get('/admin', 'AccountsController@index');
-Route::get('/admin/users', [AccountsController::class , 'admin'])->name('admin-main');
-//Route::post('/admin/users/{id}','AccountsController@store');
-Route::get('/admin/users/{id}/edit' ,[AccountsController::class ,'edit'])->name('admin-user-edit');
-Route::patch('/admin/users/{id}' , 'AccountsController@update');
-Route::delete('/admin/users/{id}' , 'AccountsController@destroy');
-Route::get('/admin/user/profile' , 'AccountsController@profile');
-Route::patch('/admin/user/store' , 'AccountsController@storeProfile');
-Route::get('/admin/user/update' , 'AccountsController@updateProfile');
-
-
-// ajax
-Route::get('/usersList' , [AccountsController::class, 'usersList' ])->name('user-table');
+// axios
+Route::get('/usersList' , [AccountsController::class, 'usersList'])->name('user-table');
