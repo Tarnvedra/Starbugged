@@ -1,11 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Issues;
 
+use App\Http\Controllers\Issues\Requests\CreateIssueRequest;
+use App\Http\Controllers\Issues\Requests\UpdateIssueRequest;
 use App\User;
 use App\Project;
 use App\Issue;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Routing\ResponseFactory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\View;
 
 class IssuesController extends Controller
 {
@@ -14,71 +20,62 @@ class IssuesController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(ViewFactory $view): View
     {
-
         $user = auth()->user();
         $issues = Issue::orderBy('id','asc')->paginate(10);
-        return view('issues')->with('issues' , $issues)->with('user', $user);
+        return $view->make('issues', [
+            'issues' => $issues,
+            'user'   => $user
+            ]);
     }
 
-
-
-    public function priority()
+    public function priority(ViewFactory $view): View
     {
         $user = auth()->user();
          $issues = Issue::where('risk', '=','High')->orderBy('id','asc')->paginate(9);
-        return view('issues/priority')->with('issues' ,$issues)->with('user',$user);
+        return $view->make('issues/priority', [
+            'issues' => $issues,
+            'user'   => $user
+        ]);
     }
 
-    public function status()
+    public function status(ViewFactory $view): View
     {
-
         $user = auth()->user();
         $issues = Issue::where('status', '=','issue created')->orderBy('created_at','asc')->paginate(9);
-        return view('issues/status')->with('issues' ,$issues)->with('user',$user);
+        return $view->make('issues/status', [
+            'issues' => $issues,
+            'user'   => $user
+        ]);
     }
 
-    public function issues($id)
+    public function issues($id, ViewFactory $view): View
     {
         $user = auth()->user();
         $project = Project::find($id);
         $issues = Issue::where('project_id','=', $id)->orderBy('created_at','asc')->paginate(9);
-        return view('issues/project')->with('project' , $project)->with('issues' , $issues)->with('user' , $user);
+        return $view->make('issues/project', [
+            'project' => $project,
+            'issues'  => $issues,
+            'user'    => $user
+        ]);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($project_id)
+
+    public function create($project_id, ViewFactory $view): View
     {
         $user = auth()->user();
         $project = Project::find($project_id);
         //dd($project);
-        return view('issues/create')->with('project' , $project)->with('user' ,$user);
+        return $view->make('issues/create', [
+            'project' => $project,
+            'user'    => $user
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, $id)
-    {
-        $this->validate($request,[
-            'os' => 'required',
-            'risk' => 'required',
-            'issue' => 'required',
-            'description' => 'required',
-        ]);
 
+    public function store(CreateIssueRequest $request, ResponseFactory $response, $id): RedirectResponse
+    {
         $issue = new Issue;
         $issue->project_id = $id;
         $issue->user_id = auth()->user()->id;
@@ -90,29 +87,20 @@ class IssuesController extends Controller
         $issue->status = 'issue created';
         $issue->save();
 
-        return redirect('/issues');
+        return $response->redirectTo('/issues')->with('success', 'Ticket successfully created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($id, ViewFactory $view): View
     {
         $issue = Issue::find($id);
         $user = auth()->user();
-        return view('issues/show')->with('issue' , $issue)->with('user' , $user);
+        return $view->make('issues/show', [
+            'issue' => $issue,
+            'user'  => $user
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($id, ViewFactory $view): View
     {
         $issue = Issue::find($id);
         $project_id = $issue->project_id;
@@ -126,25 +114,16 @@ class IssuesController extends Controller
 
         //User::all('username')->where('users_assigned' ,'=',  $project->users_assigned)->get();
         //dd($users);
-        return view('issues/edit')->with('issue' , $issue)->with('project' , $project)->with('user' , $user)->with('users_assigned', $users_assigned);
+        return $view->make('issues/edit', [
+            'issue'          => $issue,
+            'project'        => $project,
+            'user'           => $user,
+            'users_assigned' => $users_assigned
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateIssueRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
-        $this->validate($request,[
-            'os' => 'required',
-            'risk' => 'required',
-            'issue' => 'required',
-            'description' => 'required',
-        ]);
-
         $issue = Issue::find($id);
         $issue->os = $request->input('os');
         $issue->risk = $request->input('risk');
@@ -154,45 +133,43 @@ class IssuesController extends Controller
         $issue->status = $request->input('status');
         $issue->save();
 
-        return redirect('/issues');
+        return $response->redirectTo('/issues')->with('success', 'Ticket successfully updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
 
-    public function assigned() {
-
+    public function assigned(ViewFactory $view): View
+    {
         //$user = auth()->user();
         //dd($user->name);
         //$issue = Issue::where('assignment','=', $user->name);
         //$issues = Issue::all();
         //dd($issue , $issues);
-
 
         $user = auth()->user();
         $issues = Issue::where('assignment','=', $user->name ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
-        return view('issues/currentuser')->with('issues' , $issues)->with('user' , $user);
+        return $view->make('issues/currentuser', [
+            'issues' => $issues,
+            'user'   => $user
+        ]);
     }
 
-    public function reported() {
-
+    public function reported(ViewFactory $view): View
+    {
         //$user = auth()->user();
         //dd($user->name);
         //$issue = Issue::where('assignment','=', $user->name);
         //$issues = Issue::all();
         //dd($issue , $issues);
 
-
         $user = auth()->user();
         $issues = Issue::where('user_id','=', $user->id ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
-        return view('issues/userreported')->with('issues' , $issues)->with('user' , $user);
+        return $view->make('issues/userreported', [
+            'issues' => $issues,
+            'user'   => $user
+        ]);
     }
 }
