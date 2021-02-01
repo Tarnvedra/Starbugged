@@ -40,7 +40,7 @@ Route::get('/admin/user/update', [AccountsController::class, 'updateProfile'])->
 Route::get('/projects', [ProjectsController::class ,'index'])->name('projects-home');
 Route::get('/projects/assignment', [ProjectsController::class, 'assign']);
 Route::get('/projects/assignment/{id}', [ProjectsController::class, 'assignment']);
-Route::patch('/projects/assignment/{id}/update', [ProjectsController::class, 'updateusers']);
+Route::patch('/projects/assignment/{id}/update', [ProjectsController::class, 'usersAssignment']);
 Route::get('/project/create', [ProjectsController::class, 'create']);
 Route::get('/project/{id}', [ProjectsController::class, 'show']);
 Route::delete('/project/{id}/destroy', [ProjectsController::class, 'destroy']);
