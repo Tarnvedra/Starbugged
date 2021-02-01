@@ -11,10 +11,10 @@
 |
 */
 
-use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\IssuesController;
-use App\Http\Controllers\ProjectsController;
-use App\Http\Controllers\WatchingController;
+use App\Http\Controllers\Accounts\AccountsController;
+use App\Http\Controllers\Issues\IssuesController;
+use App\Http\Controllers\Projects\ProjectsController;
+use App\Http\Controllers\Watching\WatchingController;
 
 Route::get('/', function () {
     return view('welcome');

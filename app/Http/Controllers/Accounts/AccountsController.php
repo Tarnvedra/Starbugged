@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Accounts;
 
 
-use App\Http\Requests\UpdateProfileRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Accounts\Requests\UpdateProfileRequest;
+use App\Http\Controllers\Accounts\Requests\UpdateUserRequest;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory as ViewFactory;
@@ -140,5 +141,6 @@ class AccountsController extends Controller
    // {
    //     return Datatables::of(User::query())->make(true);
    // }
+
 
 }
