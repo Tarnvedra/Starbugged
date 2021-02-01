@@ -6,114 +6,126 @@ use App\User;
 use App\Project;
 use App\Issue;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Routing\ResponseFactory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Projects\Requests\CreateProjectRequest;
 use App\Http\Controllers\Projects\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Projects\Requests\UpdateAssignedUsersRequest;
 
 class ProjectsController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(ViewFactory $view): View
     {
         $user = auth()->user();
-        $projects = Project::orderBy('id','asc')->paginate(10);
-        return view('projects')->with('projects' , $projects)->with('user' , $user);
-
+        $projects = Project::orderBy('id', 'asc')->paginate(10);
+        return $view->make('projects' , ['projects' => $projects, 'user' => $user]);
     }
 
-    public function create()
+    public function create(ViewFactory $view): View
     {
         $user = auth()->user();
-        $projects = Project::orderBy('id','asc')->paginate(2);
+        $projects = Project::orderBy('id', 'asc')->paginate(2);
         $issues = Issue::count();
-        $projs = Project::count();
+        $projectsCount = Project::count();
         $status = Issue::where('status', '!=', 'resolved')->count();
-        $amount = $issues - $status /100;
-        return view('projects/create')->with('user' , $user)->with('projects' , $projects)->with('issues' , $issues)->with(
-            'projs' ,$projs)->with('status', $status)->with('amount' , $amount);
+        $amount = $issues - $status / 100;
+
+        return $view->make('projects/create', [
+            'user'           => $user,
+            'projects'       => $projects,
+            'issues'         => $issues,
+            'projectCount'   => $projectsCount,
+            'status'         => $status,
+            'amount'         => $amount
+        ]);
     }
 
-    public function store(CreateProjectRequest $request)
+    public function store(CreateProjectRequest $request, ResponseFactory $response): RedirectResponse
     {
-        $data = request()->all();
+        $data = $request->all();
         auth()->user()->projects()->create($data);
-        return redirect('/projects')->with('success' , 'Project successfully created');
-}
+        return $response->redirectTo('/projects')->with('success', 'Project successfully created');
+    }
 
-     public function show($id)
+    public function show(ViewFactory $view, $id): View
     {
         $user = auth()->user();
         $project = Project::find($id);
-        return view('projects/show')->with('project' , $project)->with('user' , $user);
+        return $view->make('projects/show' , ['project' => $project ,'user' => $user ]);
     }
 
 
-    public function edit($id)
+    public function edit(ViewFactory $view, $id): View
     {
         $project = Project::find($id);
         $users = User::all();
         $user = auth()->user();
 
         //dd($project->description);
-        return view('projects/edit')->with('project' , $project)->with('user' , $user)->with('users' , $users);
+        return $view->make('projects/edit', [
+            'project' => $project,
+            'user'    => $user,
+            'users'   => $users
+        ]);
     }
 
 
-    public function update(UpdateProjectRequest $request, $id)
+    public function update(UpdateProjectRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
-    $data = request()->validate([
-        'project' => 'required',
-        'description' => 'required',
-
-    ]);
-    $project = Project::find($id);
-    $project->project = $request->input('project');
-    $project->description = $request->input('description');
-    $project->users_assigned = $request->input('assignment');
-    $project->save();
-    return redirect('/projects')->with('success' , 'Project succesfully updated');
+        $project = Project::find($id);
+        $project->project = $request->input('project');
+        $project->description = $request->input('description');
+        $project->users_assigned = $request->input('assignment');
+        $project->save();
+        return $response->redirectTo('/projects')->with('success', 'Project successfully updated');
     }
 
 
-    public function destroy($id)
+    public function destroy(ResponseFactory $response, $id): RedirectResponse
     {
-    $project = Project::find($id);
-    // $project->delete();
-    return redirect('/projects')->with('success' , 'Project Deleted');
+        $project = Project::find($id);
+        // $project->delete();
+        return $response->redirectTo('/projects')->with('success', 'Project Deleted');
     }
 
-    public function assignment($id)
+    public function assignment(ViewFactory $view, $id): View
     {
-
         $users = User::all();
         $user = auth()->user();
         $project = Project::find($id);
         //orderBy('id','asc')->paginate(10);
-        return view('projects/assignusers')->with('project' , $project)->with('user' , $user)->with('users' , $users);
-
+        return $view->make('projects/assignusers', [
+            'project' => $project,
+            'user'    => $user,
+            'users'   => $users
+        ]);
     }
 
-    public function assign()
+    public function assign(ViewFactory $view): View
     {
-
         $users = User::all();
         $user = auth()->user();
-        $projects = Project::orderBy('id','asc')->paginate(10);
-        return view('projects/assign')->with('projects' , $projects)->with('user' , $user)->with('users' , $users);
-
+        $projects = Project::orderBy('id', 'asc')->paginate(10);
+        return $view->make('projects/assign', [
+            'projects' => $projects,
+            'user'     => $user,
+            'users'    => $users
+        ]);
     }
 
-    public function usersAssignment(UpdateAssignedUsersRequest $request, $id)
+    public function usersAssignment(UpdateAssignedUsersRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
-
-    $project = Project::find($id);
-    $project->users_assigned = $request->input('assignment');
-    $project->save();
-    return redirect('/projects')->with('success' , 'Project succesfully updated');
+        $project = Project::find($id);
+        $project->users_assigned = $request->input('assignment');
+        $project->save();
+        return $response->redirectTo('/projects')->with('success', 'Project successfully updated');
     }
 }
