@@ -4,6 +4,7 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Priorities\PrioritiesController;
 use App\Http\Controllers\Status\StatusController;
+use App\Http\Controllers\Datatables\DataTableController;
 use App\Http\Controllers\Watching\WatchingController;
 
 /*
@@ -37,3 +38,7 @@ Route::get('/status/{id}', [StatusController::class, 'show']); //get one issue
 
 // watch api
 //Route::post('/watch/{id}', [WatchingController::class, 'store']);
+
+// datatable api's
+
+Route::get('/users', [DataTableController::class, 'users'])->name('table.users');

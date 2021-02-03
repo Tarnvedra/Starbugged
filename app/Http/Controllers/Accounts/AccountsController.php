@@ -20,7 +20,6 @@ class AccountsController extends Controller
 
     public function __construct()
     {
-
         $this->middleware('auth');
     }
 
@@ -124,23 +123,4 @@ class AccountsController extends Controller
         $user = auth()->user();
         return $view->make('admin/editprofile' , ['user' => $user]);
     }
-
-   // public function usersList(DataTables $tables): JsonResponse
-   // {
-   //    $users = User::query()->get('id','name','email');
-   //    return $tables->eloquent($users)
-   //        ->rawColumns(['id','name','email'])->toJson();
-   // }
-
-    public function usersList(ResponseFactory $response): JsonResponse
-   {
-        $users = User::all();
-        return $response->json($users);
-   }
-   // public function usersList()
-   // {
-   //     return Datatables::of(User::query())->make(true);
-   // }
-
-
 }

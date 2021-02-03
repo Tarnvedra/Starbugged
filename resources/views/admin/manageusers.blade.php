@@ -28,12 +28,12 @@
                             <h6 class="m-0 font-weight-bold text-primary">Users</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                             <usertable-component></usertable-component>
+
+                             <usertable-component route="{{ route('table.users') }}"></usertable-component>
                                 <div class="col-sm-4">
                                     <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
                                 </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
