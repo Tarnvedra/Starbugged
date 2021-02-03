@@ -1,9 +1,20 @@
 <template>
-    <div>
-        <v-app>
-        <v-data-table :headers="headers" :items="users" :items-per-page="5" class="elevation-1"></v-data-table>
+    <v-app>
+            <v-card>
+                <v-card-title>
+                    Users
+                    <v-spacer></v-spacer>
+                    <v-text-field
+                        v-model="search"
+                        append-icon="mdi-magnify"
+                        label="Search"
+                        single-line
+                        hide-details
+                    ></v-text-field>
+                </v-card-title>
+                <v-data-table :headers="headers" :items="users"  :search="search" :items-per-page="15" class="elevation-1"></v-data-table>
+               </v-card>
         </v-app>
-    </div>
 </template>
 
 <script>
@@ -18,6 +29,7 @@ export default {
     },
     data() {
         return {
+            search: '',
             users: [],
             user: {
                 id: '',
