@@ -7,7 +7,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 
 
-class DataTableController extends Controller
+class DataTablesController extends Controller
 {
     public function users() // UserTableComponent.vue
     {
