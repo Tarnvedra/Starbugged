@@ -116,12 +116,12 @@
    </li>
 
    <li class="nav-item">
-    <a class="nav-link" href="{{ route('logout') }}"
+    <a class="nav-link" href="{{ route('logout-page') }}"
     onclick="event.preventDefault();
                   document.getElementById('side-logout-form').submit();">
     <i class="fas fa-fw fa-times-circle"></i>
     <span>Fast Logout</span></a>
-    <form id="side-logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    <form id="side-logout-form" action="{{ route('logout-page') }}" method="POST" style="display: none;">
         @csrf
        </form>
    </li>

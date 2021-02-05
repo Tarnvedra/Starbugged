@@ -15,7 +15,7 @@
                             <div class="row">
                                 <div class="col-lg-6 d-none d-lg-block"
                                      style="background-image: url('{{asset('images/bug2.png')}}');"></div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <div class="p-5">
                                         <div class="text-center">
                                             <h1 class="h4 text-gray-900 mb-4">Starbugged Login</h1>
@@ -54,7 +54,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">
+                                        <button type="submit" class="btn btn-outline-primary btn-lg">
                                             {{ __('Login') }}
                                         </button>
 
@@ -67,10 +67,10 @@
                 <hr>
                 <div class="text-center">
                     <a class="small" href="#">Forgot Password?</a>
-                </div>
-                <div class="text-center">
+                     </div>
+                      <div class="text-center">
                     <a class="small" href="{{ route('register') }}">Create an Account!</a>
-                </div>
+                     </div>
                 <form id="demo" name="demo" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="text-center">
@@ -78,7 +78,7 @@
                                name="email" required value="test@starbugged.com">
                         <input id="password" type="hidden" class="form-control @error('password') is-invalid @enderror"
                                name="password" required value="1234567890">
-                        <button type="submit" class="btn btn-success btn-block">
+                        <button type="submit" class="btn btn-outline-primary btn-xs">
                             {{ __('Demo Account') }}
 
                         </button>
