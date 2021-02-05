@@ -10,15 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Http\Controllers\Accounts\HomeController;
 use App\Http\Controllers\Accounts\AccountsController;
 use App\Http\Controllers\Issues\IssuesController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Watching\WatchingController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'welcome'])->name('home-page');
 
 Auth::routes();
 
