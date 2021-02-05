@@ -17,7 +17,7 @@
         <div class="modal-body">Select "Logout" if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-info" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-danger" href="{{ route('logout') }}"   onclick="event.preventDefault();
+          <a class="btn btn-danger" href="{{ route('home-page') }}"   onclick="event.preventDefault();
           document.getElementById('logout-form').submit();">
               {{ __('Logout') }}</a>
 
@@ -25,9 +25,6 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-
-
-
         </div>
       </div>
     </div>

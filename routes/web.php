@@ -17,6 +17,7 @@ use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Watching\WatchingController;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('home-page');
+Route::post('/', [HomeController::class, 'welcome'])->name('logout-page');
 
 Auth::routes();
 
