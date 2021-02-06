@@ -15,6 +15,7 @@ use App\Http\Controllers\Accounts\AccountsController;
 use App\Http\Controllers\Issues\IssuesController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Watching\WatchingController;
+use App\Http\Controllers\Board\BoardController;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('home-page');
 Route::post('/', [HomeController::class, 'logout'])->name('logout-page');
@@ -47,6 +48,8 @@ Route::post('/project', [ProjectsController::class, 'store']);
 Route::get('/project/{id}/edit', [ProjectsController::class, 'edit']);
 Route::patch('/project/{id}', [ProjectsController::class, 'update']);
 
+// Task-board routes
+Route::get('/project/task-board/{project}', [BoardController::class, 'index'])->name('taskboard');
 
 // Issues routes
 Route::get('/issues', [IssuesController::class, 'index']);
@@ -65,5 +68,3 @@ Route::patch('/issue/{id}', [IssuesController::class, 'update']);
 Route::get('/watching', [WatchingController::class, 'index']);
 Route::post('/watch/{id}', [WatchingController::class, 'store']);
 
-// axios
-Route::get('/usersList' , [AccountsController::class, 'usersList'])->name('user-table');

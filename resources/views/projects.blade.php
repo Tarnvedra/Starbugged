@@ -37,7 +37,7 @@
                                     @if ($user->useraccountlevel >= 20)
                                         <th>Create Issue</th>
                                         <th>Project Issues</th>
-
+                                        <th>Project Overview</th>
                                     @endif
                                     <tr>
                                     @foreach($projects as $project)
@@ -60,8 +60,10 @@
                                                     <a href="/tickets/{{  $project->id  }}"
                                                        class="btn btn-danger">  {{ __('View') }}</a>
                                                 </td>
-
-
+                                                <td>
+                                                    <a href="{{ route('taskboard', ['project' => $project]) }}"
+                                                       class="btn btn-success">  {{ __('Taskboard') }}</a>
+                                                </td>
                                             @endif
                                         </tr>
 

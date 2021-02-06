@@ -26,7 +26,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="issues-table" width="100%" cellspacing="0">
                                     <tr>
                                         <th>Ticket ID</th>
                                         <th>Project ID</th>
@@ -55,9 +55,8 @@
                                 </table>
                                 {{ $issues->links() }}
                                 <div class="pl-3">
-                                    <a href="{{ route('/home") }}" class="btn btn-info">  {{ __('Back') }}</a>
+                                 <a href="{{ route('dashboard') }}" class="btn btn-info">Back</a>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
