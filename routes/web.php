@@ -59,7 +59,7 @@ Route::get('/issues/assigned', [IssuesController::class, 'assigned']);
 Route::get('/issues/reported', [IssuesController::class, 'reported']);
 Route::get('/tickets/{id}', [IssuesController::class, 'issues']);
 Route::get('/issue/create/{project_id}', [IssuesController::class, 'create']);
-Route::get('/issue/{id}', [IssuesController::class, 'show']);
+Route::get('/issue/{id}', [IssuesController::class, 'show'])->name('show.issue');
 Route::post('/issue/{project_id}', [IssuesController::class, 'store']);
 Route::get('/issue/{id}/edit', [IssuesController::class, 'edit']);
 Route::patch('/issue/{id}', [IssuesController::class, 'update']);

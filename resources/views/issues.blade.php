@@ -33,6 +33,7 @@
                                         <th>OS</th>
                                         <th>Risk</th>
                                         <th>Issue</th>
+                                        <th>Title</th>
                                         <th>Assignment</th>
                                         <th>Status</th>
                                         <th>Issue Created</th>
@@ -46,6 +47,7 @@
                                             <td> {{ $issue->os }}</td>
                                             <td> {{ $issue->risk }}</td>
                                             <td> {{ $issue->issue }}</td>
+                                            <td> {{ $issue->title }}</td>
                                             <td> {{ $issue->assignment }}</td>
                                             <td> {{ $issue->status }}</td>
                                             <td> {{ $issue->created_at}}</td>

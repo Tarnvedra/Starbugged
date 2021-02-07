@@ -37,6 +37,7 @@
                                         <th>OS</th>
                                         <th>Risk</th>
                                         <th>Issue </th>
+                                        <th>Title</th>
                                         <th>Description</th>
                                         <th>Assignment</th>
                                         <th>Status</th>
@@ -47,19 +48,19 @@
 
                             <tr>
 
-                            <tr>
-                                <td> {{  $issue->id  }}</td>
-                                <td> {{ $issue->project_id }}</td>
-                                <td> {{ $issue->os }}</td>
-                                <td> {{ $issue->risk }}</td>
-                                <td> {{ $issue->issue }}</td>
-                                <td> {{ $issue->description }}</td>
-                                <td> {{ $issue->assignment }}</td>
-                                <td> {{ $issue->status }}</td>
-                                <td> {{ $issue->created_at}}</td>
-                                <td> {{ $issue->updated_at }}</td>
-
-                            </tr>
+                                    <tr>
+                                        <td> {{  $issue->id  }}</td>
+                                        <td> {{ $issue->project_id }}</td>
+                                        <td> {{ $issue->os }}</td>
+                                        <td> {{ $issue->risk }}</td>
+                                        <td> {{ $issue->issue }}</td>
+                                        <td> {{ $issue->title }}</td>
+                                        <td> {{ $issue->description }}</td>
+                                        <td> {{ $issue->assignment }}</td>
+                                        <td> {{ $issue->status }}</td>
+                                        <td> {{ $issue->created_at}}</td>
+                                        <td> {{ $issue->updated_at }}</td>
+                                    </tr>
 
 
                         </table>

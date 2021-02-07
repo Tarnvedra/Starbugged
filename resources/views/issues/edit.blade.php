@@ -130,11 +130,26 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                                <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Issue Title') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="title" name="title" class="form-control @error('issue') is-invalid @enderror" value="{{ old('title') }}" required autocomplete="{{ old('title') }}" autofocus>
+
+                                    @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea  type="text" rows="8" cols="50" class="form-control @error('dexcription') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="Project Description" autofocus>{{ $issue->description }}</textarea>
+                                    <textarea  type="text" rows="8" cols="50" class="form-control @error('dexcription') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="Ticket Description" autofocus>{{ $issue->description }}</textarea>
 
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">

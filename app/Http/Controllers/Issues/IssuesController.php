@@ -82,6 +82,7 @@ class IssuesController extends Controller
         $issue->os = $request->input('os');
         $issue->risk = $request->input('risk');
         $issue->issue = $request->input('issue');
+        $issue->title = $request->input('title');
         $issue->description = $request->input('description');
         $issue->assignment = 'none';
         $issue->status = 'issue created';
@@ -128,6 +129,7 @@ class IssuesController extends Controller
         $issue->os = $request->input('os');
         $issue->risk = $request->input('risk');
         $issue->issue = $request->input('issue');
+        $issue->title = $request->input('title');
         $issue->description = $request->input('description');
         $issue->assignment = $request->input('assignment');
         $issue->status = $request->input('status');

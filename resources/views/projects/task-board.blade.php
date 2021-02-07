@@ -17,60 +17,107 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Project Task Board: Project - {{ $project->project }}</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Project Task Board - {{ $project->project }}</h1>
                     <div class="jumbotron">
-                    <div class="row">
-                        <div class="col-3">
-                            <h4>Backlog</h4>
-                            <div class="jumbotron" style="background-color: mediumvioletred;">
+                        <div class="row">
+                            <div class="col-3">
+                                <h4>Backlog</h4>
+                                <div class="jumbotron" style="border: 5px solid mediumvioletred;">
 
-                            @foreach($backlogs as $backlog)
-                                <div class="card-title">Task # {{ $backlog->id }}</div>
-                                <div class="card-body">
-                           {{ $backlog->description }}
+                                    @foreach($backlogs as $backlog)
+                                        <div class="pb-5">
+                                            <div class="card">
+                                                <div class="card-header"
+                                                     style="background-color: mediumvioletred; color:white;">
+                                                    Task # <a href="{{ route('show.issue', ['id' => $backlog->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $backlog->id  }}</a>&nbsp{{ $backlog->title }}</div>
+                                                <div class="card-title pl-1">{{ $backlog->description }}</div>
+                                                <div class="card-body">
+                                                 Awaiting Assignment
+                                                </div>
+                                                <div class="card-footer">
+                                                    Created By: {{ $backlog->user_id }}
+                                                    <img class="img-profile rounded-circle" style="background-color: mediumvioletred;width: 30px; height:30px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
+
+                            <div class="col-3">
+                                <h4>Work In Progress</h4>
+                                <div class="jumbotron" style="border: 5px solid orange;">
+                                    @foreach($works as $work)
+                                        <div class="pb-5">
+                                            <div class="card">
+                                                <div class="card-header" style="background-color: orange; color:white;">
+                                                    Task # <a href="{{ route('show.issue', ['id' => $work->id]) }}" style="color:whitesmoke; text-decoration: none"> {{  $work->id  }}</a>&nbsp{{ $work->title }}</div>
+                                                <div class="card-title pl-1">{{ $work->description }}</div>
+                                                <div class="card-body">
+                                                    {{ $work->assignment }}
+                                                    <img class="img-profile rounded-circle" style="background-color: orange;width: 30px; height:30px;">
+                                                </div>
+                                                <div class="card-footer">
+                                                    Created By: {{ $work->user_id }}
+                                                    <img class="img-profile rounded-circle" style="background-color: orange;width: 30px; height:30px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <h4>Awaiting Feedback</h4>
+                                <div class="jumbotron" style="border: 5px solid cadetblue;">
+                                    @foreach($feedbacks as $feedback)
+                                        <div class="pb-5">
+                                            <div class="card">
+                                                <div class="card-header"
+                                                     style="background-color: cadetblue; color:white;">
+                                                    Task # <a href="{{ route('show.issue', ['id' => $feedback->id]) }}" style="color:whitesmoke; text-decoration: none"> {{  $feedback->id  }}</a>&nbsp{{ $feedback->title }}</div>
+                                                <div class="card-title pl-1">{{ $feedback->description }}</div>
+                                                <div class="card-body">
+                                                    {{ $feedback->assignment }}
+                                                    <img class="img-profile rounded-circle" style="background-color: cadetblue;width: 30px; height:30px;">
+                                                </div>
+                                                <div class="card-footer">
+                                                    Created By: {{ $feedback->user_id }}
+                                                    <img class="img-profile rounded-circle" style="background-color: cadetblue; width: 30px; height:30px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="col-3">
+                                <h4>Done</h4>
+                                <div class="jumbotron" style="border: 5px solid darkseagreen;">
+                                    @foreach($completions as $completion)
+                                        <div class="pb-5">
+                                            <div class="card">
+                                                <div class="card-header"
+                                                     style="background-color: darkseagreen; color:white;">
+                                                    Task # <a href="{{ route('show.issue', ['id' => $completion->id]) }}" style="color:whitesmoke; text-decoration: none"> {{  $completion->id  }}</a>&nbsp{{ $completion->title }}</div>
+                                                <div class="card-title pl-1">{{ $completion->description}}</div>
+                                                <div class="card-body">
+                                                    {{ $completion->assignment }}
+                                                    <img class="img-profile rounded-circle" style="background-color: darkseagreen;width: 30px; height:30px;">
+                                                </div>
+                                                <div class="card-footer">
+                                                    Created By: {{ $completion->user_id  }}
+                                                    <img class="img-profile rounded-circle" style="background-color: darkseagreen; width: 30px; height:30px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                        <div class="col-3">
-                            <h4>Work In Progress</h4>
-                            <div class="jumbotron" style="background-color: orange;">
-
-                                @foreach($works as $work)
-                                    <div class="card-title">Task # {{ $work->id }}</div>
-                                    <div class="card-body">
-                                        {{ $work->description }}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <h4>Awaiting Feedback</h4>
-                            <div class="jumbotron" style="background-color: cadetblue;">
-
-                                @foreach($feedbacks as $feedback)
-                                    <div class="card-title">Task # {{ $feedback->id }}</div>
-                                    <div class="card-body">
-                                        {{ $feedback->description }}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <h4>Done</h4>
-                            <div class="jumbotron" style="background-color: darkseagreen;">
-
-                                @foreach($completions as $completion)
-                                    <div class="card-title">Task # {{ $completion->id }}</div>
-                                    <div class="card-body">
-                                        {{ $completion->description }}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
                 </div>
-                    </div>
-                    </div>
             </div>
             <!-- /.container-fluid -->
 
@@ -78,11 +125,8 @@
         <!-- End of Main Content -->
 
 
-
     </div>
     <!-- End of Content Wrapper -->
 
-    </div>
     <!-- End of Page Wrapper -->
-
 @endsection

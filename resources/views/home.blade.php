@@ -109,6 +109,7 @@
           </div>
 
           <!-- Content Row -->
+            <h4 class="h3 mb-2 text-gray-800">All Projects</h4>
  <piechart-component></piechart-component>
           <div class="row">
 

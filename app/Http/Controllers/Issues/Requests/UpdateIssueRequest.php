@@ -13,6 +13,7 @@ class UpdateIssueRequest extends FormRequest
             'os' => 'required',
             'risk' => 'required',
             'issue' => 'required',
+            'title' => 'required',
             'description' => 'required'
         ];
     }

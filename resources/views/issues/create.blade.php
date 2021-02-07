@@ -91,6 +91,20 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Issue Title') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="title" name="title" class="form-control @error('issue') is-invalid @enderror" required autocomplete="" autofocus>
+
+                                    @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                                 <div class="col-md-6">
