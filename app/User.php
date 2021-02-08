@@ -45,7 +45,8 @@ class User extends Authenticatable
 
     public function issues() {
 
-        return $this->hasMany(Issue::class);
+        return $this->belongsToMany(Issue::class);
+
     }
 
     public function watching() {

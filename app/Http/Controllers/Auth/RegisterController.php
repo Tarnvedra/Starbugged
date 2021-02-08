@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'useraccountlevel' => $data['useraccountlevel'],
             'job_title' => 'unknown',
-            'profile_image' => '',
+            'profile_image' => '/images/users/none.jpg',
             'about_me' => 'unknown',
         ]);
     }
