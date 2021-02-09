@@ -50,8 +50,11 @@ class ProjectsController extends Controller
 
     public function store(CreateProjectRequest $request, ResponseFactory $response): RedirectResponse
     {
-        $data = $request->all();
-        auth()->user()->projects()->create($data);
+        $project = new Project;
+        $project->project_name = $request->input('project');
+        $project->description = $request->input('description');
+        $project->user_id = auth()->user()->id;
+        $project->save();
         return $response->redirectTo('/projects')->with('success', 'Project successfully created');
     }
 

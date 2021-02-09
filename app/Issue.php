@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Issue extends Model
 {
-    public function projects() {
+    public function project() {
 
-        return $this->hasMany(Issue::class);
+        return $this->belongsTo(Issue::class);
      }
 
      public function watchers() {

@@ -7,18 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
 
-
-
-
-
-
- public function user() {
+    public function user() {
 
     return $this->belongsTo(User::class);
  }
 
- public function issues() {
+    public function issue() {
 
-    return $this->hasMany(Project::class);
+    return $this->belongsToMany(Issue::class);
  }
 }

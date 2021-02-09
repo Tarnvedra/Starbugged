@@ -12,3 +12,15 @@ npm-debug.log
 yarn-error.log
 
 resources/js/components/Component.vue
+
+.idea/laravel-plugin.xml
+
+.idea/php.xml
+
+.idea/phpunit.xml
+
+.idea/symfony2.xml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
