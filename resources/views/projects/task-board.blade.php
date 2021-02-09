@@ -35,7 +35,7 @@
                                                  Awaiting Assignment
                                                 </div>
                                                 <div class="card-footer">
-                                                    <img class="img-profile rounded-circle" src="{{ asset($backlog->user->profile_image) }}" alt="" style="background-color: mediumvioletred;width: 30px; height:30px;"> {{$backlog->user->name }} <br>
+                                                    <img class="img-profile rounded-circle" src="{{ asset($backlog->user->profile_image) }}" alt="" style="width: 30px; height:30px;"> {{$backlog->user->name }} <br>
                                                     <br>Created: {{ $backlog->created_at->diffForHumans() }}
                                                     <br>Updated: {{ $backlog->updated_at->diffForhumans() }}
                                                 </div>
@@ -56,11 +56,11 @@
                                                     Task # <a href="{{ route('show.issue', ['id' => $work->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $work->id  }}</a>&nbsp<i>{{ $work->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $work->description }}</div>
                                                 <div class="card-body">
-                                                    <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$work->assignment.'.jpg') }}" style="background-color: cadetblue; width: 30px; height:30px;">
+                                                    <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$work->assignment.'.jpg') }}" style="width: 30px; height:30px;">
                                                     {{ $work->assignment }}
                                                 </div>
                                                 <div class="card-footer">
-                                                    <img class="img-profile rounded-circle" src="{{ asset($work->user->profile_image) }}" style="background-color: mediumvioletred;width: 30px; height:30px;"> {{$work->user->name }} <br>
+                                                    <img class="img-profile rounded-circle" src="{{ asset($work->user->profile_image) }}" style="width: 30px; height:30px;"> {{$work->user->name }} <br>
                                                     <br>Created: {{ $work->created_at->diffForHumans() }}
                                                     <br>Updated: {{ $work->updated_at->diffForhumans() }}
                                                 </div>
@@ -81,11 +81,11 @@
                                                     Task # <a href="{{ route('show.issue', ['id' => $feedback->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $feedback->id  }}</a>&nbsp<i>{{ $feedback->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $feedback->description }}</div>
                                                 <div class="card-body">
-                                                    <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$feedback->assignment.'.jpg') }}" style="background-color: orange;width: 30px; height:30px;">
+                                                    <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$feedback->assignment.'.jpg') }}" style="width: 30px; height:30px;">
                                                     {{ $feedback->assignment }}
                                                 </div>
                                                 <div class="card-footer">
-                                                    <img class="img-profile rounded-circle" src="{{ asset($feedback->user->profile_image) }}" style="background-color: mediumvioletred;width: 30px; height:30px;"> {{$feedback->user->name }} <br>
+                                                    <img class="img-profile rounded-circle" src="{{ asset($feedback->user->profile_image) }}" style="width: 30px; height:30px;"> {{$feedback->user->name }} <br>
                                                     <br>Created: {{ $feedback->created_at->diffForHumans() }}
                                                     <br>Updated: {{ $feedback->updated_at->diffForhumans() }}
                                                 </div>
@@ -106,11 +106,11 @@
                                                     Task # <a href="{{ route('show.issue', ['id' => $completion->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $completion->id  }}</a>&nbsp<i>{{ $completion->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $completion->description }}</div>
                                                 <div class="card-body">
-                                                    <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$completion->assignment.'.jpg') }}" style="background-color: orange;width: 30px; height:30px;">
+                                                    <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$completion->assignment.'.jpg') }}" style="width: 30px; height:30px;">
                                                     {{ $completion->assignment }}
                                                 </div>
                                                 <div class="card-footer">
-                                                    <img class="img-profile rounded-circle" src="{{ asset($completion->user->profile_image) }}" style="background-color: mediumvioletred;width: 30px; height:30px;"> {{$completion->user->name }} <br>
+                                                    <img class="img-profile rounded-circle" src="{{ asset($completion->user->profile_image) }}" style="width: 30px; height:30px;"> {{$completion->user->name }} <br>
                                                     <br>Created: {{ $completion->created_at->diffForHumans() }}
                                                     <br>Updated: {{ $completion->updated_at->diffForhumans() }}
                                                 </div>
