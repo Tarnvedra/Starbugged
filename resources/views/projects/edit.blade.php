@@ -37,7 +37,7 @@
                                 <label for="project" class="col-md-4 col-form-label text-md-right">{{ __('Project Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="project" type="text" class="form-control @error('project') is-invalid @enderror" name="project" value="{{ $project->project }}" required autocomplete="Project Name" autofocus>
+                                    <input id="project" type="text" class="form-control @error('project') is-invalid @enderror" name="project" value="{{ $project->project_name }}" required autocomplete="Project Name" autofocus>
 
                                     @error('projectname')
                                         <span class="invalid-feedback" role="alert">
