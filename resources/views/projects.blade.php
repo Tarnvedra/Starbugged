@@ -43,7 +43,7 @@
                                     @foreach($projects as $project)
                                         <tr>
                                             <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
-                                            <td>{{ $project->project }}</td>
+                                            <td>{{ $project->project_name }}</td>
                                             <td>{{ $project->description }}</td>
                                             @if ($user->useraccountlevel >= 60)
                                                 <td>

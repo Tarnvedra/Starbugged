@@ -19,8 +19,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Issues for:<b><i> {{ $project->project }}</i></b> project</h1>
-          <p class="mb-4">Showing all issues for:<b><i> {{ $project->project }}</i></b> project</p>
+          <h1 class="h3 mb-2 text-gray-800">Issues for:<b><i> {{ $project->project_name }}</i></b> project</h1>
+          <p class="mb-4">Showing all issues for:<b><i> {{ $project->project_name }}</i></b> project</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">

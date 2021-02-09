@@ -81,7 +81,7 @@ class ProjectsController extends Controller
     public function update(UpdateProjectRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
         $project = Project::find($id);
-        $project->project = $request->input('project');
+        $project->project_name = $request->input('project');
         $project->description = $request->input('description');
         $project->users_assigned = $request->input('assignment');
         $project->save();

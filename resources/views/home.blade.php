@@ -148,7 +148,7 @@
                     @foreach($projects as $project)
                             <tr>
                                 <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
-                                <td>{{ $project->project }}</td>
+                                <td>{{ $project->project_name }}</td>
                                 <td>{{ $project->description }}</td>
                                 <td>{{ $project->users_assigned}}</td>
                                 <td>{{ $project->created_at }}</td>

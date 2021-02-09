@@ -29,7 +29,7 @@
                                 <table class="table table-bordered" id="issues-table" width="100%" cellspacing="0">
                                     <tr>
                                         <th>Ticket ID</th>
-                                        <th>Project ID</th>
+                                        <th>Project Name</th>
                                         <th>OS</th>
                                         <th>Risk</th>
                                         <th>Issue</th>
@@ -42,7 +42,7 @@
                                     @foreach($issues as $issue)
                                         <tr>
                                             <td><a href="issue/{{ $issue->id}}">{{  $issue->id  }}</a></td>
-                                            <td><a href="project/{{$issue->project_id}}">{{ $issue->project_id  }}</a>
+                                            <td><a href="project/{{$issue->project_id}}">{{ $issue->project->project_name }}</a>
                                             </td>
                                             <td> {{ $issue->os }}</td>
                                             <td> {{ $issue->risk }}</td>
