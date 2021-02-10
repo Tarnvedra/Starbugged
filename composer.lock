@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "811ccdd8497bee0bf5d99fa97cb97e49",
+    "content-hash": "319ea0ff1626a9187eb48ccb2b50ba08",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4731,6 +4731,49 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.3"
             },
             "time": "2020-07-13T06:12:54+00:00"
+        },
+        {
+            "name": "tremby/laravel-git-version",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tremby/laravel-git-version.git",
+                "reference": "52e423040f3615d5ccd21a45afcbaf4f52661be2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tremby/laravel-git-version/zipball/52e423040f3615d5ccd21a45afcbaf4f52661be2",
+                "reference": "52e423040f3615d5ccd21a45afcbaf4f52661be2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4"
+            },
+            "suggest": {
+                "symfony/process": "Used rather than `shell_exec` if available (>=3.3)."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tremby\\LaravelGitVersion\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bart Nagel",
+                    "email": "bart@tremby.net"
+                }
+            ],
+            "description": "A helper to get the current git version of the application",
+            "support": {
+                "issues": "https://github.com/tremby/laravel-git-version/issues",
+                "source": "https://github.com/tremby/laravel-git-version/tree/v1.2.2"
+            },
+            "time": "2020-04-09T13:16:02+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

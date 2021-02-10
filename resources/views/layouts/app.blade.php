@@ -25,9 +25,10 @@
      <a id="top"></a>
      <!-- Vue Dominion begins here -->
      <div id="app">
-        @yield('content')
-        @include('include/messages')
-        @include('include/logout')
+         @yield('content')
+         @include('include/messages')
+         @include('include/logout')
+         @include('git-version::version-comment')
      </div>
      <!-- Vue Dominion ends here -->
 

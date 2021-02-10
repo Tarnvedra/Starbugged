@@ -135,7 +135,7 @@
                                 <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Issue Title') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" id="title" name="title" class="form-control @error('issue') is-invalid @enderror" value="{{ old('title') }}" required autocomplete="{{ old('title') }}" autofocus>
+                                    <input type="text" id="title" name="title" class="form-control @error('issue') is-invalid @enderror" value="{{ $issue->title}}" required autocomplete="{{ $issue->title}}" autofocus>
 
                                     @error('title')
                                     <span class="invalid-feedback" role="alert">
