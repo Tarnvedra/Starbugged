@@ -28,7 +28,7 @@
          @yield('content')
          @include('include/messages')
          @include('include/logout')
-         @include('git-version::version-comment')
+        
      </div>
      <!-- Vue Dominion ends here -->
 

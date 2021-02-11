@@ -2,10 +2,10 @@
 
 namespace App;
 
-use \App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Permission;
 
-class role extends Model
+class Role extends Model
 {
  public function users()
   {
