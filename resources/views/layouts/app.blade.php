@@ -14,7 +14,7 @@
         rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
-<!-- <link href="{{ asset('css/starbugged.css') }}" rel="stylesheet">  -->
+<!-- <link href="{ asset('css/starbugged.css') }}" rel="stylesheet">  -->
 </head>
 <body>
      <!-- Scripts -->

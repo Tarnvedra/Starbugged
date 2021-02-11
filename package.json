@@ -18,7 +18,7 @@
         "lodash": "^4.17.20",
         "popper.js": "^1.16.1",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.32.6",
+        "sass": "^1.32.7",
         "sass-loader": "7.*",
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.12"
@@ -26,6 +26,6 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^20.0.0",
         "@mdi/font": "^5.9.55",
-        "vuetify": "^2.4.3"
+        "vuetify": "^2.4.4"
     }
 }
