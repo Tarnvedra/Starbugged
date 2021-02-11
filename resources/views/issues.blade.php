@@ -42,7 +42,8 @@
                                     @foreach($issues as $issue)
                                         <tr>
                                             <td><a href="issue/{{ $issue->id}}">{{  $issue->id  }}</a></td>
-                                            <td><a href="project/{{$issue->project_id}}">{{ $issue->project->project_name }}</a>
+                                            <td>
+                                                <a href="project/{{$issue->project_id}}">{{ $issue->project->project_name }}</a>
                                             </td>
                                             <td> {{ $issue->os }}</td>
                                             <td> {{ $issue->risk }}</td>
@@ -57,15 +58,15 @@
                                 </table>
                                 {{ $issues->links() }}
                                 <div class="pl-3">
-                                 <a href="{{ route('dashboard') }}" class="btn btn-info">Back</a>
+                                    <a href="{{ route('dashboard') }}" class="btn btn-info">Back</a>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- /.container-fluid -->
             </div>
-            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
         </div>
-        <!-- End of Main Content -->
-    </div>
-    <!-- End of Content Wrapper -->
+        <!-- End of Content Wrapper -->
 @endsection

@@ -28,10 +28,8 @@
          @yield('content')
          @include('include/messages')
          @include('include/logout')
-        
      </div>
      <!-- Vue Dominion ends here -->
-
      <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

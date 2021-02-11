@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
       <div class="copyright pull-left my-auto">
-        <span>&copy; 2021 Starbugged v0.68</span>
+        <span>&copy; 2021 Starbugged v0.69 - ba18611</span>
       </div>
     </div>
   </footer>
