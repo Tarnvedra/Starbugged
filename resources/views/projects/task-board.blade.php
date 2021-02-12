@@ -3,19 +3,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
     @include('include/sidebar')
-
-
     <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
             @include('include/topbar')
-
             <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Project Task Board - {{ $project->project_name }}</h1>
                     <div class="jumbotron">
@@ -23,7 +17,6 @@
                             <div class="col-3">
                                 <h4>Backlog</h4>
                                 <div class="jumbotron" style="border: 5px solid mediumvioletred;">
-
                                     @foreach($backlogs as $backlog)
                                         <div class="pb-5">
                                             <div class="card">
@@ -118,20 +111,15 @@
                                         </div>
                                     @endforeach
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /.container-fluid -->
-
-        </div>
+                <!-- /.container-fluid -->
+          </div>
         <!-- End of Main Content -->
-
-
+        </div>
+        <!-- End of Content Wrapper -->
     </div>
-    <!-- End of Content Wrapper -->
-
     <!-- End of Page Wrapper -->
 @endsection

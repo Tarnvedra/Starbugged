@@ -4,23 +4,16 @@
 @section('content')
     <div id="wrapper">
     @include('include/sidebar')
-
-
     <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
-
             @include('include/topbar')
-
             <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Edit Project</h1>
                     <p class="mb-4">Edit currently selected project in Starbugged</p>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -29,7 +22,7 @@
                         <div class="card-body">
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    <form action="/project/{{ $project->id }}" enctype="multipart/form-data"
+                                    <form action="{{ route('project.update' , $project->id) }}" enctype="multipart/form-data"
                                           method="post">
                                         @csrf
                                         @method('PATCH')
@@ -113,7 +106,7 @@
                                                 <button type="submit" class="btn btn-primary">
                                                     {{ __('Update Project') }}
                                                 </button>
-                                                <a href="/projects" class="btn btn-info">  {{ __('Back') }}</a>
+                                                <a href="{{ route('projects.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
                                             </div>
                                         </div>
                                     </form>

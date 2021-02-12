@@ -19,13 +19,14 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Issues for:<b><i> {{ $project->project_name }}</i></b> project</h1>
-          <p class="mb-4">Showing all issues for:<b><i> {{ $project->project_name }}</i></b> project</p>
+          <h1 class="h3 mb-2 text-gray-800">Tickets for:<b><i> {{ $project->project_name }}</i></b> project</h1>
+
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Ticket Data</h6>
+              <h4 class="m-0 font-weight-bold text-primary">Ticket Data</h4>
+                <p class="mb-4">Showing all issues for:<b><i> {{ $project->project_name }}</i></b> project</p>
             </div>
             <div class="card-body">
                 <div class="sbp-preview">
