@@ -4,21 +4,16 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
     @include('include/sidebar')
-
     <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
             @include('include/topbar')
-
             <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Issues</h1>
                     <p class="mb-4">Displaying all issues for all projects...</p>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -29,7 +24,7 @@
                                 <table class="table table-bordered" id="issues-table" width="100%" cellspacing="0">
                                     <tr>
                                         <th>Ticket ID</th>
-                                        <th>Project Name</th>
+                                        <th>Project ID</th>
                                         <th>OS</th>
                                         <th>Risk</th>
                                         <th>Issue</th>
@@ -41,9 +36,9 @@
                                     </tr>
                                     @foreach($issues as $issue)
                                         <tr>
-                                            <td><a href="issue/{{ $issue->id}}">{{  $issue->id  }}</a></td>
+                                            <td><a href="{{ route('issue.show' , $issue->id) }}">{{  $issue->id  }}</a></td>
                                             <td>
-                                                <a href="project/{{$issue->project_id}}">{{ $issue->project->project_name }}</a>
+                                                <a href="{{ route('project.show' , $issue->project_id) }}">{{ $issue->project_id }}</a>
                                             </td>
                                             <td> {{ $issue->os }}</td>
                                             <td> {{ $issue->risk }}</td>

@@ -30,6 +30,12 @@
          @include('include/logout')
      </div>
      <!-- Vue Dominion ends here -->
+
+     <!-- back to top scroll -->
+     <a class="scroll-to-top rounded" href="#top">
+         <i class="fas fa-angle-up"></i>
+     </a>
+
      <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

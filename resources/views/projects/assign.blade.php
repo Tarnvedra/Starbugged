@@ -4,21 +4,16 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
     @include('include/sidebar')
-
     <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
             <!-- Main Content -->
             <div id="content">
             @include('include/topbar')
-
             <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Projects</h1>
                     <p class="mb-4">Displaying all projects for user Assignment</p>
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -37,12 +32,12 @@
                                     </tr>
                                     @foreach($projects as $project)
                                         <tr>
-                                            <td><a href="/project/{{ $project->id }}">{{ $project->id }}</a></td>
-                                            <td>{{ $project->project }}</td>
+                                            <td><a href="{{ route('project.show', $project->id) }}">{{ $project->id }}</a></td>
+                                            <td>{{ $project->project_name }}</td>
                                             <td>{{ $project->description }}</td>
                                             @if ($user->useraccountlevel >= 60)
                                                 <td>
-                                                    <a href="/projects/assignment/{{ $project->id }}"
+                                                    <a href="{{ route('project.assignment.users' , $project->id) }}"
                                                        class="btn btn-success">  {{ __('Assign') }}</a>
                                                 </td>
                                             @endif
@@ -51,7 +46,7 @@
                                 </table>
                                 {{ $projects->links() }}
                                 <div class="pl-3">
-                                    <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+                                    <a href="{{ route('dashboard') }}" class="btn btn-info">  {{ __('Back') }}</a>
                                 </div>
                             </div>
                         </div>

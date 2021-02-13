@@ -4,20 +4,14 @@
  <!-- Page Wrapper -->
  <div id="wrapper">
     @include('include/sidebar')
-
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
+        <!-- Main Content -->
       <div id="content">
-
-        @include('include/topbar')
-
-        <!-- Begin Page Content -->
+      @include('include/topbar')
+      <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
+            <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">View Profile</h1>
           <p class="mb-4">view your current profile</p>
 
@@ -44,30 +38,19 @@
                                     <td>{{ $user->about_me ?? "unknown" }}</td>
                                 </tr>
                             </table>
-                            <a href="/admin/user/update" class="btn btn-success">  {{ __('Edit') }}</a>
-                            <a href="/home" class="btn btn-info">  {{ __('Back') }}</a>
+                            <a href="{{ route('admin.profile.update') }}" class="btn btn-success">  {{ __('Edit') }}</a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-info">  {{ __('Back') }}</a>
                     </div>
                 </div>
-
-            </div>
-
-
+                </div>
               </div>
-            </div>
           </div>
-
-        </div>
         <!-- /.container-fluid -->
-
-      </div>
+        </div>
       <!-- End of Main Content -->
-
-
-
-    </div>
+      </div>
     <!-- End of Content Wrapper -->
-
-  </div>
+    </div>
   <!-- End of Page Wrapper -->
-
+ </div>
 @endsection
