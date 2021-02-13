@@ -22,7 +22,7 @@
                                             <div class="card">
                                                 <div class="card-header"
                                                      style="background-color: mediumvioletred; color:white;">
-                                                    Task # <a href="{{ route('show.issue', ['id' => $backlog->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $backlog->id  }}</a>&nbsp<i>{{ $backlog->title }}</i></div>
+                                                    Task # <a href="{{ route('issue.show', ['id' => $backlog->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $backlog->id  }}</a>&nbsp<i>{{ $backlog->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $backlog->description }}</div>
                                                 <div class="card-body text-center">
                                                  Awaiting Assignment
@@ -46,7 +46,7 @@
                                             <div class="card">
                                                 <div class="card-header"
                                                      style="background-color: orange; color:white;">
-                                                    Task # <a href="{{ route('show.issue', ['id' => $work->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $work->id  }}</a>&nbsp<i>{{ $work->title }}</i></div>
+                                                    Task # <a href="{{ route('issue.show', ['id' => $work->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $work->id  }}</a>&nbsp<i>{{ $work->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $work->description }}</div>
                                                 <div class="card-body">
                                                     <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$work->assignment.'.jpg') }}" style="width: 30px; height:30px;">
@@ -71,7 +71,7 @@
                                             <div class="card">
                                                 <div class="card-header"
                                                      style="background-color: cadetblue; color:white;">
-                                                    Task # <a href="{{ route('show.issue', ['id' => $feedback->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $feedback->id  }}</a>&nbsp<i>{{ $feedback->title }}</i></div>
+                                                    Task # <a href="{{ route('issue.show', ['id' => $feedback->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $feedback->id  }}</a>&nbsp<i>{{ $feedback->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $feedback->description }}</div>
                                                 <div class="card-body">
                                                     <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$feedback->assignment.'.jpg') }}" style="width: 30px; height:30px;">
@@ -96,7 +96,7 @@
                                             <div class="card">
                                                 <div class="card-header"
                                                      style="background-color: darkseagreen; color:white;">
-                                                    Task # <a href="{{ route('show.issue', ['id' => $completion->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $completion->id  }}</a>&nbsp<i>{{ $completion->title }}</i></div>
+                                                    Task # <a href="{{ route('issue.show', ['id' => $completion->id]) }}" style="color:whitesmoke; text-decoration: none">{{  $completion->id  }}</a>&nbsp<i>{{ $completion->title }}</i></div>
                                                 <div class="card-title pt-3 text-center">{{ $completion->description }}</div>
                                                 <div class="card-body">
                                                     <img class="img-profile rounded-circle" src="{{ asset('/images/users/'.$completion->assignment.'.jpg') }}" style="width: 30px; height:30px;">
