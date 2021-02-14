@@ -8,10 +8,11 @@ use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
-use App\User;
-use App\Role;
+use App\User;;
 use App\Project;
 use App\Issue;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class BoardController extends Controller
 {

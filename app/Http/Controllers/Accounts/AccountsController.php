@@ -129,12 +129,42 @@ class AccountsController extends Controller
 
     public function debug(Factory $view): View
     {
-        $users       = User::all();
+        $users       = User::query()->with(['roles.permissions'])->get();
         $permissions = Permission::query()->get();
+        $roles       = Role::query()->get();
         $user = auth()->user();
-        //$roles       = Role::query()->get();
-        //dd($users,$permissions);
 
-        return $view->make('admin/debug', compact('permissions', 'user','users'));
+        //dd($users,$permissions, $roles);
+
+        return $view->make('admin/debug', compact('permissions', 'roles','user','users'));
+    }
+
+    public function acl()
+    {
+        // transfer from useraccountlevel access control to spatie acl roles and permissions
+        $users = User::all();
+        foreach($users as $user)
+        {
+            switch ($user->useraccountlevel) {
+                case 90:
+                    $user->syncRoles('admin');
+                    break;
+                case 60:
+                    $user->syncRoles('manager');
+                    break;
+                case 50:
+                    $user->syncRoles('coder');
+                    break;
+                case 40:
+                    $user->syncRoles('tester');
+                    break;
+                case 20:
+                    $user->syncRoles('reporter');
+                    break;
+                default:
+                    $user->syncRoles('guest');
+
+            }
+        }
     }
 }

@@ -33,9 +33,11 @@ Route::group(['middleware' => 'can:admin.view'], function() {
     Route::get('/admin/user/profile', [AccountsController::class, 'profile'])->name('admin.profile');
     Route::patch('/admin/user/store', [AccountsController::class, 'storeProfile'])->name('admin.profile.store');
     Route::get('/admin/user/update', [AccountsController::class, 'updateProfile'])->name('admin.profile.update');
-
+// test routes
     Route::get('/admin/debug', [AccountsController::class, 'debug'])->name('admin.debug');
+    Route::get('/admin/transfer', [AccountsController::class, 'acl'])->name('admin.transfer');
 });
+
 
 
 // Projects routes
