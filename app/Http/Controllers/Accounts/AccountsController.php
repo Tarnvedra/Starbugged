@@ -11,9 +11,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use App\User;
-use App\Role;
 use App\Project;
 use App\Issue;
+use Illuminate\View\Factory;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AccountsController extends Controller
 {
@@ -122,5 +124,17 @@ class AccountsController extends Controller
     {
         $user = auth()->user();
         return $view->make('admin/editprofile' , ['user' => $user]);
+    }
+
+
+    public function debug(Factory $view): View
+    {
+        $users       = User::all();
+        $permissions = Permission::query()->get();
+        $user = auth()->user();
+        //$roles       = Role::query()->get();
+        //dd($users,$permissions);
+
+        return $view->make('admin/debug', compact('permissions', 'user','users'));
     }
 }

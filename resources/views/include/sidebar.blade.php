@@ -29,23 +29,30 @@
         Projects
     </li>
 
+@can('admin.view')
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-           aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Administration</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Administration Tasks:</h6>
-                <a class="collapse-item" href="{{ route('project.create') }}">Create Project</a>
-                <a class="collapse-item" href="#">Assign Issues</a>
-                <a class="collapse-item" href="{{ route('admin.home') }}">User Management</a>
-                <a class="collapse-item" href="{{ route('project.assign') }}">Assign Users</a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true"
+               aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Administration</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Administration Tasks:</h6>
+                    @can('admin.create.project')
+                        <a class="collapse-item" href="{{ route('project.create') }}">Create Project</a>
+                    @endcan
+                    <a class="collapse-item" href="#">Assign Issues</a>
+                    <a class="collapse-item" href="{{ route('admin.home') }}">User Management</a>
+                    @can('admin.update.project_users')
+                        <a class="collapse-item" href="{{ route('project.assign') }}">Assign Users</a>
+                    @endcan
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    @endcan
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -57,7 +64,9 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Project Tasks</h6>
                 <a class="collapse-item" href="{{ route('projects.home') }}">View All Projects</a>
-                <a class="collapse-item" href="#">Delete Project</a>
+                @can('admin.delete.project')
+                    <a class="collapse-item" href="#">Delete Project</a>
+                @endcan
             </div>
         </div>
     </li>

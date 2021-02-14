@@ -25,13 +25,18 @@ Route::post('/', [HomeController::class, 'logout'])->name('logout.app');
 Route::get('/dashboard', [AccountsController::class, 'dashboard'])->name('dashboard');
 
 // administration routes
-Route::get('/admin/users', [AccountsController::class , 'admin'])->name('admin.home');
-Route::get('/admin/users/{id}/edit', [AccountsController::class, 'edit'])->name('admin.edit');
-Route::patch('/admin/users/{id}', [AccountsController::class, 'update'])->name('admin.update');
-Route::delete('/admin/users/{id}', [AccountsController::class, 'destroy'])->name('admin.delete');
-Route::get('/admin/user/profile', [AccountsController::class, 'profile'])->name('admin.profile');
-Route::patch('/admin/user/store', [AccountsController::class, 'storeProfile'])->name('admin.profile.store');
-Route::get('/admin/user/update', [AccountsController::class, 'updateProfile'])->name('admin.profile.update');
+Route::group(['middleware' => 'can:admin.view'], function() {
+    Route::get('/admin/users', [AccountsController::class, 'admin'])->name('admin.home');
+    Route::get('/admin/users/{id}/edit', [AccountsController::class, 'edit'])->name('admin.edit');
+    Route::patch('/admin/users/{id}', [AccountsController::class, 'update'])->name('admin.update');
+    Route::delete('/admin/users/{id}', [AccountsController::class, 'destroy'])->name('admin.delete');
+    Route::get('/admin/user/profile', [AccountsController::class, 'profile'])->name('admin.profile');
+    Route::patch('/admin/user/store', [AccountsController::class, 'storeProfile'])->name('admin.profile.store');
+    Route::get('/admin/user/update', [AccountsController::class, 'updateProfile'])->name('admin.profile.update');
+
+    Route::get('/admin/debug', [AccountsController::class, 'debug'])->name('admin.debug');
+});
+
 
 // Projects routes
 Route::get('/projects', [ProjectsController::class ,'index'])->name('projects.home');
