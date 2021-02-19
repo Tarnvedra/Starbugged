@@ -10,10 +10,9 @@
             <div id="content">
                 @include('include/topbar')
                 <div class="container-fluid">
-
                     <div class="card-body">
                         <div class="row">
-                            <table class="table table-condensed table-hover">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>Permission</th>
@@ -25,9 +24,8 @@
                                 <tbody>
                                 @foreach($permissions as $permission)
                                     <tr>
-                                        <td><span style="font-family: monospace">{{ $permission->name }}</span></td>
+                                        <td>{{ $permission->name }}</td>
                                         @foreach($roles as $role)
-                                            <?php /** @var $role \Spatie\Permission\Models\Role */ ?>
                                             <td>
                                                 @if($role->hasPermissionTo($permission))
                                                     <span class="text-green" style="color:darkseagreen;">Yes</span>
@@ -45,19 +43,16 @@
 
                     <div class="row">
                         <div class="card-body">
-                            <h4>Roles</h4>
-                            <table class="table table-condensed">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Role Name</th>
                                     <th>Users</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($roles as $role)
                                     <tr>
-                                        <td>{{ $role->id }}</td>
                                         <td>{{ $role->name }}</td>
                                         <td>
                                             @foreach($role->users as $user)
@@ -73,13 +68,12 @@
 
                     <div class="row">
                         <div class="card-body">
-                            <h4>Direct Permissions</h4>
-                            <table class="table table-condensed">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Extra Permissions</th>
+                                    <th>Direct Permissions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -89,7 +83,7 @@
                                         <td>{{ $user->name }}</td>
                                         <td>
                                             @foreach($user->permissions as $permission)
-                                                <span style="font-family: monospace">{{ $permission->name }}</span><br>
+                                               {{ $permission->name }}<br>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -98,7 +92,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
