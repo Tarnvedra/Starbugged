@@ -127,7 +127,7 @@ class AccountsController extends Controller
     }
 
 
-    public function debug(Factory $view): View
+    public function permissions(Factory $view): View
     {
         $users       = User::query()->with(['roles.permissions'])->get();
         $permissions = Permission::query()->get();

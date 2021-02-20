@@ -34,8 +34,8 @@ Route::group(['middleware' => 'can:admin.view'], function() {
     Route::patch('/admin/user/store', [AccountsController::class, 'storeProfile'])->name('admin.profile.store');
     Route::get('/admin/user/update', [AccountsController::class, 'updateProfile'])->name('admin.profile.update');
 // test routes
-    Route::get('/admin/debug', [AccountsController::class, 'debug'])->name('admin.debug');
-    Route::get('/admin/transfer', [AccountsController::class, 'acl'])->name('admin.transfer');
+    Route::get('/admin/permissions', [AccountsController::class, 'permissions'])->name('admin.permissions');
+    Route::get('/admin/transfer', [AccountsController::class, 'acl'])->name('admin.transfer'); //run once only
 });
 
 

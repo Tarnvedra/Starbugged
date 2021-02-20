@@ -49,6 +49,9 @@
                     @can('admin.update.project_users')
                         <a class="collapse-item" href="{{ route('project.assign') }}">Assign Users</a>
                     @endcan
+                    @can('admin.permissions')
+                        <a class="collapse-item" href="{{ route('admin.permissions') }}">Admin Permissions</a>
+                    @endcan
                 </div>
             </div>
         </li>
