@@ -51,19 +51,17 @@
                                                     <tr>
                                                         <th>User</th>
                                                         <th class="pl-4">Assign</th>
-                                                        <th> Acc Level</th>
                                                     </tr>
                                                     <tr>
                                                         @foreach($users as $user)
-                                                            @if ($user->useraccountlevel >= 50 && $user->useraccountlevel <=60)
+                                                            @can('admin.update.project')
                                                                 <td>{{ $user->username }}</td>
                                                                 <td><input type="checkbox" id="assignment"
                                                                            name="assignment[]"
                                                                            class="form-control @error('assignment') is-invalid @enderror"
                                                                            value="{{ $user->username }}" autocomplete=""
                                                                            autofocus></td>
-                                                                <td>{{ $user->useraccountlevel }}</td>
-                                                            @endif
+                                                            @endcan
                                                     </tr>
                                                     @endforeach
                                                 </table>

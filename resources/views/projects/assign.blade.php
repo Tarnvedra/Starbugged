@@ -26,21 +26,21 @@
                                         <th>ID</th>
                                         <th>Project</th>
                                         <th>Description</th>
-                                        @if ($user->useraccountlevel >= 60)
+                                        @can('admin.update.project')
                                             <th>Assign Users</th>
-                                        @endif
+                                        @endcan
                                     </tr>
                                     @foreach($projects as $project)
                                         <tr>
                                             <td><a href="{{ route('project.show', $project->id) }}">{{ $project->id }}</a></td>
                                             <td>{{ $project->project_name }}</td>
                                             <td>{{ $project->description }}</td>
-                                            @if ($user->useraccountlevel >= 60)
+                                            @can('admin.update.project')
                                                 <td>
                                                     <a href="{{ route('project.assignment.users' , $project->id) }}"
                                                        class="btn btn-success">  {{ __('Assign') }}</a>
                                                 </td>
-                                            @endif
+                                            @endcan
                                         </tr>
                                     @endforeach
                                 </table>

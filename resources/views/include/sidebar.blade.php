@@ -57,6 +57,7 @@
         </li>
     @endcan
 
+    @can('projects.view')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -73,7 +74,10 @@
             </div>
         </div>
     </li>
+    @endcan
+
     <!-- Nav Item - Utilities Collapse Menu -->
+    @can('issues.view')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIssues" aria-expanded="true"
            aria-controls="collapseIssues">
@@ -89,11 +93,12 @@
             </div>
         </div>
     </li>
-
+  @endcan
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
+    @can('tasks.view')
     <li class="sidebar-heading">
         User Tasks
     </li>
@@ -114,23 +119,27 @@
             </div>
         </div>
     </li>
+   @endcan
 
-
+    @can('tasks.watching')
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('watch.home') }}">
             <i class="fas fa-fw fa-eye"></i>
             <span>Watching</span></a>
     </li>
+    @endcan
 
-
-    <!-- Nav Item - Tables -->
+    @can('profile.view')
+<!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.profile') }}">
             <i class="fas fa-fw fa-cog"></i>
             <span>Profile</span></a>
     </li>
+    @endcan
 
+    @can('fast.logout')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
            onclick="event.preventDefault();
@@ -141,6 +150,8 @@
             @csrf
         </form>
     </li>
+    @endcan
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

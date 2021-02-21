@@ -40,7 +40,7 @@
                                     </table>
 
                                     <div class="row">
-                                        @if ($user->useraccountlevel >= 60)
+                                        @can('admin.delete.project')
                                             <a class="btn btn-danger" href="{{ route('project.destroy' , $project->id) }}"
                                                onclick="event.preventDefault();
                                                 document.getElementById('delete-form').submit();">
@@ -52,7 +52,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                        @endif
+                                        @endcan
                                         <a href="{{ route('projects.home') }}"
                                            class="btn btn-info">  {{ __('All Projects') }}</a>
                                         <a href="{{ route('issues.home') }}"

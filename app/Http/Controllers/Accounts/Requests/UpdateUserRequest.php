@@ -9,8 +9,7 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-                'username' => 'required',
-                'useraccountlevel' => 'required',
+                'username' => 'required'
         ];
 
     }
