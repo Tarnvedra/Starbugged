@@ -21,6 +21,18 @@ class AclInitialisation extends Migration
             return [$permission => Permission::create(['name' => $permission])];
         });
 
+
+        // roles creation
+        Role::create(['name' =>'super_admin', 'guard_name' => 'web']);
+        Role::create(['name' =>'admin', 'guard_name' => 'web']);
+        Role::create(['name' =>'manager', 'guard_name' => 'web']);
+        Role::create(['name' =>'coder', 'guard_name' => 'web']);
+        Role::create(['name' =>'tester', 'guard_name' => 'web']);
+        Role::create(['name' =>'reporter', 'guard_name' => 'web']);
+        Role::create(['name' =>'guest', 'guard_name' => 'web']);
+        Role::create(['name' =>'deactivated', 'guard_name' => 'web']);
+
+        // give permissions to roles
         Role::findByName('super_admin')->givePermissionTo(self::PERMISSIONS);
         Role::findByName('admin')->givePermissionTo(self::PERMISSIONS);
         Role::findByName('manager')->givePermissionTo(self::PERMISSIONS);
