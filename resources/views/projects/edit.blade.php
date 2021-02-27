@@ -74,22 +74,22 @@
                                                     <tr>
                                                         <th>User</th>
                                                         <th class="pl-4">Assign</th>
-                                                        <th> Acc Level</th>
+
                                                     </tr>
                                                     @foreach($users as $user)
                                                         <tr>
-                                                            @if ($user->useraccountlevel >= 50 && $user->useraccountlevel <=60)
-                                                                <td><label class="pl-3"
-                                                                           for="assignment">{{ $user->username }}</label>
+                                                            @can('admin.update.project')
+                                                                <td>
+                                                                    <label class="pl-3" for="assignment">{{ $user->username }}</label>
                                                                 </td>
-                                                                <td><input type="checkbox" id="assignment"
+                                                                <td>
+                                                                    <input type="checkbox" id="assignment"
                                                                            name="assignment[]"
                                                                            class="form-control @error('assignment') is-invalid @enderror"
-                                                                           value="{{ $user->username }}" autocomplete=""
-                                                                           checked="checked" autofocus></td>
-                                                                <td>{{ $user->useraccountlevel }}</td>
+                                                                           value="{{ $user->username }}" autocomplete="" autofocus>
+                                                                </td>
                                                         </tr>
-                                                        @endif
+                                                        @endcan
                                                     @endforeach
                                                 </table>
                                             </div>

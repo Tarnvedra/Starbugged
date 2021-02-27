@@ -25,40 +25,48 @@
                                     <th>ID</th>
                                     <th>Project</th>
                                     <th>Description</th>
-                                    @if ($user->useraccountlevel >= 60)
+                                    @can('admin.update.project')
                                         <th>Edit Project</th>
-                                    @endif
-                                    @if ($user->useraccountlevel >= 20)
+                                    @endcan
+                                    @can('project.issue.create')
                                         <th>Create Issue</th>
+                                    @endcan
+                                    @can('project.issues.view')
                                         <th>Project Issues</th>
+                                    @endcan
+                                    @can('project.view.taskboard')
                                         <th>Project Overview</th>
-                                    @endif
+                                    @endcan
                                     <tr>
                                     @foreach($projects as $project)
                                         <tr>
                                             <td><a href="{{ route('project.show', $project->id) }}">{{ $project->id }}</a></td>
                                             <td><a href="{{ route('project.show', $project->id) }}">{{ $project->project_name}}</a></td>
                                             <td>{{ $project->description }}</td>
-                                            @if ($user->useraccountlevel >= 60)
+                                            @can('admin.update.project')
                                                 <td>
                                                     <a href="{{ route('project.edit', $project->id) }}"
                                                        class="btn btn-info">  {{ __('Edit') }}</a>
                                                 </td>
-                                            @endif
-                                            @if ($user->useraccountlevel >= 20)
+                                            @endcan
+                                            @can('project.issue.create')
                                                 <td>
                                                     <a href="{{ route('issue.create' , $project->id) }}"
                                                        class="btn btn-primary">  {{ __('Create') }}</a>
                                                 </td>
+                                            @endcan
+                                            @can('project.issues.view')
                                                 <td>
                                                     <a href="{{ route('issues.project', $project->id) }}"
                                                        class="btn btn-danger">  {{ __('View') }}</a>
                                                 </td>
+                                            @endcan
+                                            @can('project.view.taskboard')
                                                 <td>
                                                     <a href="{{ route('taskboard', ['project' => $project]) }}"
                                                        class="btn btn-success">  {{ __('Taskboard') }}</a>
                                                 </td>
-                                            @endif
+                                            @endcan
                                         </tr>
 
                                     @endforeach

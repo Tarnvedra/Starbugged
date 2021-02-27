@@ -24,8 +24,7 @@ class UserTableSeeder extends Seeder
           "profile_image" => $user->profile_image,
           "about_me" => $user->about_me,
           'email' => $user->email,
-          'password' => Hash::make($user->password),
-          'useraccountlevel' => $user->useraccountlevel
+          'password' => Hash::make($user->password)
       ));
     }
 }

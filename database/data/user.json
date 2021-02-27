@@ -3,202 +3,182 @@
         "name": "Administrator",
         "username": "Admin",
         "job_title": "Administrator",
-        "profile_image": "",
+        "profile_image": "images/users/Administrator.jpg",
         "about_me": "",
         "email": "admin@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "90"
+        "password": "1234567890"
     },
     {
         "name": "test",
         "username": "Testuser",
         "job_title": "Tester",
-        "profile_image": "",
+        "profile_image": "images/users/test.jpg",
         "about_me": "",
         "email": "test@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "90"
+        "password": "1234567890"
     },
     {
         "name": "Coder Caitlin",
         "username": "Coder Caitlin",
         "job_title": "Web Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Coder Caitlin.jpg",
         "about_me": "",
         "email": "ccat@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Coder Charlotte",
         "username": "Coder Charlotte",
         "job_title": "Android Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Coder Charlotte.jpg",
         "about_me": "",
         "email": "cchar@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Coder Colin",
         "username": "Coder Colin",
         "job_title": "IOS Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Coder Colin.jpg",
         "about_me": "",
         "email": "codercolin@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Guest",
         "username": "Guest",
         "job_title": "Guest",
-        "profile_image": "",
+        "profile_image": "images/users/Guest.jpg",
         "about_me": "",
         "email": "guest@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "10"
+        "password": "1234567890"
     },
     {
         "name": "Ian Issuereporter",
         "username": "Ian Issuereporter",
-        "job_title": "QA Tester",
-        "profile_image": "",
+        "job_title": "Reporter",
+        "profile_image": "images/users/Ian Issuereporter.jpg",
         "about_me": "",
         "email": "Ianissue@coder.com",
-        "password": "1234567890",
-        "useraccountlevel": "20"
+        "password": "1234567890"
     },
     {
         "name": "Isabella Issuereporter",
         "username": "Isabella Issuereporter",
-        "job_title": "QA Tester",
-        "profile_image": "",
+        "job_title": "Reporter",
+        "profile_image": "images/users/Isabella Issuereporter.jpg",
         "about_me": "",
         "email": "isabellis@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "20"
+        "password": "1234567890"
     },
     {
         "name": "Issac Issuereporter",
         "username": "Issac Issuereporter",
-        "job_title": "QA Tester",
-        "profile_image": "",
+        "job_title": "Reporter",
+        "profile_image": "images/users/Issac Issuereporter.jpg",
         "about_me": "",
         "email": "iissue@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "20"
+        "password": "1234567890"
     },
     {
         "name": "Manager Maureen",
         "username": "Manager Maureen",
         "job_title": "Manager",
-        "profile_image": "",
+        "profile_image": "images/users/Manager Maureen.jpg",
         "about_me": "",
         "email": "mmaureen@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "60"
+        "password": "1234567890"
     },
     {
         "name": "Manager Maurice",
         "username": "Manager Maurice",
         "job_title": "Manager",
-        "profile_image": "",
+        "profile_image": "images/users/Manager Maurice.jpg",
         "about_me": "",
         "email": "mmo@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "60"
+        "password": "1234567890"
     },
     {
         "name": "Manager Melonie",
         "username": "Manager Melonie",
         "job_title": "Manager",
-        "profile_image": "",
+        "profile_image": "images/users/Manager Melonie.jpg",
         "about_me": "",
         "email": "memelonie@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "60"
+        "password": "1234567890"
     },
     {
         "name": "Paul Colley",
         "username": "Paul Colley",
         "job_title": "Web Developer",
-        "profile_image": "",
+        "profile_image": "images/users/none.jpg",
         "about_me": "",
         "email": "pcolley@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Programmer Pauline",
         "username": "Programmer Pauline",
         "job_title": "Web Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Programmer Pauline.jpg",
         "about_me": "",
         "email": "ppauline@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Programmer Pete",
         "username": "Programmer Pete",
         "job_title": "Android Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Programmer Pete.jpg",
         "about_me": "",
         "email": "ppete@starbugged.com",
         "email_verified_at": "NULL",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Programmer Phoebe",
         "username": "Programmer Phoebe",
         "job_title": "IOS Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Programmer Phoebe.jpg",
         "about_me": "",
         "email": "ppho@starbugged.com",
         "email_verified_at": "NULL",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
         "name": "Programmer Patricia",
         "username": "Programmer Patricia",
         "job_title": ".NET Developer",
-        "profile_image": "",
+        "profile_image": "images/users/Programmer Patricia.jpg",
         "about_me": "",
         "email": "ppatricia@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "50"
+        "password": "1234567890"
     },
     {
-        "name": "Tania Ticketreporter",
-        "username": "Tania Ticketreporter",
-        "job_title": "QA Tester",
-        "profile_image": "",
+        "name": "Tania Tester",
+        "username": "Tania Tester",
+        "job_title": "QA",
+        "profile_image": "images/users/Tania Tester.jpg",
         "about_me": "",
-        "email": "ttrepo@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "20"
+        "email": "ttqa@starbugged.com",
+        "password": "1234567890"
     },
     {
-        "name": "Terence Ticketreporter",
-        "username": "Terence Ticketreporter",
-        "job_title": "QA Tester",
-        "profile_image": "",
+        "name": "Terence Tester",
+        "username": "Terence Tester",
+        "job_title": "QA",
+        "profile_image": "images/users/Terence Tester.jpg",
         "about_me": "",
-        "email": "terencet@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "20"
+        "email": "terenceqa@starbugged.com",
+        "password": "1234567890"
     },
     {
-        "name": "Thomas Ticketreporter",
-        "username": "Thomas Ticketreporter",
-        "job_title": "QA Tester",
-        "profile_image": "",
+        "name": "Thomas Tester",
+        "username": "Thomas Tester",
+        "job_title": "QA",
+        "profile_image": "images/users/Thomas Tester.jpg",
         "about_me": "",
-        "email": "tomtckt@starbugged.com",
-        "password": "1234567890",
-        "useraccountlevel": "20"
+        "email": "tomqa@starbugged.com",
+        "password": "1234567890"
     }
 ]

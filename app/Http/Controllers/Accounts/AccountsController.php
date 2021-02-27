@@ -11,9 +11,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
 use App\User;
-use App\Role;
 use App\Project;
 use App\Issue;
+use Illuminate\View\Factory;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AccountsController extends Controller
 {
@@ -35,32 +37,31 @@ class AccountsController extends Controller
         $users = User::orderBy('id', 'asc')->paginate(11);
         $user_roles = Role::get();
         return $view->make('admin/manageusers',
-            [   'users' => $users,
+            ['users' => $users,
                 'user' => $user,
                 'user_roles' => $user_roles
             ]);
     }
 
-    public function edit(ViewFactory $view,$id): View
+    public function edit(ViewFactory $view, $id): View
     {
         $user = auth()->user();
         $editedUser = User::find($id);
         $roles = Role::all();
-        return $view->make('admin/edit' ,
-        [
-            'editedUser' => $editedUser,
-            'roles' => $roles,
-            'user' => $user
-        ]);
+        return $view->make('admin/edit',
+            [
+                'editedUser' => $editedUser,
+                'roles' => $roles,
+                'user' => $user
+            ]);
     }
 
-    public function update(UpdateUserRequest $request,ResponseFactory $response, $id): RedirectResponse
+    public function update(UpdateUserRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
-       $user_update = User::find($id);
+        $user_update = User::find($id);
         //$roles = Role::find($user->id);
         $user_update->username = $request->input('username');
         //$roles->roles = $request->input('roles');
-        $user_update->useraccountlevel = $request->input('useraccountlevel');
         $user_update->save();
         return $response->redirectTo('admin-main');
     }
@@ -85,42 +86,91 @@ class AccountsController extends Controller
         if ($priority > 0 && $issues > 0) {
             $priorityPercentage = ($priority / $issues) * 100;
             $priorityPercentage = round($priorityPercentage, 0);
-        }
-        else {
+        } else {
             $priorityPercentage = 0;
         }
 
         return $view->make('home',
-            [ 'user' => $user,
-              'projects' => $projects,
-              'issues' => $issues,
-              'projectsCount' => $projectsCount,
-              'priority' => $priority,
-              'status' => $status,
-              'statusPercentage' => $statusPercentage,
-              'priorityPercentage' => $priorityPercentage]);
+            ['user' => $user,
+                'projects' => $projects,
+                'issues' => $issues,
+                'projectsCount' => $projectsCount,
+                'priority' => $priority,
+                'status' => $status,
+                'statusPercentage' => $statusPercentage,
+                'priorityPercentage' => $priorityPercentage]);
     }
 
     public function profile(ViewFactory $view): View
     {
         $user = auth()->user();
-        return $view->make('admin/profile' , ['user' => $user]);
+        return $view->make('admin/profile', ['user' => $user]);
     }
 
     public function storeProfile(UpdateProfileRequest $request, ResponseFactory $response): RedirectResponse
     {
-       $user = auth()->user();
-       $user->job_title = $request->input('jobtitle');
-       // will need image file for this
-       $user->profile_image = $request->input('profileimage');
-       $user->about_me = $request->input('aboutme');
-       $user->update();
-       return $response->redirectTo('AccountsController@profile');
+        $user = auth()->user();
+        $user->job_title = $request->input('jobtitle');
+        // will need image file for this
+        $user->profile_image = $request->input('profileimage');
+        $user->about_me = $request->input('aboutme');
+        $user->update();
+        return $response->redirectTo('AccountsController@profile');
     }
 
     public function updateProfile(ViewFactory $view): View
     {
         $user = auth()->user();
-        return $view->make('admin/editprofile' , ['user' => $user]);
+        return $view->make('admin/editprofile', ['user' => $user]);
+    }
+
+
+    public function permissions(Factory $view): View
+    {
+        $users = User::query()->with(['roles.permissions'])->get();
+        $permissions = Permission::query()->get();
+        $roles = Role::query()->get();
+        $user = auth()->user();
+
+        //dd($users,$permissions, $roles);
+
+        return $view->make('admin/debug', compact('permissions', 'roles', 'user', 'users'));
+    }
+
+    public function acl()
+    {
+        // temp solution plan to make user management full edit of roles and permissions per user and user details
+        // give roles to users in user-seeder for access control in spatie acl roles and permissions
+        $users = User::query()->with(['roles.permissions'])->get();
+        foreach ($users as $user) {
+            if ($user->job_title === 'Administrator' || $user->name === 'test') {
+                $user->syncRoles('admin');
+            } elseif ($user->job_title === 'Manager') {
+                $user->syncRoles('manager');
+            }
+
+            if ($user->job_title === 'Web Developer') {
+                $user->syncRoles('coder');
+            } elseif ($user->job_title === 'Android Developer') {
+                $user->syncRoles('coder');
+            } elseif ($user->job_title === 'IOS Developer') {
+                $user->syncRoles('coder');
+            } elseif ($user->job_title === '.NET Developer') {
+                $user->syncRoles('coder');
+            }
+
+            if ($user->job_title === 'QA') {
+                $user->syncRoles('tester');
+            } elseif ($user->job_title === 'Reporter') {
+                $user->syncRoles('reporter');
+            }
+
+            if ($user->job_title === 'Guest') {
+                $user->syncRoles('guest');
+            } elseif ($user->job_title === null || $user->job_title === 'unknown') {
+                $user->syncRoles('deactivated');
+            }
+        }
+        echo('Roles Completed please move route inside admin routes when done');
     }
 }

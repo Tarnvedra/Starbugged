@@ -109,7 +109,7 @@ class IssuesController extends Controller
         //dd($project->users_assigned);
 
         $user = auth()->user();
-        $users_assigned = User::where('useraccountlevel','=','50')->get();
+        $users_assigned = User::all();
         //dd($users_assigned);
         //$users_assigned =  Project::find($project_id)->where('users_assigned' ,'=',  $project->users_assigned)->get();
 

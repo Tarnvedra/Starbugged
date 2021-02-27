@@ -28,7 +28,7 @@
         "guard_name": "web"
     },
     {
-        "name": "ban",
+        "name": "deactivated",
         "guard_name": "web"
     }
 ]

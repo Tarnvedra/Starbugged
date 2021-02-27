@@ -29,24 +29,35 @@
         Projects
     </li>
 
+@can('admin.view')
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-           aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Administration</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Administration Tasks:</h6>
-                <a class="collapse-item" href="{{ route('project.create') }}">Create Project</a>
-                <a class="collapse-item" href="#">Assign Issues</a>
-                <a class="collapse-item" href="{{ route('admin.home') }}">User Management</a>
-                <a class="collapse-item" href="{{ route('project.assign') }}">Assign Users</a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true"
+               aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Administration</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Administration Tasks:</h6>
+                    @can('admin.create.project')
+                        <a class="collapse-item" href="{{ route('project.create') }}">Create Project</a>
+                    @endcan
+                    <a class="collapse-item" href="#">Assign Issues</a>
+                    <a class="collapse-item" href="{{ route('admin.home') }}">User Management</a>
+                    @can('admin.update.project_users')
+                        <a class="collapse-item" href="{{ route('project.assign') }}">Assign Users</a>
+                    @endcan
+                    @can('admin.permissions')
+                        <a class="collapse-item" href="{{ route('admin.permissions') }}">Admin Permissions</a>
+                    @endcan
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+    @endcan
 
+    @can('projects.view')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -57,11 +68,16 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Project Tasks</h6>
                 <a class="collapse-item" href="{{ route('projects.home') }}">View All Projects</a>
-                <a class="collapse-item" href="#">Delete Project</a>
+                @can('admin.delete.project')
+                    <a class="collapse-item" href="#">Delete Project</a>
+                @endcan
             </div>
         </div>
     </li>
+    @endcan
+
     <!-- Nav Item - Utilities Collapse Menu -->
+    @can('issues.view')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIssues" aria-expanded="true"
            aria-controls="collapseIssues">
@@ -77,11 +93,12 @@
             </div>
         </div>
     </li>
-
+  @endcan
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
+    @can('tasks.view')
     <li class="sidebar-heading">
         User Tasks
     </li>
@@ -102,23 +119,27 @@
             </div>
         </div>
     </li>
+   @endcan
 
-
+    @can('tasks.watching')
     <!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('watch.home') }}">
             <i class="fas fa-fw fa-eye"></i>
             <span>Watching</span></a>
     </li>
+    @endcan
 
-
-    <!-- Nav Item - Tables -->
+    @can('profile.view')
+<!-- Nav Item - Tables -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.profile') }}">
             <i class="fas fa-fw fa-cog"></i>
             <span>Profile</span></a>
     </li>
+    @endcan
 
+    @can('fast.logout')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}"
            onclick="event.preventDefault();
@@ -129,6 +150,8 @@
             @csrf
         </form>
     </li>
+    @endcan
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
