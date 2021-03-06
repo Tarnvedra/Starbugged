@@ -18,7 +18,7 @@ class CreateIssueCommentsTable extends Migration
             $table->text('body');
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('task_id')->references('task_id')->on('issues');
+            $table->foreign('task_id')->references('id')->on('issues');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
