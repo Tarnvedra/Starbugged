@@ -12,7 +12,7 @@
             <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Issue No: #{{ $issue->id }}</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Issue No: #{{ $issue->id }} {{ $issue->title }}</h1>
                     <p class="mb-4">Showing ticket data for issue #{{ $issue->id }}</p>
 
                     <!-- DataTales Example -->
@@ -52,13 +52,55 @@
                                             <td> {{ $issue->updated_at }}</td>
                                         </tr>
                                     </table>
-                                    <a href="{{ route('issue.edit', $issue->id) }}"
-                                       class="btn btn-success">  {{ __('Update Issue') }}</a>
-                                    <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Ticket Comment</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="sbp-preview">
+                                <div class="sbp-preview-content">
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                      <div class="card shadow mb-4">
+                          <div class="card-header py-3">
+                              <h6 class="m-0 font-weight-bold text-primary">Ticket Actions</h6>
+                          </div>
+                          <div class="card-body">
+                              <div class="sbp-preview">
+                                  <div class="sbp-preview-content">
+                                        <a href="{{ route('issue.edit', $issue->id) }}"
+                                           class="btn btn-success">  {{ __('Edit Issue') }}</a>
+
+
+                                       <a href="{{ route('issue.comment', $issue->id) }}"
+                                           class="btn btn-secondary">  {{ __('Add a Comment') }}</a>
+                                      <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
                     <!-- /.container-fluid -->
                 </div>
                 <!-- End of Main Content -->
