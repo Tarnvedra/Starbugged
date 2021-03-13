@@ -14,7 +14,7 @@
 use App\Http\Controllers\Accounts\HomeController;
 use App\Http\Controllers\Accounts\AccountsController;
 use App\Http\Controllers\Issues\IssuesController;
-use App\Http\Controllers\Issues\IssuesCommentController;
+use App\Http\Controllers\Issues\IssueCommentController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Watching\WatchingController;
 use App\Http\Controllers\Board\BoardController;
@@ -96,7 +96,8 @@ Route::group(['middleware' => 'can:project.issues.view'], function () {
 
         Route::group(['middleware' => 'can:issue.update'], function () {
 
-            Route::get('issues/{id}', [IssuesCommentController::class, 'addComment'])->name('issue.comment');
+            Route::post('issue/{id}/create-comment', [IssueCommentController::class, 'store'])->name('issue.comment.create');
+            Route::get('issue/{id}/edit-comment', [IssueCommentController::class, 'edit'])->name('issue.comment.edit');
             Route::post('/issue/{project_id}', [IssuesController::class, 'store'])->name('issue.store');
             Route::get('/issue/{id}/edit', [IssuesController::class, 'edit'])->name('issue.edit');
             Route::patch('/issue/{id}', [IssuesController::class, 'update'])->name('issue.update');

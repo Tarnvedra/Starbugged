@@ -58,21 +58,31 @@
                     </div>
 
 
-
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Ticket Comment</h6>
+                        <div class="card-title">
+                            <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Ticket Comments</h6>
                         </div>
-                        <div class="card-body">
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
+                                    @if($comments !==null)
+                                        @foreach($comments as $comment)
 
-
-
-
-
-
-
+                                            <div class="card-header">
+                                        <div class="card-body">
+                                            {{ $comment->body }}
+                                        <div class="card-footer">
+                                            <img class="img-profile rounded-circle" src="{{ asset($comment->user->profile_image) }}" alt="" style="width: 30px; height:30px;">  {{ $comment->user->name }}
+                                            <div class="pull-right">
+                                            {{ $comment->created_at->toDayDateTimeString() }}
+                                            </div>
+                                        </div>
+                                            </div>
+                                            </div>
+                                            @endforeach
+                                    @else
+                                        <div>Currently this ticket has no comments</div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -91,11 +101,10 @@
                                   <div class="sbp-preview-content">
                                         <a href="{{ route('issue.edit', $issue->id) }}"
                                            class="btn btn-success">  {{ __('Edit Issue') }}</a>
+                                      <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#comment-create" >Add Comment</a>
 
-
-                                       <a href="{{ route('issue.comment', $issue->id) }}"
-                                           class="btn btn-secondary">  {{ __('Add a Comment') }}</a>
                                       <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
+                                      <createcomment-component route="{{ route('issue.comment.create', $issue->id ) }}" token="{{ csrf_token() }}"></createcomment-component>
                                   </div>
                               </div>
                           </div>
@@ -109,4 +118,7 @@
         </div>
         <!-- End of Page Wrapper -->
     </div>
+
+    @include('issues.modals.create')
+    @include('issues.modals.edit')
 @endsection

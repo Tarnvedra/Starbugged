@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Issues;
 
 use App\Http\Controllers\Issues\Requests\CreateIssueRequest;
 use App\Http\Controllers\Issues\Requests\UpdateIssueRequest;
+use App\IssueComment;
 use App\User;
 use App\Project;
 use App\Issue;
@@ -95,9 +96,12 @@ class IssuesController extends Controller
     {
         $issue = Issue::find($id);
         $user = auth()->user();
+        $comments = IssueComment::findorFail($issue->id)->all();
+
         return $view->make('issues/show', [
             'issue' => $issue,
-            'user'  => $user
+            'user'  => $user,
+            'comments' => $comments
         ]);
     }
 
