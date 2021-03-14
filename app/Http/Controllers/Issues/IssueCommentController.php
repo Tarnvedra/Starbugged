@@ -22,16 +22,12 @@ class IssueCommentController extends Controller
         $this->middleware('auth');
     }
 
-    public function delete()
+    public function destroy()
     {
 
     }
 
     public function edit()
-    {
-
-    }
-    public function update()
     {
 
     }

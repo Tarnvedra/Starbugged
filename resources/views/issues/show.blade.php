@@ -71,10 +71,16 @@
                                             <div class="card-header">
                                         <div class="card-body">
                                             {{ $comment->body }}
+                                            <a class="btn btn-outline-success" href="#" data-toggle="modal" data-target="#comment-edit" >Edit</a>
+                                            <a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#comment-delete" >Delete</a>
+                                            <editcomment-component route="{{ route('issue.comment.edit', $issue->id ) }}" body="{{ $comment->body }}"></editcomment-component>
+                                            <deletecomment-component route="{{ route('issue.comment.delete', $issue->id ) }}"></deletecomment-component>
+                                        </div>
                                         <div class="card-footer">
                                             <img class="img-profile rounded-circle" src="{{ asset($comment->user->profile_image) }}" alt="" style="width: 30px; height:30px;">  {{ $comment->user->name }}
                                             <div class="pull-right">
                                             {{ $comment->created_at->toDayDateTimeString() }}
+
                                             </div>
                                         </div>
                                             </div>
@@ -104,7 +110,7 @@
                                       <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#comment-create" >Add Comment</a>
 
                                       <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
-                                      <createcomment-component route="{{ route('issue.comment.create', $issue->id ) }}" token="{{ csrf_token() }}"></createcomment-component>
+                                      <createcomment-component route="{{ route('issue.comment.create', $issue->id ) }}"></createcomment-component>
                                   </div>
                               </div>
                           </div>
@@ -119,6 +125,5 @@
         <!-- End of Page Wrapper -->
     </div>
 
-    @include('issues.modals.create')
-    @include('issues.modals.edit')
+
 @endsection

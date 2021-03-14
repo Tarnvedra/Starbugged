@@ -13,6 +13,7 @@ use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
+use Exception;
 
 class IssuesController extends Controller
 {
@@ -96,11 +97,15 @@ class IssuesController extends Controller
     {
         $issue = Issue::find($id);
         $user = auth()->user();
-        $comments = IssueComment::findorFail($issue->id)->all();
+        try {
+            $comments = IssueComment::findorFail($issue->id)->all();
+        } catch (Exception $e) {
+            $comments = null;
+        }
 
         return $view->make('issues/show', [
             'issue' => $issue,
-            'user'  => $user,
+            'user' => $user,
             'comments' => $comments
         ]);
     }
