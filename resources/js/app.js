@@ -6,24 +6,32 @@
 
 require('./bootstrap');
 window.Vue = require('vue');
+
+// imports
 import '@mdi/font/css/materialdesignicons.css'
 import vuetify from './plugins/vuetify'
 Vue.use(vuetify);
 
+//dashboard
+Vue.component('priority-component', require('./components/dashboard/PriorityComponent.vue').default);
+Vue.component('status-component', require('./components/dashboard/StatusComponent.vue').default);
+Vue.component('piechart-component', require('./components/dashboard/PiechartComponent.vue').default);
 
-Vue.component('priority-component', require('./components/PriorityComponent.vue').default);
-Vue.component('status-component', require('./components/StatusComponent.vue').default);
-Vue.component('piechart-component', require('./components/PiechartComponent.vue').default);
-Vue.component('usertable-component', require('./components/UserTableComponent.vue').default);
+// user-management
+Vue.component('usertable-component', require('./components/user-management/UserTableComponent.vue').default);
+
+// issue comment
+Vue.component('createcomment-component', require('./components/comments/CreateCommentComponent.vue').default);
+Vue.component('editcomment-component', require('./components/comments/EditCommentComponent.vue').default);
+Vue.component('deletecomment-component', require('./components/comments/DeleteCommentComponent.vue').default);
+
+// empty base component
+// Vue.component('example', require('./components/Example.vue').default);
 
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+// Vue application instance
 const app = new Vue({
     el: '#app',
     vuetify,
+
 });
