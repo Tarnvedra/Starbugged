@@ -15,6 +15,22 @@
                     <h1 class="h3 mb-2 text-gray-800">Edit Issue</h1>
                     <p class="mb-4">Update ticket <b>#{{ $issue->id }}</b> for project : <i>{{ $project->project_name }}</p>
 
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Current Ticket Status</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="sbp-preview">
+                                <div class="sbp-preview-content">
+                                    <div>
+                                        Status: {{ $issue->status }}
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

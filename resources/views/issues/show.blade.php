@@ -12,7 +12,7 @@
             <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Issue No: #{{ $issue->id }}</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Issue No: #{{ $issue->id }} {{ $issue->title }}</h1>
                     <p class="mb-4">Showing ticket data for issue #{{ $issue->id }}</p>
 
                     <!-- DataTales Example -->
@@ -52,13 +52,70 @@
                                             <td> {{ $issue->updated_at }}</td>
                                         </tr>
                                     </table>
-                                    <a href="{{ route('issue.edit', $issue->id) }}"
-                                       class="btn btn-success">  {{ __('Update Issue') }}</a>
-                                    <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="card shadow mb-4">
+                        <div class="card-title">
+                            <div class="card-header">
+                        <h6 class="m-0 font-weight-bold text-primary">Ticket Comments</h6>
+                        </div>
+                            <div class="sbp-preview">
+                                <div class="sbp-preview-content">
+                                    @if($comments !==null)
+                                        @foreach($comments as $comment)
+
+                                            <div class="card-header">
+                                        <div class="card-body">
+                                            {{ $comment->body }}
+                                            <a class="btn btn-outline-success" href="#" data-toggle="modal" data-target="#comment-edit" >Edit</a>
+                                            <a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#comment-delete" >Delete</a>
+                                            <editcomment-component route="{{ route('issue.comment.edit', $issue->id ) }}" body="{{ $comment->body }}"></editcomment-component>
+                                            <deletecomment-component route="{{ route('issue.comment.delete', $issue->id ) }}"></deletecomment-component>
+                                        </div>
+                                        <div class="card-footer">
+                                            <img class="img-profile rounded-circle" src="{{ asset($comment->user->profile_image) }}" alt="" style="width: 30px; height:30px;">  {{ $comment->user->name }}
+                                            <div class="pull-right">
+                                            {{ $comment->created_at->toDayDateTimeString() }}
+
+                                            </div>
+                                        </div>
+                                            </div>
+                                            </div>
+                                            @endforeach
+                                    @else
+                                        <div>Currently this ticket has no comments</div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                      <div class="card shadow mb-4">
+                          <div class="card-header py-3">
+                              <h6 class="m-0 font-weight-bold text-primary">Ticket Actions</h6>
+                          </div>
+                          <div class="card-body">
+                              <div class="sbp-preview">
+                                  <div class="sbp-preview-content">
+                                        <a href="{{ route('issue.edit', $issue->id) }}"
+                                           class="btn btn-success">  {{ __('Edit Issue') }}</a>
+                                      <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#comment-create" >Add Comment</a>
+
+                                      <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
+                                      <createcomment-component route="{{ route('issue.comment.create', $issue->id ) }}"></createcomment-component>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
                     <!-- /.container-fluid -->
                 </div>
                 <!-- End of Main Content -->
@@ -67,4 +124,6 @@
         </div>
         <!-- End of Page Wrapper -->
     </div>
+
+
 @endsection
