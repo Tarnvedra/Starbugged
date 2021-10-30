@@ -20,7 +20,7 @@ class ProjectTableSeeder extends Seeder
         foreach ($projects as $project)
         Project::create(array(
             'user_id' => 1,
-            "project" => $project->project,
+            "project_name" => $project->project_name,
             "description" => $project->description,
             "users_assigned" => $project->users_assigned
         ));
