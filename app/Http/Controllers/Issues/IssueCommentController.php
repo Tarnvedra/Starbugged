@@ -32,19 +32,20 @@ class IssueCommentController extends Controller
 
     }
 
-    public function store(Request $request, $id, ResponseFactory $responseFactory)
+    public function store(IssueCommentRequest $request, ResponseFactory $responseFactory)
     {
-       $issue = Issue::find($id);
-       $comment = new IssueComment();
-       $comment->only($request->input('body'));
+        $issue = Issue::find($request->input('issue'));
+        $comment = new IssueComment();
+        $comment->only($request->input('body'));
         $comment->user()->associate($request->user());
         $comment->task_id = $issue->id;
-        // $comment->save();
+        //dd($issue, $comment);
+        $comment->save();
 
         // dd($comment, $issue);
 
         return $responseFactory->json(['success' => 'Comment saved successfully',
-           ]);
+        ]);
 
     }
 

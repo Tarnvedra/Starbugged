@@ -96,9 +96,9 @@ Route::group(['middleware' => 'can:project.issues.view'], function () {
 
         Route::group(['middleware' => 'can:issue.update'], function () {
 
-            Route::post('axios/{id}/create-comment', [IssueCommentController::class, 'store'])->name('issue.comment.create');
-            Route::get('axios/{id}/edit-comment', [IssueCommentController::class, 'edit'])->name('issue.comment.edit');
-            Route::delete('axios/{id}/delete-comment', [IssueCommentController::class, 'destroy'])->name('issue.comment.delete');
+            Route::post('axios/create-comment', [IssueCommentController::class, 'store'])->name('issue.comment.create');
+            Route::get('axios/edit-comment', [IssueCommentController::class, 'edit'])->name('issue.comment.edit');
+            Route::delete('axios/delete-comment', [IssueCommentController::class, 'destroy'])->name('issue.comment.delete');
 
             Route::post('/issue/{project_id}', [IssuesController::class, 'store'])->name('issue.store');
             Route::get('/issue/{id}/edit', [IssuesController::class, 'edit'])->name('issue.edit');
