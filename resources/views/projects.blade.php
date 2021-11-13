@@ -32,7 +32,7 @@
                                         <th>Create Issue</th>
                                     @endcan
                                     @can('project.issues.view')
-                                        <th>Project Issues</th>
+                                        <th>View Issues</th>
                                     @endcan
                                     @can('project.view.taskboard')
                                         <th>Project Overview</th>
@@ -46,25 +46,25 @@
                                             @can('admin.update.project')
                                                 <td>
                                                     <a href="{{ route('project.edit', $project->id) }}"
-                                                       class="btn btn-info">  {{ __('Edit') }}</a>
+                                                       class="btn btn-outline-info">  {{ __('Edit') }}</a>
                                                 </td>
                                             @endcan
                                             @can('project.issue.create')
                                                 <td>
                                                     <a href="{{ route('issue.create' , $project->id) }}"
-                                                       class="btn btn-primary">  {{ __('Create') }}</a>
+                                                       class="btn btn-outline-primary">  {{ __('Create') }}</a>
                                                 </td>
                                             @endcan
                                             @can('project.issues.view')
                                                 <td>
                                                     <a href="{{ route('issues.project', $project->id) }}"
-                                                       class="btn btn-danger">  {{ __('View') }}</a>
+                                                       class="btn btn-outline-warning">  {{ __('View') }}</a>
                                                 </td>
                                             @endcan
                                             @can('project.view.taskboard')
                                                 <td>
                                                     <a href="{{ route('taskboard', ['project' => $project]) }}"
-                                                       class="btn btn-success">  {{ __('Taskboard') }}</a>
+                                                       class="btn btn-outline-success">  {{ __('Taskboard') }}</a>
                                                 </td>
                                             @endcan
                                         </tr>

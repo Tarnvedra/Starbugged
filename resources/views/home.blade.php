@@ -158,6 +158,7 @@
                                                 <th>Staff Assigned</th>
                                                 <th>Project Start</th>
                                                 <th>Last Updated</th>
+                                                <th>View Taskboard</th>
                                             <tr>
                                             @foreach($projects as $project)
                                                 <tr>
@@ -167,6 +168,12 @@
                                                     <td>{{ $project->users_assigned}}</td>
                                                     <td>{{ $project->created_at }}</td>
                                                     <td>{{ $project->updated_at }}</td>
+                                                    @can('project.view.taskboard')
+                                                        <td>
+                                                            <a href="{{ route('taskboard', ['project' => $project]) }}"
+                                                               class="btn btn-outline-dark">  {{ __('Taskboard') }}</a>
+                                                        </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </table>

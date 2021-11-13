@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="form-group row mb-0">
                                             <div class="col-md-4 offset-md-4">
-                                                <button type="submit" class="btn btn-primary">
+                                                <button type="submit" class="btn btn-outline-primary">
                                                     {{ __('Create Project') }}
                                                 </button>
                                                 <a href="{{ route('dashboard') }}" class="btn btn-danger">  {{ __('Cancel') }}</a>
