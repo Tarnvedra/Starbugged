@@ -8,8 +8,8 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
-        "doctrine/dbal": "v2.4.2",
+        "php": "^7.4",
+        "doctrine/dbal": "v2.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
+        "barryvdh/laravel-ide-helper": "^2.10",
         "facade/ignition": "^2.3.6",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
