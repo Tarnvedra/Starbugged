@@ -11,7 +11,26 @@
             <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Project Task Board - {{ $project->project_name }}</h1>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @include('include.messages')
+                            <div class="col-md-4">
+                                <h1 class="h3 mb-2 text-gray-800">Project Task Board - {{ $project->project_name ?? $project[0]['project_name'] }}</h1>
+                            </div>
+                            <div class="col-md-4 pb-2">
+                                <form method="post" action="{{ route('taskboard-view') }}" id="view-taskboard-view">
+                                    @csrf
+                                <label for="board">Select Project TaskBoard</label>
+                                <select name="board" id="board"  class="form-control" aria-label="Default select example">
+                                    @foreach($taskboards as $taskboard)
+                                        <option value="{{ $taskboard->id }}">{{ $taskboard->project_name }}</option>
+                                    @endforeach
+                                </select>
+                                    <button type="submit" class="p-1 btn btn-outline-primary">View</button>
+                               </form>
+                            </div>
+                        </div>
+                    </div>
                     <div class="jumbotron">
                         <div class="row">
                             <div class="col-3">
@@ -123,3 +142,12 @@
     </div>
     <!-- End of Page Wrapper -->
 @endsection
+
+@push ('scripts')
+<script>
+    $(document).ready(function () {
+
+
+    });
+</script>
+@endpush

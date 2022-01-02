@@ -78,6 +78,8 @@ class IssuesController extends Controller
 
     public function store(CreateIssueRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
+        $task_id = Issue::query()->where('project_id', '=', $id)->value('task_id');
+        $task_id = $task_id + 1;
         $issue = new Issue;
         $issue->project_id = $id;
         $issue->user_id = auth()->user()->id;
@@ -88,6 +90,11 @@ class IssuesController extends Controller
         $issue->description = $request->input('description');
         $issue->assignment = 'none';
         $issue->status = 'issue created';
+        $issue->task_id = $task_id;
+        $issue->priority = 1;
+        $issue->position = 1;
+        $issue->column = 'backlog';
+        $issue->swim_lane = 1;
         $issue->save();
 
         return $response->redirectTo('/issues')->with('success', 'Ticket successfully created');
