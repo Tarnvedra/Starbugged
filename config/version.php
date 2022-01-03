@@ -3,7 +3,7 @@
 $tag  = exec('git describe --tags --abbrev=0');
 
 if(empty($tag)) {
-    $tag = ' v0.7.8';
+    $tag = ' v0.8.1';
 }
 
 $hash = trim(exec('git log --pretty="%h" -n1 HEAD'));
