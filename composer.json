@@ -11,7 +11,7 @@
         "php": "^7.4",
         "doctrine/dbal": "v2.6",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "^8.0",
+        "laravel/framework": "8.75",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "spatie/laravel-permission": "^3.18"
