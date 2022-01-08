@@ -1,32 +1,32 @@
 [
     {
         "project_name": "Warehouse Layout",
-        "description": "Web Application development written in PHP/Laravel 6.2 (Origin branch PHP/HTML5) for efficient product selection, using web app for efficient placement of stock using layout planning with volumetrics (calculations using Mass , Volume and Density)",
+        "description": "Web Application development written in PHP/Laravel  (Origin branch PHP/HTML5) for efficient product selection, using web app for efficient placement of stock using layout planning with volumetrics (calculations using Mass , Volume and Density)",
         "users_assigned": ""
     },
     {
         "project_name": "Starbugged",
-        "description": "Bug/Issue/project Tracker application that enables users to keep track of bugs and issues in their projects written using PHP and Laravel framework v6.2",
+        "description": "Bug/Issue/project Tracker application that enables users to keep track of bugs and issues in their projects written using PHP and Laravel framework",
         "users_assigned": ""
     },
     {
         "project_name": "Motoring Conversion",
-        "description": "Conversion Application Web Application development written in PHP/Laravel 6.2 /Vue for Converting motoring units such as Velocity, Torque, Fuel consumption etc.",
+        "description": "Conversion Application Web Application development written in PHP/Laravel/Vue for Converting motoring units such as Velocity, Torque, Fuel consumption etc.",
         "users_assigned": ""
     },
     {
         "project_name": "Digital Dictionary",
-        "description": "Digital Dictionary Website - IT Encyclopedia website - with tables and videos Information technology website written using PHP and Laravel framework v6.2",
+        "description": "Digital Dictionary Website - IT Encyclopedia website - with tables and videos Information technology website written using PHP and Laravel framework",
         "users_assigned": ""
     },
     {
         "project_name": "AmigoCara",
-        "description": "Social Media website created in Laravel/PHP - Laravel Framework 7.9.2",
+        "description": "Social Media website created in Laravel/PHP/Vue",
         "users_assigned": ""
     },
     {
         "project_name": "Viewbnb",
-        "description": "Rent a room/lodgings website created in Laravel 7.0 /PHP",
+        "description": "Rent a room/lodgings website created in Laravel/PHP",
         "users_assigned": ""
     }
 ]
