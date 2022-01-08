@@ -162,10 +162,10 @@
                                             <tr>
                                             @foreach($projects as $project)
                                                 <tr>
-                                                    <td><a href="{{ route('project.show' , ['project_id' , $project->id ]) }}">{{ $project->id }}</a></td>
-                                                    <td><a href="{{ route('project.show' , ['project_id' , $project->id ]) }}">{{ $project->project_name }}</a></td>
+                                                    <td><a href="{{ route('project.show' , ['id' => $project->id ]) }}">{{ $project->id }}</a></td>
+                                                    <td><a href="{{ route('project.show' , ['id' => $project->id ]) }}">{{ $project->project_name }}</a></td>
                                                     <td>{{ $project->description }}</td>
-                                                    <td>{{ $project->users_assigned}}</td>
+                                                    <td>{{ str_replace(array('[', '"', ']'), '' , $project->users_assigned)}}</td>
                                                     <td>{{ $project->created_at }}</td>
                                                     <td>{{ $project->updated_at }}</td>
                                                     @can('project.view.taskboard')
