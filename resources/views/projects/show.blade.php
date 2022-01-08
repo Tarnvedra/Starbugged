@@ -57,6 +57,8 @@
                                            class="btn btn-info">  {{ __('All Projects') }}</a>
                                         <a href="{{ route('issues.home') }}"
                                            class="btn btn-warning">  {{ __('All Issues') }}</a>
+                                            <a href="{{ route('project.edit', $project->id) }}"
+                                               class="btn btn-success">  {{ __('Edit') }}</a>
                                     </div>
                                 </div>
                             </div>
