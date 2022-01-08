@@ -31,7 +31,7 @@
                                                 class="h5 mb-0 font-weight-bold text-gray-800">{{ $projectsCount }}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-project-diagram fa-2x text-gray-300"></i>
+                                            <a href="{{ route('projects.home') }}"><i class="fas fa-project-diagram fa-2x text-gray-300"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $issues }}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-bug fa-2x text-gray-300"></i>
+                                            <a href="{{ route('issues.home') }}"><i class="fas fa-bug fa-2x text-gray-300"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -84,8 +84,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <a href="{{ route('issues.status') }}"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $statusPercentage }}
                                                 %
                                             </div>
@@ -107,7 +106,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $priority }}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                                            <a href="{{ route('issues.priority') }}"><i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i></a>
                                             <div
                                                 class="h5 mb-0 font-weight-bold text-gray-800">{{ $priorityPercentage }}
                                                 %
