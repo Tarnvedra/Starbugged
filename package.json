@@ -26,6 +26,6 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^20.0.0",
         "@mdi/font": "^5.9.55",
-        "vuetify": "^2.4.4"
+        "vuetify": "^2.6.10"
     }
 }
