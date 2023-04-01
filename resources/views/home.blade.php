@@ -152,7 +152,7 @@
                                         <table class="table table-bordered table-hover">
                                             <tr style="background-color: whitesmoke;">
                                                 <th>#</th>
-                                                <th>Project</th>
+                                                <th>Project Taskboard</th>
                                                 <th>Description</th>
                                                 <th>Staff Assigned</th>
                                                 <th>Project Start</th>
@@ -162,7 +162,7 @@
                                             @foreach($projects as $project)
                                                 <tr>
                                                     <td><a href="{{ route('project.show' , ['id' => $project->id ]) }}">{{ $project->id }}</a></td>
-                                                    <td><a href="{{ route('project.show' , ['id' => $project->id ]) }}">{{ $project->project_name }}</a></td>
+                                                    <td><a href="{{ route('taskboard' , ['project' => $project ]) }}">{{ $project->project_name }}</a></td>
                                                     <td>{{ $project->description }}</td>
                                                     <td>{{ str_replace(array('[', '"', ']'), '' , $project->users_assigned)}}</td>
                                                     <td>{{ $project->created_at }}</td>
