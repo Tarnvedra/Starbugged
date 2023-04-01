@@ -3,7 +3,7 @@
 
     <!-- Sidebar - Brand -->
     <li>
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
             <div class="sidebar-brand-icon">
                 <i class="fas fa-tasks"></i>
             </div>

@@ -75,7 +75,7 @@ class AccountsController extends Controller
         $status = Issue::where('status', '!=', 'resolved')->count();
         $priority = Issue::where('risk', '=', 'High')->count();
 
-        // get percentage values / check to avoid for divison by 0
+        // get percentage values / check to avoid for division by 0
         if ($status > 0 && $issues > 0) {
             $statusPercentage = ($status / $issues) * 100;
             $statusPercentage = round($statusPercentage, 0);
@@ -135,42 +135,5 @@ class AccountsController extends Controller
         //dd($users,$permissions, $roles);
 
         return $view->make('admin/debug', compact('permissions', 'roles', 'user', 'users'));
-    }
-
-    public function acl()
-    {
-        // temp solution plan to make user management full edit of roles and permissions per user and user details
-        // give roles to users in user-seeder for access control in spatie acl roles and permissions
-        $users = User::query()->with(['roles.permissions'])->get();
-        foreach ($users as $user) {
-            if ($user->job_title === 'Administrator' || $user->name === 'test') {
-                $user->syncRoles('admin');
-            } elseif ($user->job_title === 'Manager') {
-                $user->syncRoles('manager');
-            }
-
-            if ($user->job_title === 'Web Developer') {
-                $user->syncRoles('coder');
-            } elseif ($user->job_title === 'Android Developer') {
-                $user->syncRoles('coder');
-            } elseif ($user->job_title === 'IOS Developer') {
-                $user->syncRoles('coder');
-            } elseif ($user->job_title === '.NET Developer') {
-                $user->syncRoles('coder');
-            }
-
-            if ($user->job_title === 'QA') {
-                $user->syncRoles('tester');
-            } elseif ($user->job_title === 'Reporter') {
-                $user->syncRoles('reporter');
-            }
-
-            if ($user->job_title === 'Guest') {
-                $user->syncRoles('guest');
-            } elseif ($user->job_title === null || $user->job_title === 'unknown') {
-                $user->syncRoles('deactivated');
-            }
-        }
-        echo('Roles Completed please move route inside admin routes when done');
     }
 }

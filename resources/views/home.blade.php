@@ -31,7 +31,7 @@
                                                 class="h5 mb-0 font-weight-bold text-gray-800">{{ $projectsCount }}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-project-diagram fa-2x text-gray-300"></i>
+                                            <a href="{{ route('projects.home') }}"><i class="fas fa-project-diagram fa-2x text-gray-300"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $issues }}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-bug fa-2x text-gray-300"></i>
+                                            <a href="{{ route('issues.home') }}"><i class="fas fa-bug fa-2x text-gray-300"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -84,8 +84,7 @@
                                             </div>
                                         </div>
                                         <div class="col-auto">
-
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                            <a href="{{ route('issues.status') }}"><i class="fas fa-calendar fa-2x text-gray-300"></i></a>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $statusPercentage }}
                                                 %
                                             </div>
@@ -107,7 +106,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $priority }}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                                            <a href="{{ route('issues.priority') }}"><i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i></a>
                                             <div
                                                 class="h5 mb-0 font-weight-bold text-gray-800">{{ $priorityPercentage }}
                                                 %
@@ -158,15 +157,22 @@
                                                 <th>Staff Assigned</th>
                                                 <th>Project Start</th>
                                                 <th>Last Updated</th>
+                                                <th>View Taskboard</th>
                                             <tr>
                                             @foreach($projects as $project)
                                                 <tr>
                                                     <td><a href="{{ route('project.show' , ['id' => $project->id ]) }}">{{ $project->id }}</a></td>
                                                     <td><a href="{{ route('taskboard' , ['project' => $project ]) }}">{{ $project->project_name }}</a></td>
                                                     <td>{{ $project->description }}</td>
-                                                    <td>{{ $project->users_assigned}}</td>
+                                                    <td>{{ str_replace(array('[', '"', ']'), '' , $project->users_assigned)}}</td>
                                                     <td>{{ $project->created_at }}</td>
                                                     <td>{{ $project->updated_at }}</td>
+                                                    @can('project.view.taskboard')
+                                                        <td>
+                                                            <a href="{{ route('taskboard', ['project' => $project]) }}"
+                                                               class="btn btn-outline-dark">  {{ __('Taskboard') }}</a>
+                                                        </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         </table>

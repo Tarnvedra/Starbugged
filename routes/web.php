@@ -35,8 +35,6 @@ Route::group(['middleware' => 'can:admin.view'], function () {
 
     Route::group(['middleware' => 'can:admin.permissions'], function() {
         Route::get('/admin/permissions', [AccountsController::class, 'permissions'])->name('admin.permissions');
-        // admin/transfer will need to be moved outside in first setup and then returned here unless importing starbugged.sql to MySQL DB
-        Route::get('/admin/transfer', [AccountsController::class, 'acl'])->name('admin.transfer'); //run once only
     });
 });
 
@@ -77,6 +75,7 @@ Route::group(['middleware' => 'can:projects.view'], function () {
 // Task-board routes
 Route::group(['middleware' => 'can:project.view.taskboard'], function () {
     Route::get('/project/task-board/{project}', [BoardController::class, 'index'])->name('taskboard');
+    Route::post('/project/task-board/view', [BoardController::class, 'board'])->name('taskboard-view');
 });
 
 // Issues routes
