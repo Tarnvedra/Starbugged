@@ -39,7 +39,7 @@ class IssueComment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public  function Issue(): BelongsTo
+    public  function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
     }

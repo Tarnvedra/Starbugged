@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class UpdateIssueRequest extends FormRequest
 {
 
-    public function rules()
+    public function rules(): array
     {
         return [
             'os' => 'required',
