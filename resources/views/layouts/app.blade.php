@@ -37,5 +37,8 @@
      </a>
 
      <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    window.csrf_token = "{{ csrf_token() }}"
+</script>
 </body>
 </html>

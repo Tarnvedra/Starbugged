@@ -24,7 +24,8 @@
                     <div class="modal-footer">
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button @click="editComment" type="submit" class="btn btn-primary">Create</button>
+                        <input type="hidden" name="_token" :value="csrf">
+                        <button @click="editComment" type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -34,29 +35,37 @@
 
 <script>
 
-let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
 
     export default {
         data() {
             return {
-                body: '',
+
             }
         },
-        props: ['route' , 'body'],
+        props: ['route' ,'issue', 'body'],
 
         mounted() {
             console.log('Comment Edit Component mounted.')
 
         },
 
+        computed: {
+            csrf() {
+                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            },
+        },
+
         methods: {
             editComment() {
-                window.axios.defaults.headers.common = {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRF-TOKEN' : token
-                };
+               window.axios.defaults.headers.common = {
+                   'X-Requested-With': 'XMLHttpRequest',
+                   'X-CSRF-TOKEN': csrf_token
+               }
                 axios.post(this.route,
-                    { body: this.body})
+                    {
+                        id: this.issue,
+                        body: this.body})
                     .then(function(response) {
                     console.log(response);
                 })
