@@ -20,11 +20,6 @@ Vue.component('piechart-component', require('./components/dashboard/PiechartComp
 // user-management
 Vue.component('usertable-component', require('./components/user-management/UserTableComponent.vue').default);
 
-// issue comment
-Vue.component('createcomment-component', require('./components/comments/CreateCommentComponent.vue').default);
-Vue.component('editcomment-component', require('./components/comments/EditCommentComponent.vue').default);
-Vue.component('deletecomment-component', require('./components/comments/DeleteCommentComponent.vue').default);
-
 // empty base component
 // Vue.component('example', require('./components/Example.vue').default);
 
