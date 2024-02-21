@@ -10,9 +10,12 @@ use App\User;
 use App\Project;
 use App\Issue;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class IssueCommentController extends Controller
@@ -32,21 +35,21 @@ class IssueCommentController extends Controller
 
     }
 
-    public function store(IssueCommentRequest $request, ResponseFactory $responseFactory)
+    public function store(IssueCommentRequest $request, Issue $issue, ViewFactory $view): View
     {
-        $issue = Issue::find($request->input('issue'));
         $comment = new IssueComment();
-        $comment->only($request->input('body'));
+        $comment->body = $request->input('issue_body_comment');
         $comment->user()->associate($request->user());
-        $comment->task_id = $issue->id;
-        //dd($issue, $comment);
+        $comment->issue_id = $issue->id;
+
         $comment->save();
 
-        // dd($comment, $issue);
-
-        return $responseFactory->json(['success' => 'Comment saved successfully',
+        $comments = IssueComment::query()->where('issue_id', '=', $issue->id)->get();
+        return $view->make('issues/show', [
+            'issue'    => $issue,
+            'user'     => Auth::user(),
+            'comments' => $comments
         ]);
-
     }
 
 

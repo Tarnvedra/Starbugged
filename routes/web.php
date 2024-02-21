@@ -18,6 +18,8 @@ use App\Http\Controllers\Issues\IssueCommentController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Watching\WatchingController;
 use App\Http\Controllers\Board\BoardController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('home-page');
 
@@ -95,7 +97,7 @@ Route::group(['middleware' => 'can:project.issues.view'], function () {
 
         Route::group(['middleware' => 'can:issue.update'], function () {
 
-            Route::post('issue/create-comment', [IssueCommentController::class, 'store'])->name('issue.comment.create');
+            Route::post('issue/create-comment/{issue}', [IssueCommentController::class, 'store'])->name('issue.comment.create');
             Route::get('issue/edit-comment', [IssueCommentController::class, 'edit'])->name('issue.comment.edit');
             Route::delete('issue/delete-comment', [IssueCommentController::class, 'destroy'])->name('issue.comment.delete');
 
