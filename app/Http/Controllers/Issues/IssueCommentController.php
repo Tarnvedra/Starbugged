@@ -25,17 +25,38 @@ class IssueCommentController extends Controller
         $this->middleware('auth');
     }
 
-    public function destroy()
-    {
 
+    public function destroy(IssueComment $comment, ViewFactory $view): View
+    {
+        $issue = Issue::query()->where('id', '=',$comment->issue_id)->first();
+
+        $comment->delete();
+
+        $comments = IssueComment::query()->where('issue_id', '=', $issue->id)->get();
+        return $view->make('issues/show', [
+            'issue'    => $issue,
+            'user'     => Auth::user(),
+            'comments' => $comments
+        ]);
     }
 
-    public function edit()
-    {
 
+    public function update(Request $request, IssueComment $comment, ViewFactory $view): View
+    {
+        $issue = Issue::query()->where('id', '=',$comment->issue_id)->first();
+
+        $comment->body = $request->input('issue_body_comment');
+        $comment->save();
+
+        $comments = IssueComment::query()->where('issue_id', '=', $comment->issue_id)->get();
+        return $view->make('issues/show', [
+            'issue'    => $issue,
+            'user'     => Auth::user(),
+            'comments' => $comments
+        ])->with('success', 'Comment successfully updated');
     }
 
-    public function store(IssueCommentRequest $request, Issue $issue, ViewFactory $view): View
+    public function store(IssueCommentRequest $request, Issue $issue, ResponseFactory $response): RedirectResponse
     {
         $comment = new IssueComment();
         $comment->body = $request->input('issue_body_comment');
@@ -45,10 +66,17 @@ class IssueCommentController extends Controller
         $comment->save();
 
         $comments = IssueComment::query()->where('issue_id', '=', $issue->id)->get();
-        return $view->make('issues/show', [
-            'issue'    => $issue,
+
+        return $response->redirectToRoute('issue.show', [
+            'id'       => $issue->id,
+        ])->with('success', 'Comment successfully created');
+    }
+
+    public function edit(ViewFactory $view, IssueComment $comment): View
+    {
+        return $view->make('issues/comments/edit_comment', [
             'user'     => Auth::user(),
-            'comments' => $comments
+            'comment'  => $comment
         ]);
     }
 

@@ -114,15 +114,12 @@ class IssuesController extends Controller
     {
         $issue = Issue::query()->find($id);
         $user = auth()->user();
-        try {
-            $comments = IssueComment::query()->findorFail($issue->id)->all();
-        } catch (Exception $e) {
-            $comments = null;
-        }
+
+        $comments = IssueComment::query()->where('issue_id', '=', $issue->id)->get();
 
         return $view->make('issues/show', [
-            'issue' => $issue,
-            'user' => $user,
+            'issue'    => $issue,
+            'user'     => $user,
             'comments' => $comments
         ]);
     }

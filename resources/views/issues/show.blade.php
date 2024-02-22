@@ -65,14 +65,17 @@
                         </div>
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    @if($comments !==null)
+                                    @if($comments->isNotEmpty())
                                         @foreach($comments as $comment)
 
                                             <div class="card-header">
                                         <div class="card-body">
                                             {{ $comment->body }}
-                                            <a class="btn btn-outline-success" href="#" data-toggle="modal" data-target="#comment-edit" >Edit</a>
-                                            <a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#comment-delete" >Delete</a>
+                                            @if($comment->user_id == \Illuminate\Support\Facades\Auth::id())
+                                                <a class="btn btn-outline-success" href="{{ route('issue.comment.edit', ['comment' => $comment]) }}"  >Edit</a>
+                                                <a class="btn btn-outline-danger" href="{{ route('issue.comment.delete', ['comment' => $comment]) }}">Delete</a>
+                                            @endif
+
                                         </div>
                                         <div class="card-footer">
                                             <img class="img-profile rounded-circle" src="{{ asset($comment->user->profile_image) }}" alt="" style="width: 30px; height:30px;">  {{ $comment->user->name }}
@@ -99,10 +102,22 @@
                           <div class="card-body">
                               <div class="sbp-preview">
                                   <div class="sbp-preview-content">
+                                      <form action="{{ route('issue.comment.create', ['issue' => $issue]) }}"
+                                            method="post">
+                                          @csrf
+
+                                          <div class="form-group row">
+                                              <label for="issue_body_comment" class="col-md-8 control-label">Add a new Comment</label>
+                                              <div class="col-md-8">
+                                                  <textarea id="issue_body_comment" name="issue_body_comment" rows="10" placeholder="add comment text here" cols="50"></textarea>
+                                              </div>
+                                          </div>
+
                                         <a href="{{ route('issue.edit', $issue->id) }}"
                                            class="btn btn-success">  {{ __('Edit Issue') }}</a>
-                                      <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#comment-create" >Add Comment</a>
+                                      <button class="btn btn-primary" type="submit" > {{ __('Add Comment') }}</button>
                                       <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
+                                      </form>
                                   </div>
                               </div>
                           </div>
@@ -116,7 +131,5 @@
         </div>
         <!-- End of Page Wrapper -->
     </div>
-    @include('issues.modals.create_comment')
-    @include('issues.modals.edit_comment')
-    @include('issues.modals.delete_comment')
+
 @endsection
