@@ -7,10 +7,10 @@ use Illuminate\Foundation\Http\FormRequest;
 class IssueCommentRequest extends FormRequest
 {
 
-    public function rules()
+    public function rules(): array
     {
         return [
-         'body' => ['required', 'string', 'min:3']
+         'issue_body_comment' => ['required', 'string', 'min:3']
         ];
     }
 

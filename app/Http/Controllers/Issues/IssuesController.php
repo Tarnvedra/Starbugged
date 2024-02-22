@@ -25,7 +25,8 @@ class IssuesController extends Controller
     public function index(ViewFactory $view): View
     {
         $user = auth()->user();
-        $issues = Issue::orderBy('id','asc')->paginate(10);
+        $issues = Issue::query()->orderBy('id','asc')->paginate(10);
+
         return $view->make('issues', [
             'issues' => $issues,
             'user'   => $user
@@ -35,8 +36,11 @@ class IssuesController extends Controller
     public function priority(ViewFactory $view): View
     {
         $user = auth()->user();
-         $issues = Issue::where('risk', '=','High')->orderBy('id','asc')->paginate(9);
-        return $view->make('issues/priority', [
+         $issues = Issue::query()->where('risk', '=','High')
+             ->orderBy('id','asc')
+             ->paginate(9);
+
+         return $view->make('issues/priority', [
             'issues' => $issues,
             'user'   => $user
         ]);
@@ -45,7 +49,10 @@ class IssuesController extends Controller
     public function status(ViewFactory $view): View
     {
         $user = auth()->user();
-        $issues = Issue::where('status', '=','issue created')->orderBy('created_at','asc')->paginate(9);
+        $issues = Issue::query()->where('status', '=','issue created')
+            ->orderBy('created_at','asc')
+            ->paginate(9);
+
         return $view->make('issues/status', [
             'issues' => $issues,
             'user'   => $user
@@ -55,8 +62,11 @@ class IssuesController extends Controller
     public function issues($id, ViewFactory $view): View
     {
         $user = auth()->user();
-        $project = Project::find($id);
-        $issues = Issue::where('project_id','=', $id)->orderBy('created_at','asc')->paginate(9);
+        $project = Project::query()->find($id);
+        $issues = Issue::query()->where('project_id','=', $id)
+            ->orderBy('created_at','asc')
+            ->paginate(9);
+
         return $view->make('issues/project', [
             'project' => $project,
             'issues'  => $issues,
@@ -67,8 +77,8 @@ class IssuesController extends Controller
     public function create($project_id, ViewFactory $view): View
     {
         $user = auth()->user();
-        $project = Project::find($project_id);
-        //dd($project);
+        $project = Project::query()->find($project_id);
+
         return $view->make('issues/create', [
             'project' => $project,
             'user'    => $user
@@ -79,10 +89,10 @@ class IssuesController extends Controller
     public function store(CreateIssueRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
         $task_id = Issue::query()->where('project_id', '=', $id)->value('task_id');
-        $task_id = $task_id + 1;
+        $task_id++;
         $issue = new Issue;
-        $issue->project_id = $id;
-        $issue->user_id = auth()->user()->id;
+        $issue->project()->associate($id);
+        $issue->user_id = auth()->id();
         $issue->os = $request->input('os');
         $issue->risk = $request->input('risk');
         $issue->issue = $request->input('issue');
@@ -102,35 +112,27 @@ class IssuesController extends Controller
 
     public function show($id, ViewFactory $view): View
     {
-        $issue = Issue::find($id);
+        $issue = Issue::query()->find($id);
         $user = auth()->user();
-        try {
-            $comments = IssueComment::findorFail($issue->id)->all();
-        } catch (Exception $e) {
-            $comments = null;
-        }
+
+        $comments = IssueComment::query()->where('issue_id', '=', $issue->id)->get();
 
         return $view->make('issues/show', [
-            'issue' => $issue,
-            'user' => $user,
+            'issue'    => $issue,
+            'user'     => $user,
             'comments' => $comments
         ]);
     }
 
     public function edit($id, ViewFactory $view): View
     {
-        $issue = Issue::find($id);
+        $issue = Issue::query()->find($id);
         $project_id = $issue->project_id;
-        $project = Project::find($project_id);
-        //dd($project->users_assigned);
+        $project = Project::query()->find($project_id);
 
         $user = auth()->user();
         $users_assigned = User::all();
-        //dd($users_assigned);
-        //$users_assigned =  Project::find($project_id)->where('users_assigned' ,'=',  $project->users_assigned)->get();
 
-        //User::all('username')->where('users_assigned' ,'=',  $project->users_assigned)->get();
-        //dd($users);
         return $view->make('issues/edit', [
             'issue'          => $issue,
             'project'        => $project,
@@ -141,7 +143,7 @@ class IssuesController extends Controller
 
     public function update(UpdateIssueRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
-        $issue = Issue::find($id);
+        $issue = Issue::query()->find($id);
         $issue->os = $request->input('os');
         $issue->risk = $request->input('risk');
         $issue->issue = $request->input('issue');
@@ -161,15 +163,13 @@ class IssuesController extends Controller
 
     public function assigned(ViewFactory $view): View
     {
-        //$user = auth()->user();
-        //dd($user->name);
-        //$issue = Issue::where('assignment','=', $user->name);
-        //$issues = Issue::all();
-        //dd($issue , $issues);
-
         $user = auth()->user();
-        $issues = Issue::where('assignment','=', $user->name ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
-        return $view->make('issues/currentuser', [
+        $issues = Issue::query()->where('assignment','=', $user->name ,'and')
+            ->where('status','!=','resolved')
+            ->orderBy('id','asc')
+            ->paginate(10);
+
+        return $view->make('issues/current_user', [
             'issues' => $issues,
             'user'   => $user
         ]);
@@ -177,15 +177,13 @@ class IssuesController extends Controller
 
     public function reported(ViewFactory $view): View
     {
-        //$user = auth()->user();
-        //dd($user->name);
-        //$issue = Issue::where('assignment','=', $user->name);
-        //$issues = Issue::all();
-        //dd($issue , $issues);
-
         $user = auth()->user();
-        $issues = Issue::where('user_id','=', $user->id ,'and')->where('status','!=','resolved')->orderBy('id','asc')->paginate(10);
-        return $view->make('issues/userreported', [
+        $issues = Issue::query()->where('user_id','=', $user->id ,'and')
+            ->where('status','!=','resolved')
+            ->orderBy('id','asc')
+            ->paginate(10);
+
+        return $view->make('issues/user_reported', [
             'issues' => $issues,
             'user'   => $user
         ]);

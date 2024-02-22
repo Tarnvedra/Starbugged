@@ -18,6 +18,8 @@ use App\Http\Controllers\Issues\IssueCommentController;
 use App\Http\Controllers\Projects\ProjectsController;
 use App\Http\Controllers\Watching\WatchingController;
 use App\Http\Controllers\Board\BoardController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('home-page');
 
@@ -95,9 +97,10 @@ Route::group(['middleware' => 'can:project.issues.view'], function () {
 
         Route::group(['middleware' => 'can:issue.update'], function () {
 
-            Route::post('axios/create-comment', [IssueCommentController::class, 'store'])->name('issue.comment.create');
-            Route::get('axios/edit-comment', [IssueCommentController::class, 'edit'])->name('issue.comment.edit');
-            Route::delete('axios/delete-comment', [IssueCommentController::class, 'destroy'])->name('issue.comment.delete');
+            Route::post('issue/create-comment/{issue}', [IssueCommentController::class, 'store'])->name('issue.comment.create');
+            Route::get('issue/edit-comment/{comment}', [IssueCommentController::class, 'edit'])->name('issue.comment.edit');
+            Route::patch('issue/update-comment/{comment}', [IssueCommentController::class, 'update'])->name('issue.comment.update');
+            Route::get('issue/delete-comment/{comment}', [IssueCommentController::class, 'destroy'])->name('issue.comment.delete');
 
             Route::post('/issue/{project_id}', [IssuesController::class, 'store'])->name('issue.store');
             Route::get('/issue/{id}/edit', [IssuesController::class, 'edit'])->name('issue.edit');

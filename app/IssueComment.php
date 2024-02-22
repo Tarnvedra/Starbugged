@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereTaskId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereUserId($value)
+ * @property int $issue_id
+ * @property-read \App\Issue $issue
+ * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereIssueId($value)
  * @mixin \Eloquent
  */
 class IssueComment extends Model
@@ -39,7 +42,7 @@ class IssueComment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public  function Issue(): BelongsTo
+    public  function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
     }

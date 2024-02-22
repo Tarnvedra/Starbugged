@@ -65,16 +65,17 @@
                         </div>
                             <div class="sbp-preview">
                                 <div class="sbp-preview-content">
-                                    @if($comments !==null)
+                                    @if($comments->isNotEmpty())
                                         @foreach($comments as $comment)
 
                                             <div class="card-header">
                                         <div class="card-body">
                                             {{ $comment->body }}
-                                            <a class="btn btn-outline-success" href="#" data-toggle="modal" data-target="#comment-edit" >Edit</a>
-                                            <a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#comment-delete" >Delete</a>
-                                            <editcomment-component route="{{ route('issue.comment.edit', $issue->id ) }}" issue="{{$issue->id}}" body="{{ $comment->body }}"></editcomment-component>
-                                            <deletecomment-component route="{{ route('issue.comment.delete', $issue->id ) }}" issue="{{ $issue->id }}"></deletecomment-component>
+                                            @if($comment->user_id == \Illuminate\Support\Facades\Auth::id())
+                                                <a class="btn btn-outline-success" href="{{ route('issue.comment.edit', ['comment' => $comment]) }}"  >Edit</a>
+                                                <a class="btn btn-outline-danger" href="{{ route('issue.comment.delete', ['comment' => $comment]) }}">Delete</a>
+                                            @endif
+
                                         </div>
                                         <div class="card-footer">
                                             <img class="img-profile rounded-circle" src="{{ asset($comment->user->profile_image) }}" alt="" style="width: 30px; height:30px;">  {{ $comment->user->name }}
@@ -94,23 +95,29 @@
                         </div>
                     </div>
 
-
-
-
-
-                      <div class="card shadow mb-4">
+                <div class="card shadow mb-4">
                           <div class="card-header py-3">
                               <h6 class="m-0 font-weight-bold text-primary">Ticket Actions</h6>
                           </div>
                           <div class="card-body">
                               <div class="sbp-preview">
                                   <div class="sbp-preview-content">
+                                      <form action="{{ route('issue.comment.create', ['issue' => $issue]) }}"
+                                            method="post">
+                                          @csrf
+
+                                          <div class="form-group row">
+                                              <label for="issue_body_comment" class="col-md-8 control-label">Add a new Comment</label>
+                                              <div class="col-md-8">
+                                                  <textarea id="issue_body_comment" name="issue_body_comment" rows="10" placeholder="add comment text here" cols="50"></textarea>
+                                              </div>
+                                          </div>
+
                                         <a href="{{ route('issue.edit', $issue->id) }}"
                                            class="btn btn-success">  {{ __('Edit Issue') }}</a>
-                                      <a class="btn btn-secondary" href="#" data-toggle="modal" data-target="#comment-create" >Add Comment</a>
-
+                                      <button class="btn btn-primary" type="submit" > {{ __('Add Comment') }}</button>
                                       <a href="{{ route('issues.home') }}" class="btn btn-info">  {{ __('Back') }}</a>
-                                      <createcomment-component route="{{ route('issue.comment.create')}}" issue="{{ $issue->id }}"></createcomment-component>
+                                      </form>
                                   </div>
                               </div>
                           </div>
@@ -124,6 +131,5 @@
         </div>
         <!-- End of Page Wrapper -->
     </div>
-
 
 @endsection
