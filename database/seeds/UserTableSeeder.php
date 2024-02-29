@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class UserTableSeeder extends Seeder
 {
@@ -11,13 +13,13 @@ class UserTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
       DB::table('users')->delete();
       $json = File::get("database/data/user.json");
       $users = json_decode($json);
       foreach ($users as $user)
-      User::create(array(
+      User::query()->create(array(
           'name' => $user->name,
           'username' => $user->username,
           "job_title" => $user->job_title,

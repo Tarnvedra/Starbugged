@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Project;
 use App\User;
+use Illuminate\Support\Facades\File;
 
 class ProjectTableSeeder extends Seeder
 {
@@ -12,17 +13,18 @@ class ProjectTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::table('projects')->delete();
-        $json = File::get("database/data/project.json");
+        $json = File::get("database/data/starbugged_projects.json");
+
         $projects = json_decode($json);
         foreach ($projects as $project)
-        Project::create(array(
+        Project::query()->create(array(
             'user_id' => 1,
             "project_name" => $project->project_name,
             "description" => $project->description,
-            "users_assigned" => $project->users_assigned
+            "users_assign" => json_encode($project->users_assign)
         ));
     }
 }

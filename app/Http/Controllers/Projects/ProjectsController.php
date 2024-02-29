@@ -86,7 +86,7 @@ class ProjectsController extends Controller
         $project = Project::find($id);
         $project->project_name = $request->input('project');
         $project->description = $request->input('description');
-        $project->users_assigned = $request->input('assignment');
+        $project->users_assign = $request->input('assignment');
         $project->save();
         return $response->redirectTo('/projects')->with('success', 'Project successfully updated');
     }
@@ -116,7 +116,7 @@ class ProjectsController extends Controller
     {
         $users = User::all();
         $user = auth()->user();
-        $projects = Project::orderBy('id', 'asc')->paginate(10);
+        $projects = Project::query()->orderBy('id', 'asc')->paginate(10);
         return $view->make('projects/assign', [
             'projects' => $projects,
             'user'     => $user,
@@ -126,8 +126,8 @@ class ProjectsController extends Controller
 
     public function usersAssignment(UpdateAssignedUsersRequest $request, ResponseFactory $response, $id): RedirectResponse
     {
-        $project = Project::find($id);
-        $project->users_assigned = $request->input('assignment');
+        $project = Project::query()->find($id);
+        $project->users_assign = $request->input('assignment');
         $project->save();
         return $response->redirectTo('/projects')->with('success', 'Project successfully updated');
     }

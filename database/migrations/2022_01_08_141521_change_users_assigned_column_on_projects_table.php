@@ -10,14 +10,14 @@ return new class extends Migration {
     {
         Schema::table('projects', function (Blueprint $table) {
             $table->dropColumn('users_assigned');
-            $table->json('users_assigned');
+            $table->json('users_assign');
         });
     }
 
     public function down()
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->dropColumn('users_assigned');
+            $table->dropColumn('users_assign');
             $table->text('users_assigned');
         });
     }

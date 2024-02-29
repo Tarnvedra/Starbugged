@@ -2,31 +2,32 @@
     {
         "project_name": "Warehouse Layout",
         "description": "Web Application development written in PHP/Laravel  (Origin branch PHP/HTML5) for efficient product selection, using web app for efficient placement of stock using layout planning with volumetrics (calculations using Mass , Volume and Density)",
-        "users_assigned": ""
+        "users_assign": ""
     },
     {
         "project_name": "Starbugged",
         "description": "Bug/Issue/project Tracker application that enables users to keep track of bugs and issues in their projects written using PHP and Laravel framework",
-        "users_assigned": ""
+        "users_assign": ""
     },
     {
         "project_name": "Motoring Conversion",
         "description": "Conversion Application Web Application development written in PHP/Laravel/Vue for Converting motoring units such as Velocity, Torque, Fuel consumption etc.",
-        "users_assigned": ""
+        "users_assign": ""
     },
     {
         "project_name": "Digital Dictionary",
         "description": "Digital Dictionary Website - IT Encyclopedia website - with tables and videos Information technology website written using PHP and Laravel framework",
-        "users_assigned": ""
+        "users_assign": ""
     },
     {
         "project_name": "AmigoCara",
         "description": "Social Media website created in Laravel/PHP/Vue",
-        "users_assigned": ""
+        "users_assign": ""
     },
     {
         "project_name": "Viewbnb",
         "description": "Rent a room/lodgings website created in Laravel/PHP",
-        "users_assigned": ""
+        "users_assign": ""
     }
+
 ]
