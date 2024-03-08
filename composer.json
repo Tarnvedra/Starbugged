@@ -10,21 +10,19 @@
     "require": {
         "php": "^8.2",
         "doctrine/dbal": "v3.6.1",
-        "fideloper/proxy": "^4.0",
-        "laravel/framework": "^9.0",
-        "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0",
-        "spatie/laravel-permission": "^5.10.0"
+        "laravel/framework": "^10.0",
+        "laravel/tinker": "^v2.9.0",
+        "laravel/ui": "^v4.5.0",
+        "spatie/laravel-permission": "^5.11.0"
 
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.5",
+        "barryvdh/laravel-debugbar": "^3.10",
         "barryvdh/laravel-ide-helper": "^2.10",
-        "spatie/laravel-ignition": "^1.0",
-        "fzaninotto/faker": "^1.4",
-        "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.0"
+        "spatie/laravel-ignition": "^2.4",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^6.4",
+        "phpunit/phpunit": "^9.6"
     },
     "config": {
         "optimize-autoloader": true,
