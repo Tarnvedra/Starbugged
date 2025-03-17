@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
       $json = File::get("database/data/user.json");
       $users = json_decode($json);
       foreach ($users as $user)
-      User::query()->create(array(
+      User::query()->create([
           'name' => $user->name,
           'username' => $user->username,
           "job_title" => $user->job_title,
@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
           "about_me" => $user->about_me,
           'email' => $user->email,
           'password' => Hash::make($user->password)
-      ));
+      ]);
 
 
         $users = User::query()->with(['roles.permissions'])->get();
