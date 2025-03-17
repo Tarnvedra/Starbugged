@@ -20,11 +20,11 @@ class ProjectTableSeeder extends Seeder
 
         $projects = json_decode($json);
         foreach ($projects as $project)
-        Project::query()->create(array(
+        Project::query()->create([
             'user_id' => 1,
             "project_name" => $project->project_name,
             "description" => $project->description,
             "users_assign" => json_encode($project->users_assign)
-        ));
+        ]);
     }
 }
