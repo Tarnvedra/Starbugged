@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 

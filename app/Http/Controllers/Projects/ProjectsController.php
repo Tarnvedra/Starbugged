@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Projects;
 
-use App\User;
-use App\Project;
-use App\Issue;
 use App\Http\Controllers\Controller;
-use Illuminate\Routing\ResponseFactory;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Projects\Requests\CreateProjectRequest;
+use App\Http\Controllers\Projects\Requests\UpdateAssignedUsersRequest;
+use App\Http\Controllers\Projects\Requests\UpdateProjectRequest;
+use App\Models\Issue;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
-use App\Http\Controllers\Projects\Requests\CreateProjectRequest;
-use App\Http\Controllers\Projects\Requests\UpdateProjectRequest;
-use App\Http\Controllers\Projects\Requests\UpdateAssignedUsersRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\ResponseFactory;
 
 class ProjectsController extends Controller
 {

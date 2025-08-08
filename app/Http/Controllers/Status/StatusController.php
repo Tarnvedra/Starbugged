@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Status;
 
-use App\Issue;
-use App\Http\Resources\Issue as IssueResource;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Issue as IssueResource;
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class StatusController extends Controller

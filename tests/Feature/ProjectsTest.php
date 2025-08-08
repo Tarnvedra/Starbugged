@@ -2,9 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Project;
-use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Project;
+use App\Models\User;
 use Tests\TestCase;
 
 class ProjectsTest extends TestCase

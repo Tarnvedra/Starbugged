@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use App\Issue;
-use App\Project;
-use App\User;
+use App\Models\Issue;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Tests\TestCase;

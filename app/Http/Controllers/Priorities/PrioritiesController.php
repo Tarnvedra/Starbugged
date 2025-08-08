@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Priorities;
 
 use App\Http\Controllers\Controller;
-use App\Issue;
 use App\Http\Resources\Issue as IssueResource;
+use App\Models\Issue;
 use Illuminate\Http\Request;
 
 class PrioritiesController extends Controller

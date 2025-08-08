@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Issues;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\Issues\Requests\CreateIssueRequest;
 use App\Http\Controllers\Issues\Requests\UpdateIssueRequest;
-use App\IssueComment;
-use App\User;
-use App\Project;
-use App\Issue;
-use App\Http\Controllers\Controller;
-use Illuminate\Routing\ResponseFactory;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Issue;
+use App\Models\IssueComment;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
-use Exception;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\ResponseFactory;
 
 class IssuesController extends Controller
 {

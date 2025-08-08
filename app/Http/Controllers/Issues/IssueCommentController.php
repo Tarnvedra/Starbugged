@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Issues;
 
 
-use App\Http\Controllers\Issues\Requests\IssueCommentRequest;
-use App\Http\Controllers\Issues\Requests\UpdateIssueRequest;
-use App\IssueComment;
-use App\User;
-use App\Project;
-use App\Issue;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Issues\Requests\IssueCommentRequest;
+use App\Models\Issue;
+use App\Models\IssueComment;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Auth;
 
 

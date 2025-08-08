@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tests\TestCase;

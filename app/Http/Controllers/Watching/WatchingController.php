@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Watching;
 
-use App\Issue;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Issue;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class WatchingController extends Controller
 {

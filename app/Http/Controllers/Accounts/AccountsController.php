@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Accounts;
 
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Accounts\Requests\UpdateProfileRequest;
 use App\Http\Controllers\Accounts\Requests\UpdateUserRequest;
-use Illuminate\Routing\ResponseFactory;
-use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Controller;
+use App\Models\Issue;
+use App\Models\Project;
+use App\Models\User;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Contracts\View\View;
-use App\User;
-use App\Project;
-use App\Issue;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\ResponseFactory;
 use Illuminate\View\Factory;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;

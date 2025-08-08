@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,11 +31,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $user_id
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\IssueComment[] $comments
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\IssueComment[] $comments
  * @property-read int|null $comments_count
  * @property-read Issue $project
- * @property-read \App\User $user
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\User[] $watchers
+ * @property-read \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $watchers
  * @property-read int|null $watchers_count
  * @method static \Illuminate\Database\Eloquent\Builder|Issue newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Issue newQuery()
@@ -68,7 +68,7 @@ class Issue extends Model
 
     public function project(): BelongsTo
     {
-        return $this->belongsTo(Issue::class);
+        return $this->belongsTo(Project::class);
     }
 
      public function watchers(): BelongsToMany

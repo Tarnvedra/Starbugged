@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,9 +17,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $user_id
  * @property string|null $users_assign
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Issue[] $issue
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Issue[] $issue
  * @property-read int|null $issue_count
- * @property-read \App\User $user
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Project newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Project newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Project query()
