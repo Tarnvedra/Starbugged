@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -14,8 +15,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $task_id
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $user_id
- * @property-read \App\Issue $Issue
- * @property-read \App\User $user
+ * @property-read \App\Models\Issue $Issue
+ * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment query()
@@ -26,12 +27,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereUserId($value)
  * @property int $issue_id
- * @property-read \App\Issue $issue
+ * @property-read \App\Models\Issue $issue
  * @method static \Illuminate\Database\Eloquent\Builder|IssueComment whereIssueId($value)
  * @mixin \Eloquent
  */
 class IssueComment extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'body'

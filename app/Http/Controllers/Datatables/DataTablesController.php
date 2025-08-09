@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Datatables;
 
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 
 class DataTablesController extends Controller
